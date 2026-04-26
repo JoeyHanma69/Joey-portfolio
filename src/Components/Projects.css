@@ -100,7 +100,11 @@ rgba(139,0,0,0.22); }
  margin-bottom: 1.5rem;
 }
 .project-links { display: flex; gap: 1rem; }
+.project-links { display: flex; gap: 1rem; flex-wrap: wrap; }
 .project-link {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
  font-family: 'Cinzel', serif;
  font-size: 0.7rem;
  letter-spacing: 0.15em;
@@ -112,3 +116,15 @@ rgba(139,0,0,0.22); }
  transition: color 0.2s, border-color 0.2s;
 }
 .project-link:hover { color: #fff; border-color: #fff; }
+
+.link-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    filter: invert(1) brightness(0.8);
+    transition: filter 0.2s;
+}
+
+.project-link:hover .link-icon {
+    filter: invert(1) brightness(1);
+}

@@ -3,7 +3,8 @@
     "allow": [
       "Bash(gh repo *)",
       "WebFetch(domain:github.com)",
-      "mcp__Claude_in_Chrome__tabs_context_mcp"
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(npm install *)"
     ]
   }
 }

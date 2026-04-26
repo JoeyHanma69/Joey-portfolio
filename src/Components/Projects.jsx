@@ -51,6 +51,13 @@ const projectData = {
 const tabs = ['software', 'games', 'ai']
 const tabLabels = { software: '> software/', games: '> games/', ai: '> ai/' }
 
+const linkIcon = (label) => {
+    const l = label.toLowerCase();
+    if (l === 'github') return <img src="/github-mark.png" alt="GitHub" className="link-icon" />;
+    return null;
+}
+
+
 export default function Projects() {
  const [activeTab, setActiveTab] = useState('software')
  return (
@@ -77,10 +84,10 @@ export default function Projects() {
             <p className="project-tag">{project.tag}</p>
             <h3 className="project-name">{project.name}</h3>
             <p className="project-desc">{project.desc}</p>
-            <div className="project-links"> {project.links.map(link => ( 
-                <a key={link.label} href={link.url} className="project-link">
-                {link.label}
-            </a>
+            <div className="project-links">{project.links.map(link => (
+                <a key={link.label} href={link.url} className="project-link" target="_blank" rel="noreferrer">
+                    {linkIcon(link.label)} {link.label}
+                </a>
             ))}
             </div>
             </div>
