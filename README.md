@@ -1,4 +1,4 @@
-# 🔴 Joey the Berserker — Portfolio
+# 🔴 Joseph Linao — Portfolio
 
 > *"Seven minutes. Seven minutues is all i can spare to play games with you"*
 
