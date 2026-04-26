@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './Hero.css';
 
-const BIO_PLAIN = "I forge chaos into code. Whether it's engineering robust software systems, building worlds through game development, or wielding AI as a weapon — I bring the same relentless intensity to every project.\n\nThis is not a portfolio. This is a war chest.";
+const BIO_PLAIN = "I forge chaos into code. Whether it's engineering robust software systems, building worlds through game development, or wielding AI as a weapon — I bring the same relentless intensity to every project.\n\n\"In the grim darkness of the far future, there is only war.\" — Warhammer 40,000, Games Workshop.";
 
 const BioFull = () => (
     <>
