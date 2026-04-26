@@ -1,6 +1,6 @@
 # 🔴 Joey the Berserker — Portfolio
 
-> *"This is not a portfolio. This is a war chest."*
+> *"Seven minutes. Seven minutues is all i can spare to play games with you"*
 
 Live site: [joey-portfolio.vercel.app](https://joey-portfolio.vercel.app)
 
@@ -8,7 +8,7 @@ Live site: [joey-portfolio.vercel.app](https://joey-portfolio.vercel.app)
 
 ## 👤 About
 
-Personal portfolio of **Joseph Linao** (aka Joey the Berserker) —
+Personal portfolio of **Joseph Linao** —
 Computer Science student at Swinburne University of Technology,
 specialising in AI/ML, full-stack development, and game engineering.
 
@@ -44,7 +44,64 @@ Built entirely from scratch with React and Vite — no UI libraries, no template
 | Fonts | Metal Mania, Cinzel, Rajdhani, JetBrains Mono |
 | Deployment | Vercel / GitHub Pages |
 
+## 🎨 CSS Techniques
+
+| Technique | Used For |
+|---|---|
+| CSS Variables | Global colours, fonts, spacing |
+| CSS Grid | Skills grid, Projects grid, About layout |
+| Flexbox | Navbar, buttons, pills, contact links |
+| Keyframe Animations | Glitch, scanlines, slash reveal, power surge, ignition |
+| `clip-path` | Angled corners on buttons and avatar |
+| `position: fixed` | Navbar, particles, cursor trail, scanlines |
+| `::before` / `::after` | Scanlines, card hover glow effects |
+| `backdrop-filter: blur()` | Navbar glass effect |
+| `clamp()` | Responsive hero font sizes |
+| `@media` queries | Mobile responsive layouts |
+| `filter` | GitHub icon tint and glow |
+| `will-change` | Parallax background performance |
+| `IntersectionObserver` | Slash reveal trigger on scroll |
+| Canvas API | Floating embers, cursor trail |
+
 ---
+
+## 🔤 Fonts
+
+All fonts loaded via [Google Fonts](https://fonts.google.com):
+
+| Font | Usage |
+|---|---|
+| [Metal Mania](https://fonts.google.com/specimen/Metal+Mania) | Hero title, section headings |
+| [Cinzel](https://fonts.google.com/specimen/Cinzel) | Labels, nav links, project names |
+| [Rajdhani](https://fonts.google.com/specimen/Rajdhani) | Body text |
+| [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) | Code-style `//` labels |
+
+---
+
+## 📦 Dependencies
+
+| Package | Purpose |
+|---|---|
+| [React 19](https://react.dev) | UI framework |
+| [Vite](https://vitejs.dev) | Build tool and dev server |
+| [React Icons](https://react-icons.github.io/react-icons/) | GitHub, Play, Link icons |
+
+---
+
+## 🔗 Resources & Links
+
+| Resource | Link |
+|---|---|
+| 🎨 Google Fonts | https://fonts.google.com |
+| 🎵 Pixabay Music (background track) | https://pixabay.com/music |
+| 🐙 GitHub Mark (logo) | https://github.com/logos |
+| ⚛️ React Docs | https://react.dev |
+| ⚡ Vite Docs | https://vitejs.dev |
+| 🚀 Vercel Deployment | https://vercel.com |
+| 🎮 React Icons | https://react-icons.github.io/react-icons |
+
+---
+
 
 ## 📂 Project Structure
 src/
@@ -64,7 +121,9 @@ src/
 │ └── Splash.jsx # Intro splash screen
 └── index.css # Global styles + scanlines
 
----
+--- 
+
+
 ## 🚀 Run Locally
 ```bash
 # Clone the repo
