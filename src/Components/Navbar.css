@@ -1,0 +1,45 @@
+.navbar { 
+    position: fixed; 
+    top: 0; left: 0; right: 0; 
+    z-index: 100; 
+    background: rgba(8, 8, 8, 0.93);  
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid var(--red);
+    display: flex; 
+    padding: 0.2rem; 
+    align-items: center; 
+    justify-content: space-between; 
+    height: 64px;
+}
+
+.nav-logo { 
+    font-family: "Metal Mania", cursive; 
+    font-size: 1.5rem; 
+    color: var(--red-bright); 
+    text-decoration: none; 
+    text-shadow: 0 0 12px var(--red); 
+} 
+
+.nav-links { 
+    display: flex; 
+    gap: 2rem; 
+    list-style: none;
+} 
+
+.nav-links a { 
+    font-family: 'Cinzel', serif; 
+    font-size: 0.72rem; 
+    letter-spacing: 0.2rem;  
+    color: var(--text-dim);  
+    text-decoration: none; 
+    transition: color 0.3s, text-shadow 0.3s;
+} 
+
+.nav-links a:hover { 
+    color: var(--red-bright); 
+    text-shadow: 0 0 8px var(--red); 
+} 
+
+@media (max-width: 768px) { 
+    .nav-links { display: none;}
+}

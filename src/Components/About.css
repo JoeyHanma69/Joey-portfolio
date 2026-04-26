@@ -1,0 +1,127 @@
+.about-section {
+    background: var(--bg2);
+    padding: 6rem 2rem;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* ── Intro ── */
+.about-bio {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--text-dim);
+    margin-bottom: 1.4rem;
+}
+
+.about-bio strong { color: var(--text); }
+
+.about-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-value {
+    font-family: 'Metal Mania', cursive;
+    font-size: 2.2rem;
+    color: var(--red-bright);
+    line-height: 1;
+}
+
+.stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    white-space: pre-line;
+    line-height: 1.4;
+}
+
+/* ── Timeline ── */
+.about-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--border);
+}
+
+.timeline-entry {
+    position: relative;
+    padding: 0 0 2rem 1.5rem;
+}
+
+.timeline-entry:last-child { padding-bottom: 0; }
+
+.timeline-dot {
+    position: absolute;
+    left: -1.6rem;
+    top: 0.35rem;
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--red);
+    background: var(--bg2);
+    transform: rotate(45deg);
+}
+
+.timeline-entry.work .timeline-dot {
+    background: var(--red);
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.2rem;
+    flex-wrap: wrap;
+}
+
+.timeline-role {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.timeline-period {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--red-bright);
+    white-space: nowrap;
+}
+
+.timeline-place {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-desc {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}

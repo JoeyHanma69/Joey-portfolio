@@ -1,0 +1,41 @@
+.shockwave-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9997;
+}
+
+.shockwave {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: shockwave-expand 0.65s cubic-bezier(0.15, 0.6, 0.35, 1) forwards;
+}
+
+.shockwave::before,
+.shockwave::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes shockwave-expand {
+    0%   {
+        width: 0; height: 0;
+        box-shadow: 0 0 0 2px var(--red-bright), 0 0 8px 2px var(--red);
+        opacity: 1;
+    }
+    60%  {
+        box-shadow: 0 0 0 1px var(--red), 0 0 20px 4px rgba(139,0,0,0.4);
+        opacity: 0.6;
+    }
+    100% {
+        width: 130px; height: 130px;
+        box-shadow: 0 0 0 0.5px transparent, 0 0 30px 6px transparent;
+        opacity: 0;
+    }
+}

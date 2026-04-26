@@ -1,0 +1,191 @@
+/* Reset */
+*,*::before,*::after {
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+ 
+ 
+:root {
+  --bg: #080808;
+  --bg2: #0f0f0f;
+  --bg3: #161616;
+  --red: #8b0000;
+  --red-bright: #cc1111;
+  --red-glow: rgba(139, 0, 0, 0.4);
+  --text: #e0d8d8;
+  --text-dim: #888;
+  --border: #2a0a0a;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Scanline overlay */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0, 0, 0, 0.07) 3px,
+        rgba(0, 0, 0, 0.07) 4px
+    );
+    pointer-events: none;
+    z-index: 9998;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(139, 0, 0, 0.04) 50%,
+        transparent
+    );
+    pointer-events: none;
+    z-index: 9999;
+    animation: scanline-sweep 7s linear infinite;
+}
+
+@keyframes scanline-sweep {
+    0%   { top: -80px; }
+    100% { top: 100vh; }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+} 
+
+/* Custom scrollbar */ 
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000;} 
+::-webkit-scrollbar-thumb {background: var(--red); border-radius: 3px;} 
+::-webkit-scrollbar-thumb:hover {background: var(--red-bright);}
+
+/* Shared Layout*/ 
+.container { 
+  max-width: 1100px; 
+  margin: 0 auto; 
+  padding: 0 1rem;
+}
+
+.section-header { text-align: center; margin-bottom: 4rem;}
+
+
+.section-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--red-bright);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+}
+
+.section-title { 
+  font-family: 'Metal Mania', cursive; 
+  font-size: clamp(2rem, 5vw, 3rem); 
+  color: var(--text); 
+  line-height: 1;
+} 
+
+.section-divider { 
+  width: 80px; 
+  height: 2px; 
+  background: linear-gradient(90deg, transparent, var(--red), transparent); 
+  margin: 1.5rem auto 0;
+}
+ 
+
+/* Shared Buttons*/ 
+.btn-primary, .btn-secondary { 
+  font-family: 'Cinzel', serif; 
+  font-size: 0.78rem; 
+  letter-spacing: 0.2rem; 
+  text-transform: uppercase; 
+  padding: 0.85rem 2.2rem; 
+  text-decoration: none; 
+  cursor: pointer; 
+  clip-path: polygon(8px 8%, 100% 0, calc(100% - 8px) 100%, 0% 100%);
+  transition: all 0.3s; 
+  display: inline-block; 
+  border: none;
+} 
+
+.btn-primary { 
+  background: transparent; 
+  border: 1px solid var(--red); 
+  color: #fff;
+} 
+
+.btn-primary:hover {
+  background: var(--red-bright); 
+  box-shadow: 0 0 20px var(--red);
+  transform: translateY(-2px);
+} 
+
+.btn-secondary { 
+  background: transparent; 
+  border: 1px solid var(--red); 
+  color: var(--red-bright);
+}  
+
+.btn-secondary:hover {
+  background: rgba(139, 0, 0, 0.2); 
+  box-shadow: 0 0 16px var(--red-glow);
+} 
+
+
+/* glith effect */ 
+.glitch { position: relative; display: inline-block;} 
+
+.glitch::before, 
+.glitch::after { 
+  content: attr(data-text); 
+  position: absolute; 
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+} 
+
+.glitch::before { 
+  color: var(--red-bright); 
+  animation: glitch1 4s infinite; 
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+} 
+
+.glitch::after { 
+  color: #0ff; 
+  animation: glitch2 4s infinite; 
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%); 
+  opacity: 0.25;
+} 
+
+@keyframes glitch1 { 
+  0%, 88%, 100% { transform: none; opacity: 0; }
+  89% { transform: translateX(-4px); opacity: 1; }
+  91% { transform: translateX(4px); opacity: 1; }
+  93% { transform: translateX(-2px) skewX(4deg); opacity: 1; }
+  95% { transform: none; opacity: 0; }
+}  
+
+@keyframes glitch2 { 
+  0%, 90%, 100% { transform: none; opacity: 0; }
+  91% { transform: translateX(4px) skewX(-4deg); opacity: 1; }
+  93% { transform: translateX(-4px) skewX(4deg); opacity: 1; }
+  95% { transform: translateX(2px) skewX(-2deg); opacity: 1; }
+} 
+
+@keyframes fadeInUp { 
+  from {opacity: 0; transform: translateY(20px);} 
+  to {opacity: 1; transform: none;}
+}
+

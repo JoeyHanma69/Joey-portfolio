@@ -1,0 +1,25 @@
+.music-btn {
+ position: fixed;
+ bottom: 2rem; right: 2rem;
+ z-index: 200;
+ background: var(--red);
+ border: 1px solid var(--red-bright);
+ color: #fff;
+ width: 52px; height: 52px;
+ border-radius: 50%;
+ cursor: pointer;
+ font-size: 1.4rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ box-shadow: 0 0 16px var(--red-glow);
+ transition: box-shadow 0.3s, transform 0.2s;
+}
+.music-btn:hover { box-shadow: 0 0 28px var(--red); transform: scale(1.1); } 
+
+.music-btn.playing { animation: btnPulse 1.5s infinite; }  
+
+@keyframes btnPulse {
+ 0%, 100% { box-shadow: 0 0 16px var(--red-glow); }
+ 50% { box-shadow: 0 0 32px var(--red), 0 0 64px var(--red-glow); }
+}
