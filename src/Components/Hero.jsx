@@ -9,7 +9,7 @@ const BioFull = () => (
         software systems, building worlds through game development, or wielding{' '}
         <strong>AI</strong> as a weapon — I bring the same relentless intensity to every project.
         <br /><br />
-        This is not a portfolio. This is a <strong>war chest</strong>.
+        "In the <strong>grim darkness </strong> of the far <strong>future</strong>, there is only <strong>war</strong>." — Warhammer 40,000, Games Workshop.
     </>
 );
 
