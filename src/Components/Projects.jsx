@@ -1,6 +1,7 @@
 import { useState } from "react";
 import './Projects.css'
 import SlashReveal from './SlashReveal';
+import { FaGithub, FaPlay, FaExternalLinkAlt } from 'react-icons/fa';
 
 // Edit this data to add your real projects
 const projectData = {
@@ -53,10 +54,10 @@ const tabLabels = { software: '> software/', games: '> games/', ai: '> ai/' }
 
 const linkIcon = (label) => {
     const l = label.toLowerCase();
-    if (l === 'github') return <img src="/github-mark.png" alt="GitHub" className="link-icon" />;
-    return null;
+    if (l === 'github') return <FaGithub />;
+    if (l === 'play')   return <FaPlay />;
+    return <FaExternalLinkAlt />;
 }
-
 
 export default function Projects() {
  const [activeTab, setActiveTab] = useState('software')
