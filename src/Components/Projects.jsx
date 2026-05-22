@@ -47,6 +47,12 @@ const projectData = {
         desc: 'This project provides a machine learning-based system for predicting milk order quantities for McDonalds stores. It uses historical milk usage data to predict future requirements, helping to optimize inventory management and reduce waste.',
         links: [{ label: 'GitHub', url: 'https://github.com/abdurrehman722/McDonalds-Milk-Product-Testing-Prototype' }],
         }, 
+        {
+        tag: 'AI · ML Model · Classification · Sequential · Tensorflow · EarlyStopping & ReduceLROnPlateau Callbacks ',
+        name: 'Detecting Spam Emails Using Machine Learning',
+        desc: 'This project provides a machine learning-based system for detecting spam emails. It uses historical email data to train a model that can classify incoming emails as spam or not spam, helping to improve email security and reduce unwanted messages.',
+        links: [{ label: 'GitHub', url: 'https://github.com/JoeyHanma69/Artificial-Intelligence-Side-Projects/tree/main/Detection-Spam-Emails' }]
+        }
     ],
 }
 const tabs = ['software', 'games', 'ai']
