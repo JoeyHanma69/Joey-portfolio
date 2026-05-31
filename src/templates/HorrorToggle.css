@@ -1,3 +1,10 @@
+/* ══════════════════════════════════════════
+   TEMPLATE: Horror Theme Toggle
+   Usage: import HorrorToggle from '../templates/HorrorToggle'
+          import '../templates/HorrorToggle.css'
+   Add <HorrorToggle /> to App.jsx to activate.
+   ══════════════════════════════════════════ */
+
 /* ── Skull Toggle Button ── */
 .horror-btn {
     position: fixed;
@@ -79,7 +86,6 @@ body.horror {
     --border:     #0a1e0a;
 }
 
-/* ── Heavier scanlines ── */
 body.horror::before {
     background: repeating-linear-gradient(
         0deg,
@@ -90,7 +96,6 @@ body.horror::before {
     ) !important;
 }
 
-/* Faster green sweep */
 body.horror::after {
     animation-duration: 3s !important;
     background: linear-gradient(
@@ -101,7 +106,6 @@ body.horror::after {
     ) !important;
 }
 
-/* ── Hero: Nosifer font + heartbeat ── */
 body.horror .hero-name {
     font-family: 'Nosifer', cursive !important;
     font-size: clamp(2rem, 5.5vw, 5rem) !important;
@@ -112,13 +116,8 @@ body.horror .hero-name {
         2px 2px 0 #000;
 }
 
-body.horror .hero-red {
-    color: #39d400 !important;
-}
-
-body.horror .hero {
-    animation: heartbeat 1.8s ease-in-out infinite;
-}
+body.horror .hero-red { color: #39d400 !important; }
+body.horror .hero { animation: heartbeat 1.8s ease-in-out infinite; }
 
 @keyframes heartbeat {
     0%, 100% { box-shadow: none; }
@@ -127,10 +126,7 @@ body.horror .hero {
     42%  { box-shadow: inset 0 0 60px rgba(0, 40, 0, 0.15); }
 }
 
-/* ── Eyebrow flicker ── */
-body.horror .section-eyebrow {
-    animation: flicker 4s infinite;
-}
+body.horror .section-eyebrow { animation: flicker 4s infinite; }
 
 @keyframes flicker {
     0%, 94%, 100% { opacity: 0.9; }
@@ -140,14 +136,12 @@ body.horror .section-eyebrow {
     98%  { opacity: 0.9; }
 }
 
-/* ── Section titles ── */
 body.horror .section-title {
     text-shadow:
         0 0 20px rgba(45, 179, 0, 0.4),
         0 4px 8px rgba(0, 60, 0, 0.5);
 }
 
-/* ── Navbar ── */
 body.horror .navbar {
     background: rgba(0, 5, 0, 0.97) !important;
     border-bottom-color: #1a6600 !important;
@@ -164,13 +158,9 @@ body.horror .nav-links a:hover {
     text-shadow: 0 0 8px rgba(57,212,0,0.7) !important;
 }
 
-/* ── Hero tag cursor ── */
 body.horror .hero-tag,
-body.horror .cursor {
-    color: #2db300 !important;
-}
+body.horror .cursor { color: #2db300 !important; }
 
-/* ── Avatar horror filter ── */
 body.horror .hero-avatar {
     border-color: #1a6600 !important;
     box-shadow:
@@ -179,7 +169,6 @@ body.horror .hero-avatar {
     filter: saturate(0.6) hue-rotate(80deg) contrast(1.1);
 }
 
-/* ── Skill pills ── */
 body.horror .skill-pill {
     background: rgba(0, 60, 0, 0.15) !important;
     border-color: rgba(45, 179, 0, 0.3) !important;
@@ -193,7 +182,6 @@ body.horror .skill-pill:hover {
     animation: power-surge 0.45s ease forwards !important;
 }
 
-/* ── Cards ── */
 body.horror .project-card,
 body.horror .cert-card,
 body.horror .band-card,
@@ -208,16 +196,11 @@ body.horror .band-card:hover {
     box-shadow: 0 8px 40px rgba(45, 179, 0, 0.25) !important;
 }
 
-/* ── Section divider ── */
 body.horror .section-divider {
     background: linear-gradient(90deg, transparent, #2db300, transparent) !important;
 }
 
-/* ── Buttons ── */
-body.horror .btn-primary {
-    border-color: #1a6600 !important;
-}
-
+body.horror .btn-primary { border-color: #1a6600 !important; }
 body.horror .btn-primary:hover {
     background: #1a6600 !important;
     box-shadow: 0 0 20px rgba(45,179,0,0.5) !important;
@@ -228,7 +211,6 @@ body.horror .btn-secondary {
     color: #2db300 !important;
 }
 
-/* ── Slash reveal ── */
 body.horror .slash-reveal {
     background: linear-gradient(
         105deg,
@@ -240,26 +222,13 @@ body.horror .slash-reveal {
     ) !important;
 }
 
-/* ── Timeline dots ── */
-body.horror .timeline-dot {
-    border-color: #2db300 !important;
-}
+body.horror .timeline-dot { border-color: #2db300 !important; }
+body.horror .timeline-entry.work .timeline-dot { background: #1a6600 !important; }
 
-body.horror .timeline-entry.work .timeline-dot {
-    background: #1a6600 !important;
-}
-
-/* ── Music button ── */
 body.horror .music-btn {
     border-color: #1a6600 !important;
     box-shadow: 0 0 12px rgba(45,179,0,0.3) !important;
 }
 
-/* ── Footer ── */
-body.horror footer {
-    border-top-color: #1a6600 !important;
-}
-
-body.horror footer span {
-    color: #2db300 !important;
-}
+body.horror footer { border-top-color: #1a6600 !important; }
+body.horror footer span { color: #2db300 !important; }

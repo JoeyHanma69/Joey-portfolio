@@ -12,7 +12,7 @@ import Musicbutton from './Components/MusicButton';
 import Particles from './Components/Particles';
 import CursorTrail from './Components/CursorTrail';
 import ClickShockwave from './Components/ClickShockwave';
-import HorrorToggle from './Components/HorrorToggle';
+import GenreToggle from './Components/GenreToggle';
 import BloodDrip from './Components/BloodDrip';
 import './index.css';
 
@@ -52,7 +52,7 @@ export default function App() {
       </footer> 
 
       <Musicbutton />
-      <HorrorToggle />
+      <GenreToggle />
       <BloodDrip />
       </div> 
       </>

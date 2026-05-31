@@ -1,0 +1,540 @@
+/* ══════════════════════════════════════════════════════
+   GenreToggle — Button, Panel & All Genre Palettes
+   ══════════════════════════════════════════════════════ */
+
+/* ── Trigger Button ── */
+.genre-btn {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--red);
+    background: rgba(8, 8, 8, 0.92);
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.15s;
+    backdrop-filter: blur(8px);
+    user-select: none;
+    padding: 0;
+    line-height: 1;
+}
+
+.genre-btn:hover {
+    border-color: var(--red-bright);
+    box-shadow: 0 0 16px var(--red-glow);
+    transform: scale(1.07);
+}
+
+.genre-btn.open {
+    transform: scale(0.95);
+}
+
+.genre-btn.active {
+    border-color: var(--ga);
+    animation: genre-btn-pulse 2s ease-in-out infinite;
+}
+
+@keyframes genre-btn-pulse {
+    0%, 100% { box-shadow: 0 0 10px var(--ga); }
+    50%       { box-shadow: 0 0 28px var(--ga), 0 0 50px var(--ga); }
+}
+
+/* ── Dismiss Overlay ── */
+.genre-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+}
+
+/* ── Panel ── */
+.genre-panel {
+    position: fixed;
+    bottom: 5.5rem;
+    left: 1rem;
+    width: 232px;
+    background: rgba(5, 2, 2, 0.97);
+    border: 1px solid rgba(139, 0, 0, 0.35);
+    border-radius: 8px;
+    z-index: 9999;
+    overflow: hidden;
+    transform: translateY(14px) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.22s ease;
+    backdrop-filter: blur(16px);
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+.genre-panel.open {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.genre-panel-header {
+    padding: 0.55rem 1rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--text-dim);
+    letter-spacing: 0.14em;
+    border-bottom: 1px solid rgba(139, 0, 0, 0.14);
+    text-transform: uppercase;
+}
+
+/* ── Genre Options ── */
+.genre-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.55rem 1rem;
+    background: transparent;
+    border: none;
+    border-left: 2px solid transparent;
+    cursor: pointer;
+    transition: background 0.14s, border-left-color 0.14s;
+    color: var(--text-dim);
+    text-align: left;
+}
+
+.genre-option:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-left-color: var(--ga);
+    color: #ddd;
+}
+
+.genre-option.selected {
+    background: rgba(255, 255, 255, 0.06);
+    border-left-color: var(--ga);
+    color: #fff;
+}
+
+.genre-icon {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.genre-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.genre-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: inherit;
+}
+
+.genre-desc {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    color: var(--ga, var(--text-dim));
+    letter-spacing: 0.04em;
+    opacity: 0.8;
+}
+
+.genre-active-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* ── Shared Fog Overlay ── */
+.genre-fog {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    animation: genre-fog-drift 14s ease-in-out infinite;
+}
+
+@keyframes genre-fog-drift {
+    0%   { transform: scale(1)    translateX(0); }
+    33%  { transform: scale(1.03) translateX(8px); }
+    66%  { transform: scale(0.98) translateX(-5px); }
+    100% { transform: scale(1)    translateX(0); }
+}
+
+/* Shared flicker keyframe used by multiple genres */
+@keyframes flicker {
+    0%, 94%, 100% { opacity: 0.9; }
+    95%  { opacity: 0.15; }
+    96%  { opacity: 0.85; }
+    97%  { opacity: 0.05; }
+    98%  { opacity: 0.9; }
+}
+
+
+/* ══════════════════════════════════════════════════════
+   GENRE THEMES
+   Each one overrides CSS custom properties so the entire
+   site's palette shifts automatically.
+   ══════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────
+   1. DEATH METAL
+   Deep crimson / near-black. Brutal, heavy.
+   Bands: Death, Cannibal Corpse, Morbid Angel
+   ────────────────────────────────────────── */
+body.genre-death {
+    --red:        #6b0000;
+    --red-bright: #990000;
+    --red-glow:   rgba(139, 0, 0, 0.45);
+    --bg:         #030000;
+    --bg2:        #060000;
+    --bg3:        #0a0000;
+    --text:       #c0a8a8;
+    --text-dim:   #5a3333;
+    --border:     #1a0000;
+}
+
+body.genre-death .genre-fog {
+    opacity: 1;
+    background:
+        radial-gradient(ellipse at 15% 85%, rgba(80, 0, 0, 0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(60, 0, 0, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(40, 0, 0, 0.15) 0%, transparent 70%);
+}
+
+body.genre-death .hero-name {
+    text-shadow:
+        0 0 20px rgba(160, 0, 0, 0.8),
+        0 4px 8px rgba(80, 0, 0, 0.6),
+        3px 3px 0 #000;
+}
+
+body.genre-death .section-eyebrow {
+    animation: death-flicker 3s infinite;
+}
+
+@keyframes death-flicker {
+    0%, 90%, 100% { opacity: 0.9; }
+    91%  { opacity: 0.1; }
+    92%  { opacity: 0.8; }
+    93%  { opacity: 0.05; }
+    94%  { opacity: 0.75; }
+}
+
+/* ──────────────────────────────────────────
+   2. NU METAL
+   Burnt orange / brown. Grungy, industrial-lite.
+   Bands: Korn, Linkin Park, Slipknot, Deftones
+   ────────────────────────────────────────── */
+body.genre-nu {
+    --red:        #a85200;
+    --red-bright: #d97000;
+    --red-glow:   rgba(200, 110, 0, 0.35);
+    --bg:         #040300;
+    --bg2:        #070500;
+    --bg3:        #0b0800;
+    --text:       #c8b890;
+    --text-dim:   #6a5030;
+    --border:     #1a1000;
+}
+
+body.genre-nu .hero-name {
+    text-shadow:
+        0 0 20px rgba(210, 130, 0, 0.7),
+        0 0 50px rgba(150, 80, 0, 0.4),
+        2px 2px 0 #000;
+}
+
+body.genre-nu::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(40, 20, 0, 0.14) 2px,
+        rgba(40, 20, 0, 0.14) 3px
+    ) !important;
+}
+
+body.genre-nu::after {
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(80, 40, 0, 0.05) 50%,
+        transparent
+    ) !important;
+}
+
+/* ──────────────────────────────────────────
+   3. CLASSIC ROCK
+   Warm amber / gold. Vintage, timeless.
+   Bands: Led Zeppelin, AC/DC, Rolling Stones, Hendrix
+   ────────────────────────────────────────── */
+body.genre-classic {
+    --red:        #a87800;
+    --red-bright: #d4a800;
+    --red-glow:   rgba(210, 165, 0, 0.35);
+    --bg:         #040400;
+    --bg2:        #070600;
+    --bg3:        #0a0900;
+    --text:       #d4c888;
+    --text-dim:   #6a5820;
+    --border:     #1a1400;
+}
+
+body.genre-classic .hero-name {
+    text-shadow:
+        0 0 20px rgba(210, 165, 0, 0.7),
+        0 0 50px rgba(160, 110, 0, 0.4),
+        2px 2px 0 #000;
+}
+
+body.genre-classic::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(40, 30, 0, 0.12) 2px,
+        rgba(40, 30, 0, 0.12) 3px
+    ) !important;
+}
+
+body.genre-classic::after {
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(80, 60, 0, 0.05) 50%,
+        transparent
+    ) !important;
+}
+
+body.genre-classic .genre-fog {
+    opacity: 1;
+    background:
+        radial-gradient(ellipse at 50% 100%, rgba(60, 40, 0, 0.12) 0%, transparent 60%);
+}
+
+/* ──────────────────────────────────────────
+   4. THRASH METAL
+   Sharp yellow-gold. Fast, aggressive, relentless.
+   Bands: Metallica, Slayer, Megadeth, Anthrax
+   ────────────────────────────────────────── */
+body.genre-thrash {
+    --red:        #998800;
+    --red-bright: #ccbb00;
+    --red-glow:   rgba(190, 170, 0, 0.35);
+    --bg:         #030300;
+    --bg2:        #060500;
+    --bg3:        #090800;
+    --text:       #cccc88;
+    --text-dim:   #585220;
+    --border:     #181400;
+}
+
+body.genre-thrash .hero-name {
+    text-shadow:
+        0 0 20px rgba(210, 190, 0, 0.8),
+        0 0 50px rgba(160, 140, 0, 0.5),
+        2px 2px 0 #000;
+}
+
+/* Fast flicker — channelling the speed of thrash */
+body.genre-thrash .section-eyebrow {
+    animation: flicker 1.8s infinite;
+}
+
+body.genre-thrash::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(30, 28, 0, 0.16) 2px,
+        rgba(30, 28, 0, 0.16) 3px
+    ) !important;
+}
+
+/* ──────────────────────────────────────────
+   5. GLAM METAL
+   Hot pink / magenta. Excessive, glittery, loud.
+   Bands: Mötley Crüe, KISS, Poison, Warrant
+   ────────────────────────────────────────── */
+body.genre-glam {
+    --red:        #aa0055;
+    --red-bright: #ee2277;
+    --red-glow:   rgba(230, 50, 130, 0.4);
+    --bg:         #040004;
+    --bg2:        #070007;
+    --bg3:        #0a000a;
+    --text:       #daa8c8;
+    --text-dim:   #6a3055;
+    --border:     #1a0015;
+}
+
+body.genre-glam .hero-name {
+    text-shadow:
+        0 0 20px rgba(250, 60, 150, 0.85),
+        0 0 50px rgba(180, 0, 100, 0.5),
+        0 0 90px rgba(230, 50, 130, 0.2),
+        2px 2px 0 #000;
+    animation: glam-shimmer 3s ease-in-out infinite;
+}
+
+body.genre-glam .hero-red { color: #ff3388 !important; }
+
+@keyframes glam-shimmer {
+    0%, 100% { filter: brightness(1); }
+    50%       { filter: brightness(1.22) drop-shadow(0 0 10px rgba(255, 60, 160, 0.55)); }
+}
+
+body.genre-glam::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(40, 0, 20, 0.13) 2px,
+        rgba(40, 0, 20, 0.13) 3px
+    ) !important;
+}
+
+body.genre-glam .genre-fog {
+    opacity: 1;
+    background:
+        radial-gradient(ellipse at 20% 80%, rgba(120, 0, 60, 0.2) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(80, 0, 40, 0.15) 0%, transparent 50%);
+}
+
+/* ──────────────────────────────────────────
+   6. INDUSTRIAL METAL
+   Cold steel blue / grey. Mechanical, clinical.
+   Bands: Nine Inch Nails, Rammstein, Ministry, KMFDM
+   ────────────────────────────────────────── */
+body.genre-industrial {
+    --red:        #005577;
+    --red-bright: #0088bb;
+    --red-glow:   rgba(0, 140, 200, 0.35);
+    --bg:         #000408;
+    --bg2:        #000608;
+    --bg3:        #00090e;
+    --text:       #a0bcc8;
+    --text-dim:   #304858;
+    --border:     #001018;
+}
+
+/* Hero name switches to monospace — very NIN/Rammstein */
+body.genre-industrial .hero-name {
+    font-family: 'JetBrains Mono', monospace !important;
+    letter-spacing: 0.1em !important;
+    text-shadow:
+        0 0 20px rgba(0, 160, 230, 0.7),
+        0 0 50px rgba(0, 110, 180, 0.4),
+        2px 2px 0 #000;
+}
+
+body.genre-industrial::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 20, 40, 0.16) 2px,
+        rgba(0, 20, 40, 0.16) 3px
+    ) !important;
+}
+
+body.genre-industrial::after {
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 60, 100, 0.06) 50%,
+        transparent
+    ) !important;
+}
+
+body.genre-industrial .genre-fog {
+    opacity: 1;
+    background:
+        radial-gradient(ellipse at 15% 85%, rgba(0, 40, 80, 0.3) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(0, 30, 60, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(0, 20, 50, 0.12) 0%, transparent 70%);
+}
+
+/* Mechanical stutter flicker */
+body.genre-industrial .section-eyebrow {
+    animation: mech-flicker 5s infinite;
+}
+
+@keyframes mech-flicker {
+    0%, 92%, 100% { opacity: 0.9; }
+    93% { opacity: 0.25; }
+    94% { opacity: 0.9; }
+    95% { opacity: 0.05; }
+    96% { opacity: 0.9; }
+}
+
+/* ──────────────────────────────────────────
+   7. POWER METAL
+   Royal purple / violet. Epic, fantasy, majestic.
+   Bands: DragonForce, Blind Guardian, Helloween, Manowar
+   ────────────────────────────────────────── */
+body.genre-power {
+    --red:        #4400aa;
+    --red-bright: #7744ee;
+    --red-glow:   rgba(110, 60, 230, 0.4);
+    --bg:         #010006;
+    --bg2:        #020008;
+    --bg3:        #03000c;
+    --text:       #c0a8e0;
+    --text-dim:   #4a3068;
+    --border:     #0a0018;
+}
+
+body.genre-power .hero-name {
+    text-shadow:
+        0 0 20px rgba(130, 70, 255, 0.9),
+        0 0 50px rgba(90, 30, 210, 0.6),
+        0 0 100px rgba(60, 0, 160, 0.3),
+        2px 2px 0 #000;
+    animation: epic-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes epic-glow {
+    0%, 100% { filter: brightness(1); }
+    50%       { filter: brightness(1.16) drop-shadow(0 0 14px rgba(130, 60, 255, 0.5)); }
+}
+
+body.genre-power::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(20, 0, 50, 0.12) 2px,
+        rgba(20, 0, 50, 0.12) 3px
+    ) !important;
+}
+
+body.genre-power::after {
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(60, 0, 120, 0.06) 50%,
+        transparent
+    ) !important;
+}
+
+body.genre-power .genre-fog {
+    opacity: 1;
+    background:
+        radial-gradient(ellipse at 15% 85%, rgba(60, 0, 140, 0.3) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(40, 0, 100, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(30, 0, 80, 0.12) 0%, transparent 70%);
+}

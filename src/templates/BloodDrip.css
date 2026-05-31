@@ -1,6 +1,7 @@
+/* TEMPLATE: Blood Drip CSS — paired with templates/BloodDrip.jsx */
 .blood-drip-container {
     position: fixed;
-    top: 64px; /* navbar height */
+    top: 64px;
     left: 0;
     width: 100%;
     pointer-events: none;
@@ -8,7 +9,7 @@
     display: none;
 }
 
-body.genre-death .blood-drip-container {
+body.horror .blood-drip-container {
     display: block;
 }
 
