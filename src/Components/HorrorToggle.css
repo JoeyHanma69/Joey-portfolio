@@ -26,15 +26,16 @@
 }
 
 .horror-btn.active {
-    background: rgba(80, 0, 0, 0.85);
-    border-color: var(--red-bright);
-    box-shadow: 0 0 24px rgba(139, 0, 0, 0.7);
+    background: rgba(0, 40, 0, 0.9);
+    border-color: #2db300;
+    color: #39d400;
+    box-shadow: 0 0 24px rgba(45, 179, 0, 0.6);
     animation: skull-pulse 1.6s ease-in-out infinite;
 }
 
 @keyframes skull-pulse {
-    0%, 100% { box-shadow: 0 0 16px rgba(139,0,0,0.5); }
-    50%       { box-shadow: 0 0 36px rgba(200,0,0,0.9), 0 0 60px rgba(139,0,0,0.4); }
+    0%, 100% { box-shadow: 0 0 16px rgba(45, 179, 0, 0.4); }
+    50%       { box-shadow: 0 0 40px rgba(57, 212, 0, 0.8), 0 0 70px rgba(45,179,0,0.3); }
 }
 
 /* ── Fog Overlay ── */
@@ -44,128 +45,221 @@
     pointer-events: none;
     z-index: 1;
     opacity: 0;
-    transition: opacity 1s ease;
+    transition: opacity 1.2s ease;
     background:
-        radial-gradient(ellipse at 20% 80%, rgba(60,0,0,0.35) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 20%, rgba(40,0,0,0.25) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(20,0,0,0.15) 0%, transparent 70%);
-    animation: fog-drift 12s ease-in-out infinite;
+        radial-gradient(ellipse at 15% 85%, rgba(0, 40, 0, 0.45) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(0, 30, 0, 0.35) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(0, 20, 0, 0.2) 0%, transparent 70%);
+    animation: fog-drift 14s ease-in-out infinite;
 }
 
-body.horror .horror-fog {
-    opacity: 1;
-}
+body.horror .horror-fog { opacity: 1; }
 
 @keyframes fog-drift {
-    0%   { background-position: 0% 0%; transform: scale(1);   }
-    33%  { background-position: 3% 2%; transform: scale(1.02); }
-    66%  { background-position: -2% 3%; transform: scale(0.99); }
-    100% { background-position: 0% 0%; transform: scale(1);   }
+    0%   { transform: scale(1)    translateX(0);   }
+    33%  { transform: scale(1.03) translateX(8px); }
+    66%  { transform: scale(0.98) translateX(-5px); }
+    100% { transform: scale(1)    translateX(0);   }
 }
 
 /* ══════════════════════════════════════════
-   body.horror — all overrides gated here
+   body.horror — FULL PALETTE SWAP
+   Metal = dark red / Horror = toxic green
    ══════════════════════════════════════════ */
 
-/* Colour shift */
 body.horror {
-    --red: #6b0000;
-    --red-bright: #aa0000;
-    --bg: #020202;
-    --bg2: #050505;
-    --bg3: #080808;
-    --text-dim: #555;
+    --red:        #1a6600;
+    --red-bright: #2db300;
+    --red-glow:   rgba(45, 179, 0, 0.35);
+    --bg:         #010401;
+    --bg2:        #030703;
+    --bg3:        #060b06;
+    --text:       #b8ccb0;
+    --text-dim:   #4a6644;
+    --border:     #0a1e0a;
 }
 
-/* Heavier scanline */
+/* ── Heavier scanlines ── */
 body.horror::before {
     background: repeating-linear-gradient(
         0deg,
         transparent,
         transparent 2px,
-        rgba(0, 0, 0, 0.15) 2px,
-        rgba(0, 0, 0, 0.15) 3px
+        rgba(0, 20, 0, 0.18) 2px,
+        rgba(0, 20, 0, 0.18) 3px
     ) !important;
 }
 
-/* Faster scanline sweep */
+/* Faster green sweep */
 body.horror::after {
-    animation-duration: 3.5s !important;
+    animation-duration: 3s !important;
     background: linear-gradient(
         to bottom,
         transparent,
-        rgba(100, 0, 0, 0.07) 50%,
+        rgba(0, 80, 0, 0.06) 50%,
         transparent
     ) !important;
 }
 
-/* Hero heartbeat */
+/* ── Hero: Nosifer font + heartbeat ── */
+body.horror .hero-name {
+    font-family: 'Nosifer', cursive !important;
+    font-size: clamp(2rem, 5.5vw, 5rem) !important;
+    line-height: 1.15 !important;
+    text-shadow:
+        0 0 20px rgba(45, 179, 0, 0.7),
+        0 0 50px rgba(26, 102, 0, 0.4),
+        2px 2px 0 #000;
+}
+
+body.horror .hero-red {
+    color: #39d400 !important;
+}
+
 body.horror .hero {
-    animation: heartbeat 1.6s ease-in-out infinite;
+    animation: heartbeat 1.8s ease-in-out infinite;
 }
 
 @keyframes heartbeat {
     0%, 100% { box-shadow: none; }
-    14%  { box-shadow: inset 0 0 80px rgba(100,0,0,0.15); }
+    14%  { box-shadow: inset 0 0 80px rgba(0, 60, 0, 0.2); }
     28%  { box-shadow: none; }
-    42%  { box-shadow: inset 0 0 60px rgba(100,0,0,0.1); }
-    70%  { box-shadow: none; }
+    42%  { box-shadow: inset 0 0 60px rgba(0, 40, 0, 0.15); }
 }
 
-/* Horror font on hero title */
-body.horror .hero-name {
-    font-family: 'Nosifer', cursive !important;
-    font-size: clamp(2.2rem, 6vw, 5.5rem) !important;
-    line-height: 1.1 !important;
-    text-shadow: 0 0 20px rgba(139,0,0,0.6), 2px 2px 0 #000;
-}
-
-/* Flicker on eyebrows */
+/* ── Eyebrow flicker ── */
 body.horror .section-eyebrow {
     animation: flicker 4s infinite;
-    color: #880000 !important;
 }
 
 @keyframes flicker {
-    0%, 95%, 100% { opacity: 0.9; }
-    96%  { opacity: 0.2; }
-    97%  { opacity: 0.8; }
-    98%  { opacity: 0.1; }
-    99%  { opacity: 0.9; }
+    0%, 94%, 100% { opacity: 0.9; }
+    95%  { opacity: 0.15; }
+    96%  { opacity: 0.85; }
+    97%  { opacity: 0.05; }
+    98%  { opacity: 0.9; }
 }
 
-/* Section titles red drip shadow */
+/* ── Section titles ── */
 body.horror .section-title {
-    text-shadow: 0 4px 8px rgba(139,0,0,0.5), 0 0 30px rgba(100,0,0,0.3);
+    text-shadow:
+        0 0 20px rgba(45, 179, 0, 0.4),
+        0 4px 8px rgba(0, 60, 0, 0.5);
 }
 
-/* Skill pill horror hover */
-body.horror .skill-pill:hover {
-    background: rgba(80, 0, 0, 0.55) !important;
-    color: #ff4444 !important;
-    border-color: #880000 !important;
-    box-shadow: 0 0 12px rgba(139,0,0,0.8), inset 0 0 8px rgba(80,0,0,0.4) !important;
-}
-
-/* Project card horror glow */
-body.horror .project-card:hover,
-body.horror .cert-card:hover {
-    box-shadow: 0 8px 40px rgba(100,0,0,0.5) !important;
-}
-
-/* Nav horror */
+/* ── Navbar ── */
 body.horror .navbar {
-    border-bottom-color: #6b0000;
-    background: rgba(4,0,0,0.97) !important;
+    background: rgba(0, 5, 0, 0.97) !important;
+    border-bottom-color: #1a6600 !important;
 }
 
 body.horror .nav-logo {
-    text-shadow: 0 0 20px rgba(139,0,0,0.9), 0 0 40px rgba(100,0,0,0.5);
+    color: #2db300 !important;
+    text-shadow: 0 0 20px rgba(45,179,0,0.9), 0 0 40px rgba(26,102,0,0.5) !important;
     animation: skull-pulse 1.6s ease-in-out infinite;
 }
 
-/* Avatar horror glow */
+body.horror .nav-links a:hover {
+    color: #39d400 !important;
+    text-shadow: 0 0 8px rgba(57,212,0,0.7) !important;
+}
+
+/* ── Hero tag cursor ── */
+body.horror .hero-tag,
+body.horror .cursor {
+    color: #2db300 !important;
+}
+
+/* ── Avatar horror filter ── */
 body.horror .hero-avatar {
-    box-shadow: 0 0 50px rgba(100,0,0,0.8), 0 0 100px rgba(60,0,0,0.4) !important;
-    filter: contrast(1.1) saturate(0.8);
+    border-color: #1a6600 !important;
+    box-shadow:
+        0 0 40px rgba(45, 179, 0, 0.5),
+        0 0 80px rgba(26, 102, 0, 0.3) !important;
+    filter: saturate(0.6) hue-rotate(80deg) contrast(1.1);
+}
+
+/* ── Skill pills ── */
+body.horror .skill-pill {
+    background: rgba(0, 60, 0, 0.15) !important;
+    border-color: rgba(45, 179, 0, 0.3) !important;
+}
+
+body.horror .skill-pill:hover {
+    background: rgba(0, 80, 0, 0.4) !important;
+    border-color: #2db300 !important;
+    color: #39d400 !important;
+    box-shadow: 0 0 14px rgba(45,179,0,0.7), inset 0 0 8px rgba(0,60,0,0.4) !important;
+    animation: power-surge 0.45s ease forwards !important;
+}
+
+/* ── Cards ── */
+body.horror .project-card,
+body.horror .cert-card,
+body.horror .band-card,
+body.horror .skill-category {
+    border-top-color: #1a6600 !important;
+    border-color: #0a1e0a !important;
+}
+
+body.horror .project-card:hover,
+body.horror .cert-card:hover,
+body.horror .band-card:hover {
+    box-shadow: 0 8px 40px rgba(45, 179, 0, 0.25) !important;
+}
+
+/* ── Section divider ── */
+body.horror .section-divider {
+    background: linear-gradient(90deg, transparent, #2db300, transparent) !important;
+}
+
+/* ── Buttons ── */
+body.horror .btn-primary {
+    border-color: #1a6600 !important;
+}
+
+body.horror .btn-primary:hover {
+    background: #1a6600 !important;
+    box-shadow: 0 0 20px rgba(45,179,0,0.5) !important;
+}
+
+body.horror .btn-secondary {
+    border-color: #1a6600 !important;
+    color: #2db300 !important;
+}
+
+/* ── Slash reveal ── */
+body.horror .slash-reveal {
+    background: linear-gradient(
+        105deg,
+        transparent 0%,
+        #1a6600 45%,
+        #2db300 50%,
+        #1a6600 55%,
+        transparent 100%
+    ) !important;
+}
+
+/* ── Timeline dots ── */
+body.horror .timeline-dot {
+    border-color: #2db300 !important;
+}
+
+body.horror .timeline-entry.work .timeline-dot {
+    background: #1a6600 !important;
+}
+
+/* ── Music button ── */
+body.horror .music-btn {
+    border-color: #1a6600 !important;
+    box-shadow: 0 0 12px rgba(45,179,0,0.3) !important;
+}
+
+/* ── Footer ── */
+body.horror footer {
+    border-top-color: #1a6600 !important;
+}
+
+body.horror footer span {
+    color: #2db300 !important;
 }
