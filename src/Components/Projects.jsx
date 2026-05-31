@@ -11,7 +11,13 @@ const projectData = {
             name: 'BMI Calculator',
             desc: 'A web-based BMI calculator built with Python, HTML, and CSS — backed by a full CI/CD pipeline. Covers unit and integration testing for input validation, formula accuracy, and gender/age-based categorization.',
             links: [{ label: 'GitHub', url: 'https://github.com/smolchell/SWE40006_BMI_Calculator' }],
-        },
+        }, 
+        {
+            tag: 'Software · Web · JavaScript · CI/CD · HTML · CSS',
+            name: 'Memory Card Game',
+            desc: 'A fun and interactive memory card matching game built with JavaScript, HTML, and CSS — featuring a responsive design and smooth animations.',
+            links: [{ label: 'GitHub', url: 'https://github.com/JoeyHanma69/Web-Development-Side-Projects/tree/main/Memory-Card' }],
+        }
         // Add more objects here...
     ],
     games: [
