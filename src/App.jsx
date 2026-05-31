@@ -5,6 +5,7 @@ import Hero from './Components/Hero';
 import About from './Components/About';
 import Projects from './Components/Projects';
 import Skills from './Components/Skills';
+import Certifications from './Components/Certifications';
 import Music from './Components/Music';
 import Contact from './Components/Contact';
 import Musicbutton from './Components/MusicButton';
@@ -30,8 +31,9 @@ export default function App() {
       <Hero />
       <About />
       <Projects />
-      < Skills />
-      < Music />
+      <Skills />
+      <Certifications />
+      <Music />
       < Contact />
       <footer style={{ 
         background: '#000',
