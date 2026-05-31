@@ -37,7 +37,7 @@ const projectData = {
         },  
         {
         tag: 'AI · ML Model · Classification · DBSCAN processing · DataProcessing · Regression · KMeansClassifier',
-        name: 'AI News Verification System (Not Working on It)',
+        name: 'Weather Prediction System',
         desc: 'This project provides weather report predictions based on historical data and includes a front-end for user interaction and a back-end for data processing. The AI model integrated into the back end provides predictions based on pre-trained machine learning algorithms.',
         links: [{ label: 'GitHub', url: 'https://github.com/JoeyHanma69/Weather-Report-Prediction' }],
         },  
