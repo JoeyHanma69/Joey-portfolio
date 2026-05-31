@@ -1,0 +1,171 @@
+/* ── Skull Toggle Button ── */
+.horror-btn {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--red);
+    background: rgba(8, 8, 8, 0.92);
+    color: var(--text-dim);
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    backdrop-filter: blur(8px);
+}
+
+.horror-btn:hover {
+    border-color: var(--red-bright);
+    color: #fff;
+    box-shadow: 0 0 16px var(--red-glow);
+}
+
+.horror-btn.active {
+    background: rgba(80, 0, 0, 0.85);
+    border-color: var(--red-bright);
+    box-shadow: 0 0 24px rgba(139, 0, 0, 0.7);
+    animation: skull-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes skull-pulse {
+    0%, 100% { box-shadow: 0 0 16px rgba(139,0,0,0.5); }
+    50%       { box-shadow: 0 0 36px rgba(200,0,0,0.9), 0 0 60px rgba(139,0,0,0.4); }
+}
+
+/* ── Fog Overlay ── */
+.horror-fog {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease;
+    background:
+        radial-gradient(ellipse at 20% 80%, rgba(60,0,0,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(40,0,0,0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(20,0,0,0.15) 0%, transparent 70%);
+    animation: fog-drift 12s ease-in-out infinite;
+}
+
+body.horror .horror-fog {
+    opacity: 1;
+}
+
+@keyframes fog-drift {
+    0%   { background-position: 0% 0%; transform: scale(1);   }
+    33%  { background-position: 3% 2%; transform: scale(1.02); }
+    66%  { background-position: -2% 3%; transform: scale(0.99); }
+    100% { background-position: 0% 0%; transform: scale(1);   }
+}
+
+/* ══════════════════════════════════════════
+   body.horror — all overrides gated here
+   ══════════════════════════════════════════ */
+
+/* Colour shift */
+body.horror {
+    --red: #6b0000;
+    --red-bright: #aa0000;
+    --bg: #020202;
+    --bg2: #050505;
+    --bg3: #080808;
+    --text-dim: #555;
+}
+
+/* Heavier scanline */
+body.horror::before {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.15) 2px,
+        rgba(0, 0, 0, 0.15) 3px
+    ) !important;
+}
+
+/* Faster scanline sweep */
+body.horror::after {
+    animation-duration: 3.5s !important;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(100, 0, 0, 0.07) 50%,
+        transparent
+    ) !important;
+}
+
+/* Hero heartbeat */
+body.horror .hero {
+    animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { box-shadow: none; }
+    14%  { box-shadow: inset 0 0 80px rgba(100,0,0,0.15); }
+    28%  { box-shadow: none; }
+    42%  { box-shadow: inset 0 0 60px rgba(100,0,0,0.1); }
+    70%  { box-shadow: none; }
+}
+
+/* Horror font on hero title */
+body.horror .hero-name {
+    font-family: 'Nosifer', cursive !important;
+    font-size: clamp(2.2rem, 6vw, 5.5rem) !important;
+    line-height: 1.1 !important;
+    text-shadow: 0 0 20px rgba(139,0,0,0.6), 2px 2px 0 #000;
+}
+
+/* Flicker on eyebrows */
+body.horror .section-eyebrow {
+    animation: flicker 4s infinite;
+    color: #880000 !important;
+}
+
+@keyframes flicker {
+    0%, 95%, 100% { opacity: 0.9; }
+    96%  { opacity: 0.2; }
+    97%  { opacity: 0.8; }
+    98%  { opacity: 0.1; }
+    99%  { opacity: 0.9; }
+}
+
+/* Section titles red drip shadow */
+body.horror .section-title {
+    text-shadow: 0 4px 8px rgba(139,0,0,0.5), 0 0 30px rgba(100,0,0,0.3);
+}
+
+/* Skill pill horror hover */
+body.horror .skill-pill:hover {
+    background: rgba(80, 0, 0, 0.55) !important;
+    color: #ff4444 !important;
+    border-color: #880000 !important;
+    box-shadow: 0 0 12px rgba(139,0,0,0.8), inset 0 0 8px rgba(80,0,0,0.4) !important;
+}
+
+/* Project card horror glow */
+body.horror .project-card:hover,
+body.horror .cert-card:hover {
+    box-shadow: 0 8px 40px rgba(100,0,0,0.5) !important;
+}
+
+/* Nav horror */
+body.horror .navbar {
+    border-bottom-color: #6b0000;
+    background: rgba(4,0,0,0.97) !important;
+}
+
+body.horror .nav-logo {
+    text-shadow: 0 0 20px rgba(139,0,0,0.9), 0 0 40px rgba(100,0,0,0.5);
+    animation: skull-pulse 1.6s ease-in-out infinite;
+}
+
+/* Avatar horror glow */
+body.horror .hero-avatar {
+    box-shadow: 0 0 50px rgba(100,0,0,0.8), 0 0 100px rgba(60,0,0,0.4) !important;
+    filter: contrast(1.1) saturate(0.8);
+}
