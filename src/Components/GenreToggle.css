@@ -173,7 +173,7 @@
     100% { transform: scale(1)    translateX(0); }
 }
 
-/* Shared flicker keyframe used by multiple genres */
+/* Shared flicker keyframe */
 @keyframes flicker {
     0%, 94%, 100% { opacity: 0.9; }
     95%  { opacity: 0.15; }
@@ -185,14 +185,15 @@
 
 /* ══════════════════════════════════════════════════════
    GENRE THEMES
-   Each one overrides CSS custom properties so the entire
-   site's palette shifts automatically.
+   Each one overrides CSS vars + typography so the entire
+   site's palette and font identity shifts automatically.
    ══════════════════════════════════════════════════════ */
 
 /* ──────────────────────────────────────────
    1. DEATH METAL
-   Deep crimson / near-black. Brutal, heavy.
-   Bands: Death, Cannibal Corpse, Morbid Angel
+   Palette : Deep crimson / near-black
+   Font    : Butcherman — jagged, brutal serifs
+   Bands   : Death, Cannibal Corpse, Morbid Angel
    ────────────────────────────────────────── */
 body.genre-death {
     --red:        #6b0000;
@@ -206,19 +207,32 @@ body.genre-death {
     --border:     #1a0000;
 }
 
+body.genre-death .hero-name {
+    font-family: 'Butcherman', cursive !important;
+    letter-spacing: 0.04em !important;
+    line-height: 1.2 !important;
+    text-shadow:
+        0 0 20px rgba(160, 0, 0, 0.8),
+        0 4px 8px rgba(80, 0, 0, 0.6),
+        3px 3px 0 #000;
+}
+
+body.genre-death .section-title {
+    font-family: 'Butcherman', cursive !important;
+    letter-spacing: 0.05em !important;
+}
+
+body.genre-death .nav-logo {
+    font-family: 'Butcherman', cursive !important;
+    letter-spacing: 0.06em !important;
+}
+
 body.genre-death .genre-fog {
     opacity: 1;
     background:
         radial-gradient(ellipse at 15% 85%, rgba(80, 0, 0, 0.35) 0%, transparent 55%),
         radial-gradient(ellipse at 85% 15%, rgba(60, 0, 0, 0.25) 0%, transparent 50%),
         radial-gradient(ellipse at 50% 50%, rgba(40, 0, 0, 0.15) 0%, transparent 70%);
-}
-
-body.genre-death .hero-name {
-    text-shadow:
-        0 0 20px rgba(160, 0, 0, 0.8),
-        0 4px 8px rgba(80, 0, 0, 0.6),
-        3px 3px 0 #000;
 }
 
 body.genre-death .section-eyebrow {
@@ -233,10 +247,12 @@ body.genre-death .section-eyebrow {
     94%  { opacity: 0.75; }
 }
 
+
 /* ──────────────────────────────────────────
    2. NU METAL
-   Burnt orange / brown. Grungy, industrial-lite.
-   Bands: Korn, Linkin Park, Slipknot, Deftones
+   Palette : Burnt orange / brown
+   Font    : Russo One — blocky urban weight
+   Bands   : Korn, Linkin Park, Slipknot, Deftones
    ────────────────────────────────────────── */
 body.genre-nu {
     --red:        #a85200;
@@ -251,10 +267,23 @@ body.genre-nu {
 }
 
 body.genre-nu .hero-name {
+    font-family: 'Russo One', sans-serif !important;
+    letter-spacing: 0.06em !important;
+    line-height: 1.1 !important;
     text-shadow:
         0 0 20px rgba(210, 130, 0, 0.7),
         0 0 50px rgba(150, 80, 0, 0.4),
         2px 2px 0 #000;
+}
+
+body.genre-nu .section-title {
+    font-family: 'Russo One', sans-serif !important;
+    letter-spacing: 0.1em !important;
+}
+
+body.genre-nu .nav-logo {
+    font-family: 'Russo One', sans-serif !important;
+    letter-spacing: 0.08em !important;
 }
 
 body.genre-nu::before {
@@ -276,10 +305,12 @@ body.genre-nu::after {
     ) !important;
 }
 
+
 /* ──────────────────────────────────────────
    3. CLASSIC ROCK
-   Warm amber / gold. Vintage, timeless.
-   Bands: Led Zeppelin, AC/DC, Rolling Stones, Hendrix
+   Palette : Warm amber / gold
+   Font    : Abril Fatface — bold vintage display
+   Bands   : Led Zeppelin, AC/DC, Rolling Stones, Hendrix
    ────────────────────────────────────────── */
 body.genre-classic {
     --red:        #a87800;
@@ -294,10 +325,23 @@ body.genre-classic {
 }
 
 body.genre-classic .hero-name {
+    font-family: 'Abril Fatface', cursive !important;
+    letter-spacing: 0.02em !important;
+    line-height: 1.15 !important;
     text-shadow:
         0 0 20px rgba(210, 165, 0, 0.7),
         0 0 50px rgba(160, 110, 0, 0.4),
         2px 2px 0 #000;
+}
+
+body.genre-classic .section-title {
+    font-family: 'Abril Fatface', cursive !important;
+    letter-spacing: 0.02em !important;
+}
+
+body.genre-classic .nav-logo {
+    font-family: 'Abril Fatface', cursive !important;
+    letter-spacing: 0.02em !important;
 }
 
 body.genre-classic::before {
@@ -325,10 +369,12 @@ body.genre-classic .genre-fog {
         radial-gradient(ellipse at 50% 100%, rgba(60, 40, 0, 0.12) 0%, transparent 60%);
 }
 
+
 /* ──────────────────────────────────────────
    4. THRASH METAL
-   Sharp yellow-gold. Fast, aggressive, relentless.
-   Bands: Metallica, Slayer, Megadeth, Anthrax
+   Palette : Sharp yellow-gold
+   Font    : Black Ops One — military stencil, no-mercy
+   Bands   : Metallica, Slayer, Megadeth, Anthrax
    ────────────────────────────────────────── */
 body.genre-thrash {
     --red:        #998800;
@@ -343,13 +389,26 @@ body.genre-thrash {
 }
 
 body.genre-thrash .hero-name {
+    font-family: 'Black Ops One', cursive !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1.1 !important;
     text-shadow:
         0 0 20px rgba(210, 190, 0, 0.8),
         0 0 50px rgba(160, 140, 0, 0.5),
         2px 2px 0 #000;
 }
 
-/* Fast flicker — channelling the speed of thrash */
+body.genre-thrash .section-title {
+    font-family: 'Black Ops One', cursive !important;
+    letter-spacing: 0.1em !important;
+}
+
+body.genre-thrash .nav-logo {
+    font-family: 'Black Ops One', cursive !important;
+    letter-spacing: 0.1em !important;
+}
+
+/* Fast aggressive flicker */
 body.genre-thrash .section-eyebrow {
     animation: flicker 1.8s infinite;
 }
@@ -364,10 +423,12 @@ body.genre-thrash::before {
     ) !important;
 }
 
+
 /* ──────────────────────────────────────────
    5. GLAM METAL
-   Hot pink / magenta. Excessive, glittery, loud.
-   Bands: Mötley Crüe, KISS, Poison, Warrant
+   Palette : Hot pink / magenta
+   Font    : Monoton — 80s neon outline retro
+   Bands   : Mötley Crüe, KISS, Poison, Warrant
    ────────────────────────────────────────── */
 body.genre-glam {
     --red:        #aa0055;
@@ -381,13 +442,30 @@ body.genre-glam {
     --border:     #1a0015;
 }
 
+/* Monoton is wide — slightly smaller size so it still fits */
 body.genre-glam .hero-name {
+    font-family: 'Monoton', cursive !important;
+    font-size: clamp(1.5rem, 4vw, 3.6rem) !important;
+    letter-spacing: 0.06em !important;
+    line-height: 1.25 !important;
     text-shadow:
         0 0 20px rgba(250, 60, 150, 0.85),
         0 0 50px rgba(180, 0, 100, 0.5),
         0 0 90px rgba(230, 50, 130, 0.2),
         2px 2px 0 #000;
     animation: glam-shimmer 3s ease-in-out infinite;
+}
+
+body.genre-glam .section-title {
+    font-family: 'Monoton', cursive !important;
+    font-size: clamp(1.2rem, 3vw, 2.2rem) !important;
+    letter-spacing: 0.04em !important;
+}
+
+body.genre-glam .nav-logo {
+    font-family: 'Monoton', cursive !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.04em !important;
 }
 
 body.genre-glam .hero-red { color: #ff3388 !important; }
@@ -414,10 +492,12 @@ body.genre-glam .genre-fog {
         radial-gradient(ellipse at 80% 20%, rgba(80, 0, 40, 0.15) 0%, transparent 50%);
 }
 
+
 /* ──────────────────────────────────────────
    6. INDUSTRIAL METAL
-   Cold steel blue / grey. Mechanical, clinical.
-   Bands: Nine Inch Nails, Rammstein, Ministry, KMFDM
+   Palette : Cold steel blue / grey
+   Font    : Share Tech Mono — machine terminal output
+   Bands   : Nine Inch Nails, Rammstein, Ministry, KMFDM
    ────────────────────────────────────────── */
 body.genre-industrial {
     --red:        #005577;
@@ -431,14 +511,30 @@ body.genre-industrial {
     --border:     #001018;
 }
 
-/* Hero name switches to monospace — very NIN/Rammstein */
+/* Full mono treatment — everything terminal, nothing organic */
 body.genre-industrial .hero-name {
-    font-family: 'JetBrains Mono', monospace !important;
-    letter-spacing: 0.1em !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    letter-spacing: 0.12em !important;
+    line-height: 1.2 !important;
     text-shadow:
         0 0 20px rgba(0, 160, 230, 0.7),
         0 0 50px rgba(0, 110, 180, 0.4),
         2px 2px 0 #000;
+}
+
+body.genre-industrial .section-title {
+    font-family: 'Share Tech Mono', monospace !important;
+    letter-spacing: 0.1em !important;
+}
+
+body.genre-industrial .nav-logo {
+    font-family: 'Share Tech Mono', monospace !important;
+    letter-spacing: 0.1em !important;
+}
+
+body.genre-industrial .section-eyebrow {
+    font-family: 'Share Tech Mono', monospace !important;
+    animation: mech-flicker 5s infinite;
 }
 
 body.genre-industrial::before {
@@ -468,11 +564,6 @@ body.genre-industrial .genre-fog {
         radial-gradient(ellipse at 50% 50%, rgba(0, 20, 50, 0.12) 0%, transparent 70%);
 }
 
-/* Mechanical stutter flicker */
-body.genre-industrial .section-eyebrow {
-    animation: mech-flicker 5s infinite;
-}
-
 @keyframes mech-flicker {
     0%, 92%, 100% { opacity: 0.9; }
     93% { opacity: 0.25; }
@@ -481,10 +572,12 @@ body.genre-industrial .section-eyebrow {
     96% { opacity: 0.9; }
 }
 
+
 /* ──────────────────────────────────────────
    7. POWER METAL
-   Royal purple / violet. Epic, fantasy, majestic.
-   Bands: DragonForce, Blind Guardian, Helloween, Manowar
+   Palette : Royal purple / violet
+   Font    : Cinzel Decorative — ornate epic fantasy
+   Bands   : DragonForce, Blind Guardian, Helloween, Manowar
    ────────────────────────────────────────── */
 body.genre-power {
     --red:        #4400aa;
@@ -499,12 +592,25 @@ body.genre-power {
 }
 
 body.genre-power .hero-name {
+    font-family: 'Cinzel Decorative', serif !important;
+    letter-spacing: 0.04em !important;
+    line-height: 1.2 !important;
     text-shadow:
         0 0 20px rgba(130, 70, 255, 0.9),
         0 0 50px rgba(90, 30, 210, 0.6),
         0 0 100px rgba(60, 0, 160, 0.3),
         2px 2px 0 #000;
     animation: epic-glow 2.5s ease-in-out infinite;
+}
+
+body.genre-power .section-title {
+    font-family: 'Cinzel Decorative', serif !important;
+    letter-spacing: 0.05em !important;
+}
+
+body.genre-power .nav-logo {
+    font-family: 'Cinzel Decorative', serif !important;
+    letter-spacing: 0.04em !important;
 }
 
 @keyframes epic-glow {
