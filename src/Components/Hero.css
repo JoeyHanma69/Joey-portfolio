@@ -1,39 +1,180 @@
-.hero { 
-    min-height: 100vh; 
-    display: flex; 
-    align-items: center; 
-    position: relative; 
-    overflow: hidden; 
-    padding: 8rem 2rem 4rem;
-} 
+/* ══════════════════════════════════════════
+   Hero — Cinematic Full-Screen Section
+   ══════════════════════════════════════════ */
 
-.hero-bg { 
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 2rem 6rem;
+}
+
+/* ── Background Video ── */
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    /* Slight darkening so overlay does the heavy lifting */
+    filter: brightness(0.75) saturate(0.85);
+}
+
+/* ── Cinematic Overlay (parallaxes on scroll) ── */
+.hero-overlay {
+    position: absolute;
+    inset: -120px;
+    z-index: 1;
+    will-change: transform;
+    pointer-events: none;
     background:
- radial-gradient(ellipse at 15% 55%, rgba(139,0,0,0.18) 0%, transparent 55%),
- radial-gradient(ellipse at 85% 15%, rgba(139,0,0,0.10) 0%, transparent 50%),
- repeating-linear-gradient(
- 45deg,
- transparent, transparent 80px,
- rgba(139,0,0,0.025) 80px, rgba(139,0,0,0.025) 81px
- ); 
- position: absolute; 
- inset: -120px; 
- will-change: transform; 
-} 
+        /* Top letterbox fade */
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.80) 0%,
+            rgba(0, 0, 0, 0.30) 18%,
+            transparent 35%
+        ),
+        /* Bottom strong fade — blends seamlessly into site bg */
+        linear-gradient(to top,
+            var(--bg) 0%,
+            rgba(8, 0, 0, 0.92) 8%,
+            rgba(4, 0, 0, 0.70) 18%,
+            transparent 38%
+        ),
+        /* Left-side frame — pushes eye to text column */
+        linear-gradient(to right,
+            rgba(0, 0, 0, 0.55) 0%,
+            rgba(0, 0, 0, 0.20) 28%,
+            transparent 50%
+        ),
+        /* Right-side gentle vignette */
+        linear-gradient(to left,
+            rgba(0, 0, 0, 0.30) 0%,
+            transparent 40%
+        ),
+        /* Red brand vignette — bottom-left corner */
+        radial-gradient(ellipse at 0% 100%,
+            rgba(100, 0, 0, 0.28) 0%,
+            transparent 50%
+        ),
+        /* Red brand vignette — top-right accent */
+        radial-gradient(ellipse at 100% 0%,
+            rgba(80, 0, 0, 0.18) 0%,
+            transparent 45%
+        ),
+        /* Overall dark tint for guaranteed readability */
+        rgba(0, 0, 0, 0.22);
+}
 
+/* ── Content Layer ── */
 .hero-content {
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 4rem;
     align-items: center;
+    width: 100%;
 }
 
 .hero-text { max-width: 620px; }
 
+/* ── Tag line ── */
+.hero-tag {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: var(--red-bright);
+    margin-bottom: 1.2rem;
+    opacity: 0.9;
+}
+
+/* ── Cursor blink ── */
+.cursor {
+    display: inline-block;
+    color: var(--red-bright);
+    margin-left: 3px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ── Hero Name ── */
+.hero-name {
+    font-family: 'Metal Mania', cursive;
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    line-height: 0.92;
+    margin-bottom: 1.5rem;
+    /* Crisp on video background */
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+.hero-red { color: var(--red-bright); }
+
+/* ── Ignition — fires once on mount ── */
+.hero-name.ignite {
+    animation: ignition 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes ignition {
+    0%   { opacity: 0; transform: translateX(-8px) skewX(-6deg); filter: blur(4px); }
+    15%  { opacity: 1; transform: translateX(6px)  skewX(4deg);  filter: blur(0); }
+    30%  { transform: translateX(-4px) skewX(-3deg); }
+    45%  { transform: translateX(3px)  skewX(2deg); }
+    60%  { transform: translateX(-2px); }
+    100% { transform: none; opacity: 1; filter: none; }
+}
+
+/* ── Role subtitle ── */
+.hero-role {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+    color: var(--red-bright);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* Thin accent line between role and bio */
+.hero-role::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--red), transparent);
+    margin-top: 1.4rem;
+    margin-bottom: 0.6rem;
+}
+
+/* ── Bio ── */
+.hero-bio {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text-dim);
+    max-width: 620px;
+    margin-bottom: 3rem;
+    /* Ensures text pops off any video frame */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+.hero-bio strong {
+    color: var(--text);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* ── CTA buttons ── */
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ── Avatar ── */
 .hero-image-wrap {
     position: relative;
     flex-shrink: 0;
@@ -57,9 +198,7 @@
     border-color: var(--red-bright);
 }
 
-.hero-image-wrap:hover .hero-avatar {
-    opacity: 0.85;
-}
+.hero-image-wrap:hover .hero-avatar { opacity: 0.85; }
 
 .hero-image-wrap::before {
     content: '';
@@ -81,10 +220,54 @@
     transition: color 0.3s;
 }
 
-.hero-image-wrap:hover .avatar-hint {
-    color: var(--red-bright);
+.hero-image-wrap:hover .avatar-hint { color: var(--red-bright); }
+
+/* ── Cinematic Scroll Indicator ── */
+.hero-scroll-hint {
+    position: absolute;
+    bottom: 2.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+    pointer-events: none;
 }
 
+.hero-scroll-line {
+    display: block;
+    width: 1px;
+    height: 44px;
+    background: linear-gradient(to bottom, transparent, var(--red-bright));
+    animation: scroll-line-drop 2.2s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+.hero-scroll-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    animation: scroll-label-fade 2.2s ease-in-out infinite;
+}
+
+@keyframes scroll-line-drop {
+    0%   { transform: scaleY(0); opacity: 0; }
+    20%  { opacity: 1; }
+    60%  { transform: scaleY(1); opacity: 0.8; }
+    100% { transform: scaleY(1); opacity: 0; }
+}
+
+@keyframes scroll-label-fade {
+    0%, 30% { opacity: 0; }
+    60%     { opacity: 0.6; }
+    100%    { opacity: 0; }
+}
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
     .hero-content {
         grid-template-columns: 1fr;
@@ -92,63 +275,7 @@
     .hero-image-wrap {
         display: none;
     }
+    .hero-scroll-hint {
+        display: none;
+    }
 }
-
-.hero-tag {
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    color: var(--red-bright);
-    margin-bottom: 1.2rem;
-    opacity: 0.9;
-}
-
-.cursor {
-    display: inline-block;
-    color: var(--red-bright);
-    margin-left: 3px;
-    animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-.hero-name {
- font-family: 'Metal Mania', cursive;
- font-size: clamp(3.5rem, 9vw, 7.5rem);
- line-height: 0.92;
- margin-bottom: 1.5rem;
-}
-.hero-red { color: var(--red-bright); }
-
-/* Ignition — fires once on mount */
-.hero-name.ignite {
-    animation: ignition 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes ignition {
-    0%   { opacity: 0; transform: translateX(-8px) skewX(-6deg); filter: blur(4px); }
-    15%  { opacity: 1; transform: translateX(6px)  skewX(4deg);  filter: blur(0); }
-    30%  { transform: translateX(-4px) skewX(-3deg); }
-    45%  { transform: translateX(3px)  skewX(2deg); }
-    60%  { transform: translateX(-2px); }
-    100% { transform: none; opacity: 1; filter: none; }
-}
-.hero-role {
- font-family: 'Cinzel', serif;
- font-size: clamp(0.85rem, 1.8vw, 1.2rem);
- color: var(--red-bright);
- letter-spacing: 0.2em;
- margin-bottom: 2rem;
-}
-.hero-bio {
- font-size: 1.1rem;
- line-height: 1.85;
- color: var(--text-dim);
- max-width: 620px;
- margin-bottom: 3rem;
-}
-.hero-bio strong { color: var(--text); }
-.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }

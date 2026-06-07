@@ -55,7 +55,20 @@ export default function Hero() {
 
     return (
         <section id="about" className="hero">
-            <div className="hero-bg" ref={bgRef} />
+            {/* Cinematic background video */}
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="hero-video"
+            >
+                <source src="https://res.cloudinary.com/dfonotyfb/video/upload/v1775585556/dds3_1_rqhg7x.mp4" type="video/mp4" />
+            </video>
+
+            {/* Multi-layer cinematic overlay — parallaxes on scroll */}
+            <div className="hero-overlay" ref={bgRef} />
+
             <div className="hero-content">
                 <div className="hero-text">
                     <p className="hero-tag">// PORTFOLIO<span className="cursor">_</span></p>
@@ -86,6 +99,12 @@ export default function Hero() {
                     />
                     <span className="avatar-hint">{berserker ? '> exit rock persona' : '> activate rock persona'}</span>
                 </div>
+            </div>
+
+            {/* Cinematic scroll indicator */}
+            <div className="hero-scroll-hint">
+                <span className="hero-scroll-line" />
+                <span className="hero-scroll-label">scroll</span>
             </div>
         </section>
     );
