@@ -12,7 +12,7 @@ const links = [
 export default function Navbar() {
     return (
         <nav className="navbar">
-            <a href="#about" className="nav-logo">JTB</a>
+            <a href="#about" className="nav-logo">Joseph Linao</a>
             <ul className="nav-links">
                 {links.map(link => (
                     <li key={link.label}>
@@ -20,6 +20,7 @@ export default function Navbar() {
                     </li>
                 ))}
             </ul>
+            <a href="#contact" className="nav-cta">Get in touch</a>
         </nav>
     )
 }

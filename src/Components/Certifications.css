@@ -1,6 +1,5 @@
 .certs-section {
-    background: var(--bg2);
-    padding: 6rem 2rem;
+    padding: 7rem 1.5rem;
 }
 
 .certs-grid {
@@ -9,42 +8,33 @@
     gap: 1.5rem;
 }
 
-/* ── Card ── */
+/* Card */
 .cert-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--red);
+    background: var(--glass);
+    border: 1px solid var(--glass-border-soft);
+    border-radius: var(--radius);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     position: relative;
 }
-
-.cert-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--red-bright), transparent);
-    transform: scaleX(0);
-    transition: transform 0.4s;
-    z-index: 1;
-}
-
 .cert-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(139, 0, 0, 0.25);
+    border-color: var(--glass-border);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
 }
 
-.cert-card:hover::before { transform: scaleX(1); }
-
-/* ── Thumbnail ── */
+/* Thumbnail */
 .cert-preview {
     position: relative;
     width: 100%;
     height: 200px;
     overflow: hidden;
-    background: #1a1a1a;
-    border-bottom: 1px solid var(--border);
+    background: var(--bg3);
+    border-bottom: 1px solid var(--glass-border-soft);
 }
 
 .cert-thumb {
@@ -52,14 +42,14 @@
     height: 100%;
     border: none;
     pointer-events: none;
-    transform: scale(1);
     transform-origin: top left;
 }
 
 .cert-preview-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(10, 13, 20, 0.6);
+    backdrop-filter: blur(2px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,32 +58,33 @@
 }
 
 .cert-preview-overlay span {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: #fff;
-    border: 1px solid var(--red-bright);
-    padding: 0.5rem 1.2rem;
-    letter-spacing: 0.08em;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--text);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.5rem 1.3rem;
 }
 
 .cert-card:hover .cert-preview-overlay { opacity: 1; }
 
-/* ── Body ── */
-.cert-body { padding: 1.25rem; }
+/* Body */
+.cert-body { padding: 1.4rem; }
 
 .cert-issuer {
     font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--red-bright);
-    letter-spacing: 0.08em;
-    margin-bottom: 0.5rem;
+    font-size: 0.66rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.55rem;
     text-transform: uppercase;
 }
 
 .cert-course {
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    font-weight: 700;
+    font-family: var(--display);
+    font-size: 1.05rem;
+    font-weight: 600;
     color: var(--text);
     margin-bottom: 0.6rem;
     line-height: 1.3;
@@ -101,8 +92,8 @@
 
 .cert-no {
     font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
+    font-size: 0.66rem;
+    color: var(--text-faint);
     margin-bottom: 1rem;
 }
 
@@ -110,94 +101,90 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid var(--border);
-    padding-top: 0.75rem;
+    border-top: 1px solid var(--glass-border-soft);
+    padding-top: 0.8rem;
 }
 
 .cert-year {
     font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
+    font-size: 0.68rem;
+    color: var(--text-faint);
 }
 
 .cert-verify {
-    font-family: 'Cinzel', serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--red-bright);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px solid var(--red);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
+    transition: color 0.2s;
 }
+.cert-verify:hover { color: var(--accent-bright); }
 
-.cert-verify:hover { color: #fff; border-color: #fff; }
-
-/* ── Modal ── */
+/* Modal */
 .cert-modal-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(10, 13, 20, 0.8);
     z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px);
 }
 
 .cert-modal {
-    background: var(--bg3);
-    border: 1px solid var(--red);
+    background: var(--bg2);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
     width: 100%;
     max-width: 860px;
     max-height: 90vh;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 60px rgba(139, 0, 0, 0.4);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
 }
 
 .cert-modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.85rem 1.25rem;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg2);
+    padding: 1rem 1.4rem;
+    border-bottom: 1px solid var(--glass-border-soft);
+    background: var(--glass);
 }
 
 .cert-modal-title {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--red-bright);
-    letter-spacing: 0.05em;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
 }
 
 .cert-modal-close {
-    background: none;
-    border: 1px solid var(--border);
+    background: var(--glass-strong);
+    border: 1px solid var(--glass-border-soft);
+    border-radius: 50%;
     color: var(--text-dim);
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
 }
-
-.cert-modal-close:hover {
-    border-color: var(--red-bright);
-    color: var(--red-bright);
-}
+.cert-modal-close:hover { border-color: var(--accent); color: var(--accent-bright); }
 
 .cert-modal-frame {
     width: 100%;
     flex: 1;
     min-height: 500px;
     border: none;
+    background: #fff;
 }
 
 @media (max-width: 768px) {

@@ -39,12 +39,12 @@ export default function Particles() {
                     p.life = p.maxLife;
                 }
 
-                const opacity = (p.life / p.maxLife) * 0.75;
+                const opacity = (p.life / p.maxLife) * 0.5;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(204, 50, 17, ${opacity})`;
+                ctx.fillStyle = `rgba(180, 210, 240, ${opacity})`;
                 ctx.shadowBlur = 8;
-                ctx.shadowColor = `rgba(139, 0, 0, ${opacity})`;
+                ctx.shadowColor = `rgba(108, 180, 238, ${opacity})`;
                 ctx.fill();
             });
 

@@ -1,70 +1,86 @@
-.music-section {  
-    background: var(--bg2);
-    padding: 6rem 2rem;
+.music-section {
+    padding: 7rem 1.5rem;
     position: relative;
 }
-.music-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--red), transparent);
-} 
 
 .music-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-} 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+}
 
 .band-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
+    background: var(--glass);
+    border: 1px solid var(--glass-border-soft);
+    border-radius: var(--radius);
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-} 
-
-.band-card:hover { transform: translateY(-5px); box-shadow: 0 8px 32px
-rgba(139,0,0,0.28); } 
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.band-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--glass-border);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+}
 
 .band-cover {
-    height: 180px;
-    background: linear-gradient(135deg, #1a0000, #2a0000, #0a0a0a);
+    height: 160px;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(108, 180, 238, 0.25), transparent 60%),
+        linear-gradient(135deg, #141a24, #0d1119);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4.5rem;
-    border-bottom: 2px solid var(--red);
-} 
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 3.2rem;
+    letter-spacing: 0.05em;
+    color: var(--accent-bright);
+    border-bottom: 1px solid var(--glass-border-soft);
+}
 
-.band-info { padding: 1.4rem; } 
+.band-info { padding: 1.6rem; }
+
 .band-name {
-    font-family: 'Metal Mania', cursive;
-    font-size: 1.6rem;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.4rem;
     color: var(--text);
     margin-bottom: 0.4rem;
-} 
+}
 
-.band-genre { 
-    font-family: 'Cinzel', serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.3em;
-    color: var(--red-bright);
+.band-genre {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
     text-transform: uppercase;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.9rem;
 }
- 
 
-.band-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.65; margin-bottom: 1.1rem; }
-.band-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-.band-link {
- font-family: 'Cinzel', serif;
- font-size: 0.68rem;
- letter-spacing: 0.1em;
- text-transform: uppercase;
- color: var(--red-bright);
- text-decoration: none;
- padding: 0.3rem 0.85rem;
- border: 1px solid var(--red);
- transition: all 0.2s;
+.band-desc {
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 1.3rem;
 }
-.band-link:hover { background: var(--red); color: #fff; }
+
+.band-links { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+
+.band-link {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    background: var(--glass-strong);
+    border: 1px solid var(--glass-border-soft);
+    transition: all 0.2s;
+}
+.band-link:hover { border-color: var(--accent); color: var(--accent-bright); }

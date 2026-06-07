@@ -62,7 +62,7 @@ const projectData = {
     ],
 }
 const tabs = ['software', 'games', 'ai']
-const tabLabels = { software: '> software/', games: '> games/', ai: '> ai/' }
+const tabLabels = { software: 'Software', games: 'Games', ai: 'AI / ML' }
 
 const linkIcon = (label) => {
     const l = label.toLowerCase();
@@ -78,7 +78,7 @@ export default function Projects() {
         <SlashReveal />
         <div className="container">
         <div className="section-header">
-            <p className="section-eyebrow">// battle_records</p>
+            <p className="section-eyebrow">// selected_work</p>
             <h2 className="section-title">Projects</h2>
         <div className="section-divider" />
         </div>

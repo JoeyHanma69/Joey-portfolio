@@ -4,9 +4,9 @@
     background: linear-gradient(
         105deg,
         transparent 0%,
-        var(--red) 45%,
-        var(--red-bright) 50%,
-        var(--red) 55%,
+        rgba(255, 255, 255, 0.04) 45%,
+        rgba(108, 180, 238, 0.12) 50%,
+        rgba(255, 255, 255, 0.04) 55%,
         transparent 100%
     );
     transform: translateX(-110%) skewX(-12deg);
@@ -16,12 +16,10 @@
 }
 
 .slash-reveal.active {
-    animation: slash-sweep 0.85s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+    animation: slash-sweep 0.9s cubic-bezier(0.77, 0, 0.18, 1) forwards;
 }
 
 @keyframes slash-sweep {
     0%   { transform: translateX(-110%) skewX(-12deg); opacity: 1; }
-    45%  { transform: translateX(-5%)   skewX(-12deg); opacity: 1; }
-    55%  { transform: translateX(5%)    skewX(-12deg); opacity: 1; }
-    100% { transform: translateX(110%)  skewX(-12deg); opacity: 0.6; }
+    100% { transform: translateX(110%)  skewX(-12deg); opacity: 0; }
 }

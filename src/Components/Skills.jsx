@@ -17,8 +17,8 @@ export default function Skills() {
         <SlashReveal />
         <div className="container">
             <div className="section-header">
-            <p className="section-eyebrow">// arsenal.exe</p>
-            <h2 className="section-title">Skills & Tech</h2>
+            <p className="section-eyebrow">// toolkit</p>
+            <h2 className="section-title">Skills &amp; Tech</h2>
             <div className="section-divider" />
         </div>
     <div className="skills-grid">

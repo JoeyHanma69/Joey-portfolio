@@ -16,12 +16,13 @@ export default function Contact() {
     <SlashReveal />
     <div className="container">
     <div className="section-header">
-    <p className="section-eyebrow">// summon_me</p>
+    <p className="section-eyebrow">// get_in_touch</p>
     <h2 className="section-title">Contact</h2>
     <div className="section-divider" />
     </div>
     <p className="contact-intro">
-        Ready to forge something? Send the signal — whether it's a software campaign, a world to build, or an AI weapon to deploy.
+        Got a project, a role, or an idea worth building? Drop me a line — whether it&apos;s software,
+        a game, or an AI system, I&apos;d love to hear about it.
     </p>
     <form className="contact-form" onSubmit={handleSubmit}>
     <div className="form-group">
@@ -34,11 +35,10 @@ export default function Contact() {
     </div>
     <div className="form-group">
     <label>Message</label>
-    <textarea placeholder="What do you want to forge together?" required />
+    <textarea placeholder="What would you like to build together?" required />
     </div>
-    <button type="submit" className={`btn-primary ${submitted ? 'sent' : ''}
-    `}>
-    {submitted ? 'Sent  ✓' : 'Send It'}
+    <button type="submit" className={`btn-primary ${submitted ? 'sent' : ''}`}>
+    {submitted ? 'Sent ✓' : 'Send message'}
     </button>
     </form>
     <div className="contact-details">

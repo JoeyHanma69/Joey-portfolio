@@ -8,53 +8,32 @@ import Skills from './Components/Skills';
 import Certifications from './Components/Certifications';
 import Music from './Components/Music';
 import Contact from './Components/Contact';
-import Musicbutton from './Components/MusicButton';
 import Particles from './Components/Particles';
-import CursorTrail from './Components/CursorTrail';
-import ClickShockwave from './Components/ClickShockwave';
-import GenreToggle from './Components/GenreToggle';
-import BloodDrip from './Components/BloodDrip';
 import './index.css';
 
-
-export default function App() { 
-  const [splashDone, setSplashDone] = useState(false); 
-  return ( 
-    <> 
-    {!splashDone && <Splash onDone={() => setSplashDone(true)} /> }  
-      <div style={{ 
-        opacity: splashDone ? 1 : 0, 
-        transition: 'opacity 0.8s ease',
-      }}>  
-      <Particles />
-      <CursorTrail />
-      <ClickShockwave />
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Certifications />
-      <Music />
-      < Contact />
-      <footer style={{ 
-        background: '#000',
-        borderTop: '1px solid var(--red)',
-        padding: '2rem',
-        textAlign: 'center',
-        fontFamily: 'Cinzel, serif',
-        fontSize: '0.7rem',
-        letterSpacing: '0.3em',
-        color: 'var(--text-dim)',
-        textTransform: 'uppercase', 
-       }}>
-      © 2025 <span style={{ color: 'var(--red-bright)' }}>Joseph Linao</span> · Forged in Darkness
-      </footer> 
-
-      <Musicbutton />
-      <GenreToggle />
-      <BloodDrip />
-      </div> 
-      </>
-  )
+export default function App() {
+  const [splashDone, setSplashDone] = useState(false);
+  return (
+    <>
+      {!splashDone && <Splash onDone={() => setSplashDone(true)} />}
+      <div style={{ opacity: splashDone ? 1 : 0, transition: 'opacity 0.8s ease' }}>
+        <Particles />
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Certifications />
+          <Music />
+          <Contact />
+        </main>
+        <footer className="site-footer">
+          <span>© 2025 <strong>Joseph Linao</strong></span>
+          <span className="footer-dot">·</span>
+          <span>Built with care &amp; caffeine</span>
+        </footer>
+      </div>
+    </>
+  );
 }

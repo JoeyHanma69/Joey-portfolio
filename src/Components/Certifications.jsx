@@ -37,7 +37,7 @@ export default function Certifications() {
             <SlashReveal />
             <div className="container">
                 <div className="section-header">
-                    <p className="section-eyebrow">// proof_of_battle</p>
+                    <p className="section-eyebrow">// credentials</p>
                     <h2 className="section-title">Certifications</h2>
                     <div className="section-divider" />
                 </div>

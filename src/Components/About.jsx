@@ -52,7 +52,7 @@ export default function About() {
             <SlashReveal />
             <div className="container">
                 <div className="section-header">
-                    <p className="section-eyebrow">// origin_story</p>
+                    <p className="section-eyebrow">// background</p>
                     <h2 className="section-title">About</h2>
                     <div className="section-divider" />
                 </div>
@@ -60,14 +60,14 @@ export default function About() {
                 <div className="about-grid">
                     <div className="about-intro">
                         <p className="about-bio">
-                            Computer Science student at Swinburne University — building software since before the degree made it official.
-                            The battlefield spans <strong>full-stack web development</strong>, <strong>AI & machine learning</strong>,
+                            Computer Science student at Swinburne University — building software since before the degree
+                            made it official. My work spans <strong>full-stack web development</strong>, <strong>AI &amp; machine learning</strong>,
                             and <strong>game development</strong>, with real deployments across internships, university clubs, and independent projects.
                         </p>
                         <p className="about-bio">
-                            Forged in the trenches of REST APIs, federated learning pipelines, WordPress customisations,
-                            and game engine scripting. Fluent in Python, JavaScript, C++, C#, and the language of
-                            relentless iteration. Also speaks Chinese.
+                            I&apos;ve shipped REST APIs, federated-learning pipelines, WordPress customisations, and game-engine
+                            systems. Comfortable in Python, JavaScript, C++, and C#, with a habit of relentless iteration.
+                            I also speak Chinese.
                         </p>
                         <p className="about-bio">
                             Currently pursuing a Graduate Program in IT at Swinburne — aligning technical depth
