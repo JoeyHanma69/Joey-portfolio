@@ -12,7 +12,7 @@ const links = [
 export default function Navbar() {
     return (
         <nav className="navbar">
-            <a href="#about" className="nav-logo">JTB</a>
+            <a href="#about" className="nav-logo">JL</a>
             <ul className="nav-links">
                 {links.map(link => (
                     <li key={link.label}>

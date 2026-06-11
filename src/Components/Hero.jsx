@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import './Hero.css';
 
-const BIO_PLAIN = "I forge chaos into code. Whether it's engineering robust software systems, building worlds through game development, or wielding AI as a weapon — I bring the same relentless intensity to every project.\n\n\"In the grim darkness of the far future, there is only war.\" — Warhammer 40,000, Games Workshop.";
+const BIO_PLAIN = "I design and build software systems that solve real problems — from full-stack web applications and AI-powered tools to game engines. I bring structured thinking, technical depth, and a drive to ship products that make an impact.";
 
 const BioFull = () => (
     <>
-        I forge <strong>chaos into code</strong>. Whether it's engineering robust
-        software systems, building worlds through game development, or wielding{' '}
-        <strong>AI</strong> as a weapon — I bring the same relentless intensity to every project.
-        <br /><br />
-        "In the <strong>grim darkness </strong> of the far <strong>future</strong>, there is only <strong>war</strong>." — Warhammer 40,000, Games Workshop.
+        I design and build <strong>software systems</strong> that solve real problems —
+        from <strong>full-stack web applications</strong> and <strong>AI-powered tools</strong>{' '}
+        to game engines. I bring structured thinking, technical depth, and a drive to
+        ship <strong>products that make an impact</strong>.
     </>
 );
 
@@ -74,8 +73,6 @@ export default function Hero() {
                     <p className="hero-tag">// PORTFOLIO<span className="cursor">_</span></p>
                     <h1 className={`hero-name ${ignite ? 'ignite' : ''}`}>
                         <span className="glitch" data-text="Joseph Linao">Joseph Linao</span>
-                        <br />
-                        <span className="glitch hero-red" data-text="AKA JOEY THE BERSERKER">AKA JOEY THE BERSERKER</span>
                     </h1>
                     <p className="hero-role">Software Developer &nbsp;·&nbsp; Game Creator &nbsp;·&nbsp; AI Engineer</p>
                     <p className="hero-bio">

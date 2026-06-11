@@ -48,7 +48,7 @@ export default function App() {
         color: 'var(--text-dim)',
         textTransform: 'uppercase', 
        }}>
-      © 2025 <span style={{ color: 'var(--red-bright)' }}>Joseph Linao</span> · Forged in Darkness
+      © 2025 <span style={{ color: 'var(--red-bright)' }}>Joseph Linao</span> · All Rights Reserved
       </footer> 
 
       <Musicbutton />
