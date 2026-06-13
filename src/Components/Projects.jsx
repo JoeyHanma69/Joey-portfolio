@@ -17,6 +17,12 @@ const projectData = {
             name: 'Memory Card Game',
             desc: 'A fun and interactive memory card matching game built with JavaScript, HTML, and CSS — featuring a responsive design and smooth animations.',
             links: [{ label: 'GitHub', url: 'https://github.com/JoeyHanma69/Web-Development-Side-Projects/tree/main/Memory-Card' }],
+        },
+          {
+            tag: 'Next.js · Prisma · PostgreSQL · NextAuth · TypeScript · Resend',
+            name: 'Job Application Tracker',
+            desc: 'A full-stack CRUD app to track job applications through a status pipeline — with Google OAuth, automated email reminders via Resend, and a stats dashboard.',
+            links:  [{ label: 'GitHub', url: 'https://github.com/JoeyHanma69/job-tracker' }],
         }
         // Add more objects here...
     ],
