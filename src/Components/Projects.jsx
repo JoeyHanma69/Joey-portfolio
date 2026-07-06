@@ -28,6 +28,12 @@ const projectData = {
     ],
     games: [
             {
+            tag: 'Game · Claude Fable 5 · AI-Generated',
+            name: 'Guitar Claude',
+            desc: 'A guitar game built to test the capabilities of Claude Fable 5 — exploring what AI can generate end-to-end in a game development context.',
+            links: [{ label: 'GitHub', url: 'https://github.com/JoeyHanma69/guitar-claude' }],
+            },
+            {
             tag: 'Game · Unity · C#',
             name: 'Nuclear Reactor Game',
             desc: 'R.E.A.C.T.O.R. is a game where players must manage a miniature star to generate power and meet quotas, all while handling system failures',
@@ -35,6 +41,12 @@ const projectData = {
             }, 
     ],
     ai: [
+        {
+        tag: 'AI · Full-Stack · Tour Management',
+        name: 'Tourdesk Application',
+        desc: 'An AI-powered tour desk application for managing and streamlining tour operations.',
+        links: [{ label: 'GitHub', url: 'https://github.com/JoeyHanma69/tourdesk' }],
+        },
         {
         tag: 'AI · Machine Learning · Federated Learning · Deep Learning',
         name: 'RuralAi (Capstone Project)',
