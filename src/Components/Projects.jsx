@@ -31,7 +31,7 @@ const projectData = {
             tag: 'Game · Claude Fable 5 · AI-Generated',
             name: 'Guitar Claude',
             desc: 'A guitar game built to test the capabilities of Claude Fable 5 — exploring what AI can generate end-to-end in a game development context.',
-            links: [{ label: 'GitHub', url: 'https://github.com/JoeyHanma69/guitar-claude' }],
+            links: [{ label: 'Play', url: 'https://joeyhanma69.github.io/guitar-claude/' }, { label: 'GitHub', url: 'https://github.com/JoeyHanma69/guitar-claude' }],
             },
             {
             tag: 'Game · Unity · C#',
