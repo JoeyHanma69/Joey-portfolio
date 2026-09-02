@@ -2,7 +2,7 @@
 
 > *"Seven minutes. Seven minutues is all i can spare to play games with you"*
 
-Live site: [joey-portfolio.vercel.app](https://joey-portfolio.vercel.app)
+Live site: [joey-portfolio-silk.vercel.app](https://joey-portfolio-silk.vercel.app)
 
 ---
 
