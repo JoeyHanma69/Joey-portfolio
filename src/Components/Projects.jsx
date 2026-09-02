@@ -95,8 +95,8 @@ export default function Projects() {
     <section id="projects" className="projects-section" style={{position:'relative',overflow:'hidden'}}>
         <SlashReveal />
         <div className="container">
-        <div className="section-header">
-            <p className="section-eyebrow">// battle_records</p>
+        <div className="section-header" data-reveal>
+            <p className="section-eyebrow"><span className="eyebrow-metal">// battle_records</span><span className="eyebrow-editorial">02 &mdash; Selected Work</span></p>
             <h2 className="section-title">Projects</h2>
         <div className="section-divider" />
         </div>
@@ -111,7 +111,7 @@ export default function Projects() {
         {/* Project cards for the active tab */}
         <div className="projects-grid" key={activeTab}>  
         {projectData[activeTab].map((project, i) => (
-        <div className="project-card" key={i}>
+        <div className="project-card" key={i} data-reveal style={{ '--reveal-delay': `${i * 70}ms` }}>
             <p className="project-tag">{project.tag}</p>
             <h3 className="project-name">{project.name}</h3>
             <p className="project-desc">{project.desc}</p>

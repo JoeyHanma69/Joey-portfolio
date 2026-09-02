@@ -16,14 +16,14 @@ export default function Skills() {
     <section id="skills" className="skills-section" style={{position:'relative',overflow:'hidden'}}>
         <SlashReveal />
         <div className="container">
-            <div className="section-header">
-            <p className="section-eyebrow">// arsenal.exe</p>
+            <div className="section-header" data-reveal>
+            <p className="section-eyebrow"><span className="eyebrow-metal">// arsenal.exe</span><span className="eyebrow-editorial">03 &mdash; Capabilities</span></p>
             <h2 className="section-title">Skills & Tech</h2>
             <div className="section-divider" />
         </div>
     <div className="skills-grid">
-        {skillCategories.map(cat => (
-            <div className="skill-category" key={cat.title}>
+        {skillCategories.map((cat, i) => (
+            <div className="skill-category" key={cat.title} data-reveal style={{ '--reveal-delay': `${i * 70}ms` }}>
                 <p className="skill-cat-title"><span className="cat-icon">{cat.icon}</span> {cat.title}</p>
                 <div className="skill-items">
                 {cat.skills.map(skill => (

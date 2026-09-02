@@ -15,15 +15,15 @@ export default function Contact() {
     <section id="contact" className="contact-section" style={{position:'relative',overflow:'hidden'}}>
     <SlashReveal />
     <div className="container">
-    <div className="section-header">
-    <p className="section-eyebrow">// summon_me</p>
+    <div className="section-header" data-reveal>
+    <p className="section-eyebrow"><span className="eyebrow-metal">// summon_me</span><span className="eyebrow-editorial">06 &mdash; Get in Touch</span></p>
     <h2 className="section-title">Contact</h2>
     <div className="section-divider" />
     </div>
     <p className="contact-intro">
         Ready to forge something? Send the signal — whether it's a software campaign, a world to build, or an AI weapon to deploy.
     </p>
-    <form className="contact-form" onSubmit={handleSubmit}>
+    <form className="contact-form" data-reveal onSubmit={handleSubmit}>
     <div className="form-group">
     <label>Name</label>
     <input type="text" placeholder="Your name" required />
@@ -41,7 +41,7 @@ export default function Contact() {
     {submitted ? 'Sent  ✓' : 'Send It'}
     </button>
     </form>
-    <div className="contact-details">
+    <div className="contact-details" data-reveal style={{ '--reveal-delay': '120ms' }}>
         <div className="contact-detail-item">
             <span className="contact-detail-label">// email</span>
             <a href="mailto:linaojoseph3111@gmail.com" className="contact-detail-value">linaojoseph3111@gmail.com</a>

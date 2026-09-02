@@ -12,63 +12,120 @@ const GENRES = [
     { id: 'power',      label: 'Power Metal',  icon: '⚔',  accent: '#7744ee',  desc: 'EPIC · FANTASY' },
 ];
 
+const STORAGE_KEY = 'portfolio-theme-mode';
+
+// Editorial is the front door; the genre palettes live behind it.
+const readStoredMode = () => {
+    try {
+        return localStorage.getItem(STORAGE_KEY) === 'metal' ? 'metal' : 'editorial';
+    } catch {
+        return 'editorial';
+    }
+};
+
 export default function GenreToggle() {
     const [open, setOpen] = useState(false);
+    const [mode, setMode] = useState(readStoredMode);
     const [activeId, setActiveId] = useState(null);
+
+    const editorial = mode === 'editorial';
+
+    useEffect(() => {
+        document.body.classList.toggle('theme-editorial', editorial);
+        try {
+            localStorage.setItem(STORAGE_KEY, mode);
+        } catch {
+            /* storage blocked — theme still applies for this visit */
+        }
+        return () => document.body.classList.remove('theme-editorial');
+    }, [mode, editorial]);
 
     useEffect(() => {
         GENRES.forEach(g => {
             if (g.id) document.body.classList.remove(`genre-${g.id}`);
         });
-        if (activeId) document.body.classList.add(`genre-${activeId}`);
+        // Genre palettes only paint in metal mode.
+        if (activeId && !editorial) document.body.classList.add(`genre-${activeId}`);
         return () => GENRES.forEach(g => {
             if (g.id) document.body.classList.remove(`genre-${g.id}`);
         });
-    }, [activeId]);
+    }, [activeId, editorial]);
 
     const active = GENRES.find(g => g.id === activeId) ?? GENRES[0];
+
+    const pickGenre = id => {
+        setActiveId(id);
+        setMode('metal');
+        setOpen(false);
+    };
 
     return (
         <>
             {/* Fog — visible only for certain genres via CSS */}
             <div className="genre-fog" />
 
+            {/* Film grain — visible only in editorial mode via CSS */}
+            <div className="grain" />
+
             {/* Dismiss overlay */}
             {open && <div className="genre-overlay" onClick={() => setOpen(false)} />}
 
-            {/* Genre picker panel */}
+            {/* Theme picker panel */}
             <div className={`genre-panel ${open ? 'open' : ''}`}>
+                <div className="genre-panel-header">// mode</div>
+
+                <button
+                    className={`genre-option ${editorial ? 'selected' : ''}`}
+                    style={{ '--ga': '#ece8e1' }}
+                    onClick={() => { setMode('editorial'); setOpen(false); }}
+                >
+                    <span className="genre-icon">◑</span>
+                    <span className="genre-info">
+                        <span className="genre-name">Editorial Noir</span>
+                        <span className="genre-desc">QUIET · TYPOGRAPHIC</span>
+                    </span>
+                    {editorial && (
+                        <span
+                            className="genre-active-dot"
+                            style={{ background: '#ece8e1', boxShadow: '0 0 6px #ece8e1' }}
+                        />
+                    )}
+                </button>
+
                 <div className="genre-panel-header">// select_genre</div>
-                {GENRES.map(g => (
-                    <button
-                        key={g.id ?? 'default'}
-                        className={`genre-option ${activeId === g.id ? 'selected' : ''}`}
-                        style={{ '--ga': g.accent }}
-                        onClick={() => { setActiveId(g.id); setOpen(false); }}
-                    >
-                        <span className="genre-icon">{g.icon}</span>
-                        <span className="genre-info">
-                            <span className="genre-name">{g.label}</span>
-                            <span className="genre-desc">{g.desc}</span>
-                        </span>
-                        {activeId === g.id && (
-                            <span
-                                className="genre-active-dot"
-                                style={{ background: g.accent, boxShadow: `0 0 6px ${g.accent}` }}
-                            />
-                        )}
-                    </button>
-                ))}
+                {GENRES.map(g => {
+                    const selected = !editorial && activeId === g.id;
+                    return (
+                        <button
+                            key={g.id ?? 'default'}
+                            className={`genre-option ${selected ? 'selected' : ''}`}
+                            style={{ '--ga': g.accent }}
+                            onClick={() => pickGenre(g.id)}
+                        >
+                            <span className="genre-icon">{g.icon}</span>
+                            <span className="genre-info">
+                                <span className="genre-name">{g.label}</span>
+                                <span className="genre-desc">{g.desc}</span>
+                            </span>
+                            {selected && (
+                                <span
+                                    className="genre-active-dot"
+                                    style={{ background: g.accent, boxShadow: `0 0 6px ${g.accent}` }}
+                                />
+                            )}
+                        </button>
+                    );
+                })}
             </div>
 
             {/* Trigger button */}
             <button
-                className={`genre-btn ${open ? 'open' : ''} ${activeId ? 'active' : ''}`}
+                className={`genre-btn ${open ? 'open' : ''} ${!editorial && activeId ? 'active' : ''}`}
                 onClick={() => setOpen(o => !o)}
-                title={activeId ? `Genre: ${active.label} — click to change` : 'Select genre theme'}
-                style={activeId ? { '--ga': active.accent } : {}}
+                title={editorial ? 'Editorial Noir — click to change theme' : `Genre: ${active.label} — click to change`}
+                style={!editorial && activeId ? { '--ga': active.accent } : {}}
             >
-                🤘
+                {editorial ? '◑' : '🤘'}
             </button>
         </>
     );

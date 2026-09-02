@@ -16,14 +16,14 @@ export default function Music() {
     <section id="music" className="music-section" style={{position:'relative',overflow:'hidden'}}>
     <SlashReveal />
     <div className="container">
-        <div className="section-header">
-        <p className="section-eyebrow">// the_noise</p>
+        <div className="section-header" data-reveal>
+        <p className="section-eyebrow"><span className="eyebrow-metal">// the_noise</span><span className="eyebrow-editorial">05 &mdash; Off the Clock</span></p>
         <h2 className="section-title">Music</h2>
         <div className="section-divider" />
     </div>
     <div className="music-grid">
         {bands.map((band, i) => (
-        <div className="band-card" key={i}>
+        <div className="band-card" key={i} data-reveal style={{ '--reveal-delay': `${i * 70}ms` }}>
         <div className="band-cover">{band.emoji}</div>
         <div className="band-info">
         <h3 className="band-name">{band.name}</h3>

@@ -70,12 +70,12 @@ export default function Hero() {
 
             <div className="hero-content">
                 <div className="hero-text">
-                    <p className="hero-tag">// PORTFOLIO<span className="cursor">_</span></p>
+                    <p className="hero-tag" data-reveal style={{ '--reveal-delay': '0ms' }}><span className="eyebrow-metal">// PORTFOLIO<span className="cursor">_</span></span><span className="eyebrow-editorial">Portfolio</span></p>
                     <h1 className={`hero-name ${ignite ? 'ignite' : ''}`}>
                         <span className="glitch" data-text="Joseph Linao">Joseph Linao</span>
                     </h1>
-                    <p className="hero-role">Software Developer &nbsp;·&nbsp; Game Creator &nbsp;·&nbsp; AI Engineer</p>
-                    <p className="hero-bio">
+                    <p className="hero-role" data-reveal style={{ '--reveal-delay': '180ms' }}>Software Developer &nbsp;·&nbsp; Game Creator &nbsp;·&nbsp; AI Engineer</p>
+                    <p className="hero-bio" data-reveal style={{ '--reveal-delay': '260ms' }}>
                         {typeDone
                             ? <BioFull />
                             : <>{typed.split('\n').map((line, i) => (
@@ -83,12 +83,12 @@ export default function Hero() {
                             ))}<span className="cursor">_</span></>
                         }
                     </p>
-                    <div className="hero-cta">
-                        <a href="#projects" className="btn-primary">See My Work</a>
-                        <a href="#contact" className="btn-secondary">Get In Touch</a>
+                    <div className="hero-cta" data-reveal style={{ '--reveal-delay': '340ms' }}>
+                        <a href="#projects" className="btn-primary" data-magnetic>See My Work</a>
+                        <a href="#contact" className="btn-secondary" data-magnetic>Get In Touch</a>
                     </div>
                 </div>
-                <div className="hero-image-wrap" onClick={() => setBerserker(b => !b)}>
+                <div className="hero-image-wrap" data-reveal style={{ '--reveal-delay': '420ms' }} onClick={() => setBerserker(b => !b)}>
                     <img
                         src={berserker ? '/goofy.jpg' : '/avatar.jpg'}
                         alt="Joey Linao"

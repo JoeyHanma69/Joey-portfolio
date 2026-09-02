@@ -51,13 +51,13 @@ export default function About() {
         <section id="background" className="about-section" style={{position:'relative',overflow:'hidden'}}>
             <SlashReveal />
             <div className="container">
-                <div className="section-header">
-                    <p className="section-eyebrow">// origin_story</p>
+                <div className="section-header" data-reveal>
+                    <p className="section-eyebrow"><span className="eyebrow-metal">// origin_story</span><span className="eyebrow-editorial">01 &mdash; Introduction</span></p>
                     <h2 className="section-title">About</h2>
                     <div className="section-divider" />
                 </div>
 
-                <div className="about-grid">
+                <div className="about-grid" data-reveal>
                     <div className="about-intro">
                         <p className="about-bio">
                             Computer Science student at Swinburne University — building software since before the degree made it official.
@@ -75,8 +75,8 @@ export default function About() {
                         </p>
 
                         <div className="about-stats">
-                            {stats.map(s => (
-                                <div className="stat-block" key={s.label}>
+                            {stats.map((s, i) => (
+                                <div className="stat-block" key={s.label} data-reveal style={{ '--reveal-delay': `${i * 70}ms` }}>
                                     <span className="stat-value">{s.value}</span>
                                     <span className="stat-label">{s.label}</span>
                                 </div>

@@ -36,14 +36,14 @@ export default function Certifications() {
         <section id="certifications" className="certs-section" style={{ position: 'relative', overflow: 'hidden' }}>
             <SlashReveal />
             <div className="container">
-                <div className="section-header">
-                    <p className="section-eyebrow">// proof_of_battle</p>
+                <div className="section-header" data-reveal>
+                    <p className="section-eyebrow"><span className="eyebrow-metal">// proof_of_battle</span><span className="eyebrow-editorial">04 &mdash; Credentials</span></p>
                     <h2 className="section-title">Certifications</h2>
                     <div className="section-divider" />
                 </div>
                 <div className="certs-grid">
                     {certs.map((cert, i) => (
-                        <div className="cert-card" key={i} onClick={() => setActive(cert)}>
+                        <div className="cert-card" key={i} data-reveal style={{ '--reveal-delay': `${i * 70}ms` }} onClick={() => setActive(cert)}>
                             <div className="cert-preview">
                                 <iframe
                                     src={`${cert.pdf}#toolbar=0&navpanes=0&scrollbar=0`}

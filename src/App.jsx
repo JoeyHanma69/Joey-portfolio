@@ -14,11 +14,16 @@ import CursorTrail from './Components/CursorTrail';
 import ClickShockwave from './Components/ClickShockwave';
 import GenreToggle from './Components/GenreToggle';
 import BloodDrip from './Components/BloodDrip';
+import useScrollReveal from './useScrollReveal';
+import useMagnetic from './useMagnetic';
 import './index.css';
+import './themes/editorial.css';
 
 
 export default function App() { 
   const [splashDone, setSplashDone] = useState(false); 
+  useScrollReveal();
+  useMagnetic();
   return ( 
     <> 
     {!splashDone && <Splash onDone={() => setSplashDone(true)} /> }  
