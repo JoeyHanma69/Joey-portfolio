@@ -196,3 +196,16 @@ body {
 
 /* Theme-only overlays; each theme file turns its own one on. */
 .stage-bloom { display: none; }
+
+/* Sections sit above the fixed EvilEye background layer (z-index 0).
+   The floating controls and the cert modal already live far higher. */
+.about-section,
+.projects-section,
+.skills-section,
+.certs-section,
+.music-section,
+.contact-section,
+footer {
+  position: relative;
+  z-index: 1;
+}

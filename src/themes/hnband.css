@@ -60,7 +60,7 @@ body.theme-hnband .glitch::before,
 body.theme-hnband .glitch::after { content: none; }
 
 /* Particles read as stage haze rather than embers. */
-body.theme-hnband canvas {
+body.theme-hnband .particle-canvas {
     opacity: 0.4;
     filter: hue-rotate(255deg) saturate(1.6);
 }

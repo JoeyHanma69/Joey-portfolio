@@ -62,6 +62,7 @@ export default function Particles() {
     return (
         <canvas
             ref={canvasRef}
+            className="particle-canvas"
             style={{
                 position: 'fixed',
                 top: 0,

@@ -44,7 +44,7 @@ body.theme-editorial .shockwave {
     display: none !important;
 }
 
-body.theme-editorial canvas { opacity: 0.18; }        /* particles, way back */
+body.theme-editorial .particle-canvas { opacity: 0.18; }   /* particles, way back */
 
 body.theme-editorial .glitch::before,
 body.theme-editorial .glitch::after { content: none; }
