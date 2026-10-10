@@ -70,7 +70,7 @@ export default function Hero() {
 
             <div className="hero-content">
                 <div className="hero-text">
-                    <p className="hero-tag" data-reveal style={{ '--reveal-delay': '0ms' }}><span className="eyebrow-metal">// PORTFOLIO<span className="cursor">_</span></span><span className="eyebrow-editorial">Portfolio</span></p>
+                    <p className="hero-tag" data-reveal style={{ '--reveal-delay': '0ms' }}>// PORTFOLIO<span className="cursor">_</span></p>
                     <h1 className={`hero-name ${ignite ? 'ignite' : ''}`}>
                         <span className="glitch" data-text="Joseph Linao">Joseph Linao</span>
                     </h1>

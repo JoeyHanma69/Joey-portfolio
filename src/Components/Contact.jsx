@@ -16,7 +16,7 @@ export default function Contact() {
     <SlashReveal />
     <div className="container">
     <div className="section-header" data-reveal>
-    <p className="section-eyebrow"><span className="eyebrow-metal">// summon_me</span><span className="eyebrow-editorial">06 &mdash; Get in Touch</span></p>
+    <p className="section-eyebrow">// summon_me</p>
     <h2 className="section-title">Contact</h2>
     <div className="section-divider" />
     </div>

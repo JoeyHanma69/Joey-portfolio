@@ -96,7 +96,7 @@ export default function Projects() {
         <SlashReveal />
         <div className="container">
         <div className="section-header" data-reveal>
-            <p className="section-eyebrow"><span className="eyebrow-metal">// battle_records</span><span className="eyebrow-editorial">02 &mdash; Selected Work</span></p>
+            <p className="section-eyebrow">// battle_records</p>
             <h2 className="section-title">Projects</h2>
         <div className="section-divider" />
         </div>

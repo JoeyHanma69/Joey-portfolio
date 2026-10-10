@@ -13,13 +13,9 @@ import Particles from './Components/Particles';
 import EyeBackground from './Components/EyeBackground';
 import CursorTrail from './Components/CursorTrail';
 import ClickShockwave from './Components/ClickShockwave';
-import GenreToggle from './Components/GenreToggle';
-import BloodDrip from './Components/BloodDrip';
 import useScrollReveal from './useScrollReveal';
 import useMagnetic from './useMagnetic';
 import './index.css';
-import './themes/editorial.css';
-import './themes/hnband.css';
 
 
 export default function App() { 
@@ -60,8 +56,6 @@ export default function App() {
       </footer> 
 
       <Musicbutton />
-      <GenreToggle />
-      <BloodDrip />
       </div> 
       </>
   )

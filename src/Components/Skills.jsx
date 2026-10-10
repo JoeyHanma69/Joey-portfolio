@@ -17,7 +17,7 @@ export default function Skills() {
         <SlashReveal />
         <div className="container">
             <div className="section-header" data-reveal>
-            <p className="section-eyebrow"><span className="eyebrow-metal">// arsenal.exe</span><span className="eyebrow-editorial">03 &mdash; Capabilities</span></p>
+            <p className="section-eyebrow">// arsenal.exe</p>
             <h2 className="section-title">Skills & Tech</h2>
             <div className="section-divider" />
         </div>

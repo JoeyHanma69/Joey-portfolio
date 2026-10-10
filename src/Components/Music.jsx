@@ -17,7 +17,7 @@ export default function Music() {
     <SlashReveal />
     <div className="container">
         <div className="section-header" data-reveal>
-        <p className="section-eyebrow"><span className="eyebrow-metal">// the_noise</span><span className="eyebrow-editorial">05 &mdash; Off the Clock</span></p>
+        <p className="section-eyebrow">// the_noise</p>
         <h2 className="section-title">Music</h2>
         <div className="section-divider" />
     </div>
