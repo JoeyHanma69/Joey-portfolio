@@ -12,14 +12,23 @@ const GENRES = [
     { id: 'power',      label: 'Power Metal',  icon: '⚔',  accent: '#7744ee',  desc: 'EPIC · FANTASY' },
 ];
 
-const STORAGE_KEY = 'portfolio-theme-mode';
+// Whole-site looks, as opposed to the genre palettes below them.
+const MODES = [
+    { id: 'hnband',    label: 'HnBand',         icon: '✦', accent: '#e934ff', desc: 'ELECTRO · STAGE', cls: 'theme-hnband' },
+    { id: 'editorial', label: 'Editorial Noir', icon: '◑', accent: '#ece8e1', desc: 'QUIET · TYPOGRAPHIC', cls: 'theme-editorial' },
+];
 
-// Editorial is the front door; the genre palettes live behind it.
+const MODE_CLASSES = MODES.map(m => m.cls);
+const STORAGE_KEY = 'portfolio-theme-mode';
+const DEFAULT_MODE = 'hnband';
+
 const readStoredMode = () => {
     try {
-        return localStorage.getItem(STORAGE_KEY) === 'metal' ? 'metal' : 'editorial';
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored === 'metal') return 'metal';
+        return MODES.some(m => m.id === stored) ? stored : DEFAULT_MODE;
     } catch {
-        return 'editorial';
+        return DEFAULT_MODE;
     }
 };
 
@@ -28,28 +37,29 @@ export default function GenreToggle() {
     const [mode, setMode] = useState(readStoredMode);
     const [activeId, setActiveId] = useState(null);
 
-    const editorial = mode === 'editorial';
+    const activeMode = MODES.find(m => m.id === mode) ?? null;
 
     useEffect(() => {
-        document.body.classList.toggle('theme-editorial', editorial);
+        document.body.classList.remove(...MODE_CLASSES);
+        if (activeMode) document.body.classList.add(activeMode.cls);
         try {
             localStorage.setItem(STORAGE_KEY, mode);
         } catch {
             /* storage blocked — theme still applies for this visit */
         }
-        return () => document.body.classList.remove('theme-editorial');
-    }, [mode, editorial]);
+        return () => document.body.classList.remove(...MODE_CLASSES);
+    }, [mode, activeMode]);
 
     useEffect(() => {
         GENRES.forEach(g => {
             if (g.id) document.body.classList.remove(`genre-${g.id}`);
         });
         // Genre palettes only paint in metal mode.
-        if (activeId && !editorial) document.body.classList.add(`genre-${activeId}`);
+        if (activeId && !activeMode) document.body.classList.add(`genre-${activeId}`);
         return () => GENRES.forEach(g => {
             if (g.id) document.body.classList.remove(`genre-${g.id}`);
         });
-    }, [activeId, editorial]);
+    }, [activeId, activeMode]);
 
     const active = GENRES.find(g => g.id === activeId) ?? GENRES[0];
 
@@ -59,6 +69,10 @@ export default function GenreToggle() {
         setOpen(false);
     };
 
+    const title = activeMode
+        ? `${activeMode.label} — click to change theme`
+        : `Genre: ${active.label} — click to change`;
+
     return (
         <>
             {/* Fog — visible only for certain genres via CSS */}
@@ -67,6 +81,9 @@ export default function GenreToggle() {
             {/* Film grain — visible only in editorial mode via CSS */}
             <div className="grain" />
 
+            {/* Stage bloom — visible only in hnband mode via CSS */}
+            <div className="stage-bloom" />
+
             {/* Dismiss overlay */}
             {open && <div className="genre-overlay" onClick={() => setOpen(false)} />}
 
@@ -74,27 +91,30 @@ export default function GenreToggle() {
             <div className={`genre-panel ${open ? 'open' : ''}`}>
                 <div className="genre-panel-header">// mode</div>
 
-                <button
-                    className={`genre-option ${editorial ? 'selected' : ''}`}
-                    style={{ '--ga': '#ece8e1' }}
-                    onClick={() => { setMode('editorial'); setOpen(false); }}
-                >
-                    <span className="genre-icon">◑</span>
-                    <span className="genre-info">
-                        <span className="genre-name">Editorial Noir</span>
-                        <span className="genre-desc">QUIET · TYPOGRAPHIC</span>
-                    </span>
-                    {editorial && (
-                        <span
-                            className="genre-active-dot"
-                            style={{ background: '#ece8e1', boxShadow: '0 0 6px #ece8e1' }}
-                        />
-                    )}
-                </button>
+                {MODES.map(m => (
+                    <button
+                        key={m.id}
+                        className={`genre-option ${mode === m.id ? 'selected' : ''}`}
+                        style={{ '--ga': m.accent }}
+                        onClick={() => { setMode(m.id); setOpen(false); }}
+                    >
+                        <span className="genre-icon">{m.icon}</span>
+                        <span className="genre-info">
+                            <span className="genre-name">{m.label}</span>
+                            <span className="genre-desc">{m.desc}</span>
+                        </span>
+                        {mode === m.id && (
+                            <span
+                                className="genre-active-dot"
+                                style={{ background: m.accent, boxShadow: `0 0 6px ${m.accent}` }}
+                            />
+                        )}
+                    </button>
+                ))}
 
                 <div className="genre-panel-header">// select_genre</div>
                 {GENRES.map(g => {
-                    const selected = !editorial && activeId === g.id;
+                    const selected = !activeMode && activeId === g.id;
                     return (
                         <button
                             key={g.id ?? 'default'}
@@ -120,12 +140,12 @@ export default function GenreToggle() {
 
             {/* Trigger button */}
             <button
-                className={`genre-btn ${open ? 'open' : ''} ${!editorial && activeId ? 'active' : ''}`}
+                className={`genre-btn ${open ? 'open' : ''} ${!activeMode && activeId ? 'active' : ''}`}
                 onClick={() => setOpen(o => !o)}
-                title={editorial ? 'Editorial Noir — click to change theme' : `Genre: ${active.label} — click to change`}
-                style={!editorial && activeId ? { '--ga': active.accent } : {}}
+                title={title}
+                style={!activeMode && activeId ? { '--ga': active.accent } : {}}
             >
-                {editorial ? '◑' : '🤘'}
+                {activeMode ? activeMode.icon : '🤘'}
             </button>
         </>
     );

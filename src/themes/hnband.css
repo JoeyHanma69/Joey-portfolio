@@ -1,0 +1,606 @@
+/* ══════════════════════════════════════════════════════════════
+   HnBand — electro-band stage palette: deep violet ground, a
+   violet-to-magenta gradient as the single signature, heavy
+   uppercase sans headings and a magenta script sub-title.
+
+   Design language adapted from the HnBand template by Colorlib
+   (https://colorlib.com), used under CC BY 3.0. No markup or
+   stylesheet from the template is copied; this is a token and
+   pattern translation onto the portfolio's own components.
+
+   Scoped entirely to body.theme-hnband, so Editorial Noir and the
+   metal palettes stay untouched and the mode is fully reversible.
+   ══════════════════════════════════════════════════════════════ */
+
+body.theme-hnband {
+    --bg:  #0c0617;
+    --bg2: #0f0923;
+    --bg3: #191039;
+
+    --text:     #ffffff;
+    --text-dim: #a9a9b4;
+
+    /* Metal palette hooks remapped so components reaching for --red
+       pick up the magenta accent instead. */
+    --red:        rgba(233, 52, 255, 0.35);
+    --red-bright: #e934ff;
+    --red-glow:   rgba(233, 52, 255, 0.35);
+    --border:     rgba(255, 255, 255, 0.10);
+
+    --violet:  #503aca;
+    --magenta: #e934ff;
+    --grad:    linear-gradient(45deg, #503aca, #ea34ff);
+    --panel:   #191039;
+    --panel2:  #231d2d;
+    --hair:    rgba(255, 255, 255, 0.11);
+
+    --display: 'Nunito Sans', system-ui, sans-serif;
+    --script:  'Satisfy', cursive;
+    --ui:      'Nunito Sans', system-ui, sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--ui);
+    font-weight: 400;
+}
+
+/* ── Strip the horror layer; this template is clean stage-lit ── */
+
+body.theme-hnband::before { opacity: 0; }        /* scanlines */
+body.theme-hnband::after  { display: none; }     /* red sweep  */
+
+body.theme-hnband .blood-drip,
+body.theme-hnband .drip,
+body.theme-hnband .genre-fog,
+body.theme-hnband .grain {
+    display: none !important;
+}
+
+body.theme-hnband .glitch::before,
+body.theme-hnband .glitch::after { content: none; }
+
+/* Particles read as stage haze rather than embers. */
+body.theme-hnband canvas {
+    opacity: 0.4;
+    filter: hue-rotate(255deg) saturate(1.6);
+}
+
+/* ── Stage bloom: the magenta wash behind everything ────────── */
+
+body.theme-hnband .stage-bloom {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 70% 50% at 78% 8%,  rgba(233, 52, 255, 0.22), transparent 60%),
+        radial-gradient(ellipse 60% 55% at 12% 86%, rgba(80, 58, 202, 0.26),  transparent 62%),
+        radial-gradient(ellipse 90% 40% at 50% 50%, rgba(80, 58, 202, 0.10),  transparent 70%);
+}
+
+/* ── Type ───────────────────────────────────────────────────── */
+
+body.theme-hnband .hero-name,
+body.theme-hnband .section-title,
+body.theme-hnband .stat-value,
+body.theme-hnband .project-name,
+body.theme-hnband .band-name,
+body.theme-hnband .skill-cat-title,
+body.theme-hnband .timeline-role,
+body.theme-hnband .cert-course {
+    font-family: var(--display);
+    font-weight: 800;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    color: var(--text);
+}
+
+body.theme-hnband .hero-name {
+    font-size: clamp(2.8rem, 7.5vw, 5.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    text-shadow: 0 4px 40px rgba(12, 6, 23, 0.85);
+    margin-bottom: 1.6rem;
+}
+
+body.theme-hnband .section-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.1;
+}
+
+body.theme-hnband .section-header {
+    text-align: left;
+    margin-bottom: 3.5rem;
+}
+
+/* Script sub-title — the template's signature move. */
+body.theme-hnband .section-eyebrow,
+body.theme-hnband .hero-tag {
+    font-family: var(--script);
+    font-weight: 400;
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--magenta);
+    opacity: 1;
+    margin-bottom: 0.35rem;
+}
+
+body.theme-hnband .section-divider {
+    width: 72px;
+    height: 3px;
+    background: var(--grad);
+    margin: 1.4rem 0 0;
+    border-radius: 2px;
+}
+
+body.theme-hnband .hero-role {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-shadow: none;
+}
+
+body.theme-hnband .hero-role::after {
+    width: 72px;
+    height: 3px;
+    background: var(--grad);
+    border-radius: 2px;
+    margin-top: 1.6rem;
+    margin-bottom: 1.4rem;
+}
+
+body.theme-hnband .hero-bio {
+    font-family: var(--ui);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+    text-shadow: none;
+    max-width: 52ch;
+}
+
+body.theme-hnband .hero-bio strong {
+    color: var(--text);
+    font-weight: 700;
+    text-shadow: none;
+}
+
+body.theme-hnband .cursor { color: var(--magenta); }
+
+/* ── Buttons — the gradient is the brand ────────────────────── */
+
+body.theme-hnband .btn-primary,
+body.theme-hnband .btn-secondary {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    clip-path: none;
+    border-radius: 0;
+    padding: 17px 33px 15px;
+    min-width: 149px;
+    text-align: center;
+    line-height: 1;
+    transition: filter 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.theme-hnband .btn-primary {
+    border: none;
+    color: #fff;
+    background: var(--grad);
+}
+
+body.theme-hnband .btn-primary:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 10px 30px rgba(233, 52, 255, 0.28);
+    transform: translateY(-2px);
+}
+
+body.theme-hnband .btn-secondary {
+    border: 2px solid var(--magenta);
+    color: #fff;
+    background: transparent;
+}
+
+body.theme-hnband .btn-secondary:hover {
+    background: var(--grad);
+    border-color: transparent;
+    box-shadow: 0 10px 30px rgba(80, 58, 202, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ── Hero ───────────────────────────────────────────────────── */
+
+body.theme-hnband .hero { padding: 9rem 2rem 7rem; }
+
+body.theme-hnband .hero-content {
+    max-width: 1180px;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 4.5rem;
+    align-items: center;
+}
+
+body.theme-hnband .hero-text { max-width: none; }
+
+body.theme-hnband .hero-video {
+    filter: brightness(0.5) saturate(1.1) hue-rotate(260deg) contrast(1.05);
+}
+
+body.theme-hnband .hero-overlay {
+    background:
+        linear-gradient(to bottom, rgba(12, 6, 23, 0.78) 0%, rgba(12, 6, 23, 0.30) 28%, transparent 52%),
+        linear-gradient(to top,    var(--bg) 0%, rgba(12, 6, 23, 0.90) 14%, transparent 48%),
+        linear-gradient(to right,  rgba(12, 6, 23, 0.82) 0%, rgba(12, 6, 23, 0.34) 42%, transparent 72%),
+        radial-gradient(ellipse at 85% 10%, rgba(233, 52, 255, 0.30), transparent 55%),
+        radial-gradient(ellipse at 10% 90%, rgba(80, 58, 202, 0.32), transparent 58%),
+        rgba(12, 6, 23, 0.26);
+}
+
+body.theme-hnband .hero-avatar {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    border: none;
+    clip-path: none;
+    border-radius: 0;
+    box-shadow: 0 24px 70px rgba(12, 6, 23, 0.7);
+    filter: saturate(1.05) contrast(1.04);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+}
+
+/* Gradient frame offset behind the portrait. */
+body.theme-hnband .hero-image-wrap { position: relative; }
+
+body.theme-hnband .hero-image-wrap::before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 16px -16px -16px 16px;
+    background: var(--grad);
+    opacity: 0.55;
+    border: none;
+    clip-path: none;
+    z-index: -1;
+}
+
+body.theme-hnband .hero-image-wrap:hover .hero-avatar {
+    transform: translate(6px, -6px);
+    opacity: 1;
+    box-shadow: 0 30px 80px rgba(233, 52, 255, 0.22);
+}
+
+body.theme-hnband .avatar-hint {
+    font-family: var(--ui);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: left;
+    margin-top: 1.4rem;
+    color: var(--text-dim);
+}
+
+body.theme-hnband .hero-image-wrap:hover .avatar-hint { color: var(--magenta); }
+
+body.theme-hnband .hero-scroll-line {
+    background: linear-gradient(to bottom, transparent, var(--magenta));
+}
+
+body.theme-hnband .hero-scroll-label {
+    font-family: var(--ui);
+    font-weight: 700;
+    letter-spacing: 0.22em;
+}
+
+/* ── Nav: active-style outlined box on hover ────────────────── */
+
+body.theme-hnband .navbar {
+    background: rgba(12, 6, 23, 0.82);
+    border-bottom: 1px solid var(--hair);
+    backdrop-filter: blur(14px);
+}
+
+body.theme-hnband .nav-logo {
+    font-family: var(--script);
+    font-weight: 400;
+    font-size: 1.9rem;
+    text-transform: none;
+    color: #fff;
+}
+
+body.theme-hnband .nav-links a {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+body.theme-hnband .nav-links a:hover {
+    color: var(--magenta);
+    border-color: var(--magenta);
+}
+
+body.theme-hnband footer {
+    position: relative;
+    z-index: 1;
+    background: #1f1448 !important;
+    border-top: none !important;
+    font-family: var(--ui) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+}
+
+body.theme-hnband ::-webkit-scrollbar-track { background: var(--bg); }
+body.theme-hnband ::-webkit-scrollbar-thumb { background: var(--violet); }
+body.theme-hnband ::-webkit-scrollbar-thumb:hover { background: var(--magenta); }
+
+/* ── Cards: solid violet panels, gradient edge on hover ─────── */
+
+body.theme-hnband .project-card,
+body.theme-hnband .cert-card,
+body.theme-hnband .band-card,
+body.theme-hnband .skill-category,
+body.theme-hnband .timeline-entry,
+body.theme-hnband .contact-form,
+body.theme-hnband .contact-detail-item {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--hair);
+    border-radius: 0;
+    clip-path: none;
+    box-shadow: none;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.45s ease, border-color 0.35s ease;
+}
+
+/* Gradient top rule that wipes in on hover. */
+body.theme-hnband .project-card::after,
+body.theme-hnband .cert-card::after,
+body.theme-hnband .band-card::after,
+body.theme-hnband .skill-category::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--grad);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.theme-hnband .project-card:hover::after,
+body.theme-hnband .cert-card:hover::after,
+body.theme-hnband .band-card:hover::after,
+body.theme-hnband .skill-category:hover::after {
+    transform: scaleX(1);
+}
+
+body.theme-hnband .project-card:hover,
+body.theme-hnband .cert-card:hover,
+body.theme-hnband .band-card:hover,
+body.theme-hnband .skill-category:hover {
+    border-color: rgba(233, 52, 255, 0.4);
+    box-shadow: 0 18px 44px rgba(12, 6, 23, 0.6);
+    transform: translateY(-5px);
+    background: var(--panel);
+}
+
+body.theme-hnband .stat-block {
+    background: var(--panel2);
+    border: 1px solid var(--hair);
+    border-radius: 0;
+    clip-path: none;
+    box-shadow: none;
+}
+
+body.theme-hnband .project-tag,
+body.theme-hnband .skill-pill,
+body.theme-hnband .band-genre,
+body.theme-hnband .project-status {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid rgba(233, 52, 255, 0.35);
+    border-radius: 0;
+    clip-path: none;
+    background: rgba(80, 58, 202, 0.18);
+    color: #fff;
+    box-shadow: none;
+}
+
+body.theme-hnband .stat-value {
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+body.theme-hnband .stat-label,
+body.theme-hnband .timeline-period,
+body.theme-hnband .cert-issuer,
+body.theme-hnband .cert-year,
+body.theme-hnband .contact-detail-label {
+    font-family: var(--ui);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    color: var(--text-dim);
+}
+
+body.theme-hnband .timeline-dot {
+    background: var(--magenta);
+    border-color: var(--magenta);
+    box-shadow: 0 0 14px rgba(233, 52, 255, 0.6);
+}
+
+body.theme-hnband .cert-no,
+body.theme-hnband .link-icon,
+body.theme-hnband .cat-icon {
+    color: var(--magenta);
+}
+
+body.theme-hnband .tab-btn {
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 0;
+    clip-path: none;
+}
+
+body.theme-hnband .tab-btn.active,
+body.theme-hnband .tab-btn[aria-selected='true'] {
+    background: var(--grad);
+    color: #fff;
+    border-color: transparent;
+}
+
+body.theme-hnband input,
+body.theme-hnband textarea {
+    font-family: var(--ui);
+    font-weight: 400;
+    background: var(--panel2);
+    border: 1px solid var(--hair);
+    border-radius: 0;
+    color: #fff;
+}
+
+body.theme-hnband input:focus,
+body.theme-hnband textarea:focus {
+    border-color: var(--magenta);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(233, 52, 255, 0.14);
+}
+
+/* ── Section rhythm: alternating bands, like the template ───── */
+
+body.theme-hnband .about-section,
+body.theme-hnband .projects-section,
+body.theme-hnband .skills-section,
+body.theme-hnband .certs-section,
+body.theme-hnband .music-section,
+body.theme-hnband .contact-section {
+    position: relative;
+    z-index: 1;
+    padding-top: 6.5rem;
+    padding-bottom: 6.5rem;
+}
+
+body.theme-hnband .about-section,
+body.theme-hnband .skills-section,
+body.theme-hnband .music-section {
+    background: rgba(15, 9, 35, 0.72);
+}
+
+body.theme-hnband .container { max-width: 1180px; }
+
+/* ── Scroll reveal and magnetic buttons, same as editorial ──── */
+
+body.theme-hnband [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+body.theme-hnband [data-reveal].revealed {
+    opacity: 1;
+    transform: none;
+}
+
+body.theme-hnband [data-magnetic] {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.3s ease, background 0.3s ease,
+                color 0.3s ease, border-color 0.3s ease;
+}
+
+body.theme-hnband [data-magnetic].magnet-active {
+    transition: transform 0.08s linear, filter 0.3s ease,
+                background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.theme-hnband [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ── Floating controls ──────────────────────────────────────── */
+
+body.theme-hnband .genre-btn,
+body.theme-hnband .music-btn {
+    border: none;
+    background: var(--grad);
+    color: #fff;
+    font-size: 1.1rem;
+    animation: none;
+    box-shadow: 0 8px 24px rgba(80, 58, 202, 0.42);
+}
+
+body.theme-hnband .genre-btn:hover,
+body.theme-hnband .music-btn:hover {
+    filter: brightness(1.15);
+    transform: scale(1.07);
+    box-shadow: 0 10px 30px rgba(233, 52, 255, 0.4);
+}
+
+body.theme-hnband .genre-panel {
+    background: rgba(12, 6, 23, 0.96);
+    border: 1px solid var(--hair);
+    border-radius: 2px;
+}
+
+body.theme-hnband .genre-panel-header,
+body.theme-hnband .genre-name,
+body.theme-hnband .genre-desc {
+    font-family: var(--ui);
+}
+
+/* ── Eyebrow copy: reuse the numbered labels, set in script ─── */
+
+body.theme-hnband .eyebrow-metal { display: none; }
+body.theme-hnband .eyebrow-editorial { display: inline; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+    body.theme-hnband .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    body.theme-hnband .hero { padding: 7.5rem 1.5rem 4.5rem; }
+    body.theme-hnband .hero-image-wrap::before { inset: 10px -10px -10px 10px; }
+    body.theme-hnband .section-header { margin-bottom: 2.5rem; }
+    body.theme-hnband .about-section,
+    body.theme-hnband .projects-section,
+    body.theme-hnband .skills-section,
+    body.theme-hnband .certs-section,
+    body.theme-hnband .music-section,
+    body.theme-hnband .contact-section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}

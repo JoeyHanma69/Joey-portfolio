@@ -5,7 +5,7 @@ const RADIUS = 90;       // px beyond the element's box that still pulls
 
 /**
  * Pulls any [data-magnetic] element gently toward the cursor.
- * Only active in editorial mode and only for devices with a real pointer.
+ * Only active in the editorial and hnband modes, and only for real pointers.
  */
 export default function useMagnetic() {
     useEffect(() => {
@@ -19,7 +19,8 @@ export default function useMagnetic() {
         };
 
         const onMove = e => {
-            if (!document.body.classList.contains('theme-editorial')) return;
+            const cls = document.body.classList;
+            if (!cls.contains('theme-editorial') && !cls.contains('theme-hnband')) return;
 
             document.querySelectorAll('[data-magnetic]').forEach(el => {
                 const r = el.getBoundingClientRect();

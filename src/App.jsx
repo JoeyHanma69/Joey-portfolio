@@ -18,6 +18,7 @@ import useScrollReveal from './useScrollReveal';
 import useMagnetic from './useMagnetic';
 import './index.css';
 import './themes/editorial.css';
+import './themes/hnband.css';
 
 
 export default function App() { 

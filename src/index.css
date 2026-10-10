@@ -193,3 +193,6 @@ body {
 /* Eyebrow copy swaps with the active theme; editorial variant is hidden
    by default and revealed in src/themes/editorial.css. */
 .eyebrow-editorial { display: none; }
+
+/* Theme-only overlays; each theme file turns its own one on. */
+.stage-bloom { display: none; }
