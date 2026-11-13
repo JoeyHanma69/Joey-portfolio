@@ -30,7 +30,7 @@
 
 .tab-btn:last-child { border-right: none; }
 .tab-btn.active { background: var(--red); color: #fff; }
-.tab-btn:hover:not(.active) { background: rgba(139, 0, 0, 0.2); }
+.tab-btn:hover:not(.active) { background: rgba(0, 240, 255, 0.2); }
 
 .projects-grid { 
     display: grid; 
@@ -58,7 +58,7 @@
  transition: transform 0.4s;
 }
 .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px
-rgba(139,0,0,0.22); }
+rgba(0, 240, 255, 0.22); }
 .project-card:hover::before { transform: scaleX(1); } 
 
 .project-card-header {
@@ -79,7 +79,7 @@ rgba(139,0,0,0.22); }
 }
 
 .project-tag {
-    font-family: 'Cinzel', serif;
+    font-family: var(--hud);
     font-size: 0.65rem;
     letter-spacing: 0.2em;
     color: var(--red-bright);
@@ -87,7 +87,7 @@ rgba(139,0,0,0.22); }
 }
 
 .project-name {
- font-family: 'Cinzel', serif;
+ font-family: var(--hud);
  font-size: 1.1rem;
  font-weight: 700;
  color: var(--text);
@@ -105,7 +105,7 @@ rgba(139,0,0,0.22); }
     display: flex;
     align-items: center;
     gap: 0.35rem;
- font-family: 'Cinzel', serif;
+ font-family: var(--hud);
  font-size: 0.7rem;
  letter-spacing: 0.15em;
  text-transform: uppercase;

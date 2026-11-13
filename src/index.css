@@ -7,19 +7,43 @@
  
  
 :root {
-  /* Ember palette, pulled from the eye's own fire so the chrome and the
-     background read as one object rather than a widget over a wallpaper.
-     The --red-* names are kept because every component already uses them. */
-  --bg: #080606;
-  --bg2: #0f0b09;
-  --bg3: #171210;
-  --red: #8a3a12;
-  --red-bright: #ff6f37;
-  --red-glow: rgba(255, 111, 55, 0.35);
-  --text: #ece2d8;
-  --text-dim: #9a8c80;
-  --border: #2a1a10;
+  /* Night City palette. Acid yellow carries every primary action, cyan
+     every secondary one, and the red is reserved for alerts so it stays
+     meaningful. The --red-* names are kept because fourteen component
+     stylesheets already reach for them; only the values moved. */
+  --cp-yellow: #fcee0a;
+  --cp-cyan:   #00f0ff;
+  --cp-alert:  #ff2a51;
+
+  --bg:  #050507;
+  --bg2: #0a0b0f;
+  --bg3: #11131a;
+
+  --red:        rgba(252, 238, 10, 0.45);
+  --red-bright: #fcee0a;
+  --red-glow:   rgba(252, 238, 10, 0.3);
+  --text:       #e6f1f5;
+  --text-dim:   #76858f;
+  --border:     rgba(252, 238, 10, 0.22);
+
   --mono: 'JetBrains Mono', monospace;
+  --hud:  'Share Tech Mono', monospace;
+
+  /* The chamfered corner is the single most recognisable shape in the
+     game's UI, so it lives here and every surface reuses it. */
+  --notch: 10px;
+  --chamfer-br: polygon(
+    0 0, 100% 0,
+    100% calc(100% - var(--notch)),
+    calc(100% - var(--notch)) 100%,
+    0 100%
+  );
+  --chamfer-both: polygon(
+    var(--notch) 0, 100% 0,
+    100% calc(100% - var(--notch)),
+    calc(100% - var(--notch)) 100%,
+    0 100%, 0 var(--notch)
+  );
 }
 
 html { scroll-behavior: smooth; }
@@ -32,9 +56,9 @@ body::before {
     background: repeating-linear-gradient(
         0deg,
         transparent,
-        transparent 3px,
-        rgba(0, 0, 0, 0.07) 3px,
-        rgba(0, 0, 0, 0.07) 4px
+        transparent 2px,
+        rgba(0, 0, 0, 0.16) 2px,
+        rgba(0, 0, 0, 0.16) 3px
     );
     pointer-events: none;
     z-index: 9998;
@@ -49,7 +73,7 @@ body::after {
     background: linear-gradient(
         to bottom,
         transparent,
-        rgba(255, 111, 55, 0.045) 50%,
+        rgba(0, 240, 255, 0.05) 50%,
         transparent
     );
     pointer-events: none;
@@ -66,6 +90,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
   overflow-x: hidden;
 } 
 
@@ -86,67 +111,93 @@ body {
 
 
 .section-eyebrow {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--red-bright);
-  letter-spacing: 0.08em;
+  font-family: var(--hud);
+  font-size: 0.78rem;
+  color: var(--cp-cyan);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   margin-bottom: 0.75rem;
   opacity: 0.9;
 }
 
 .section-title { 
-  font-family: 'Metal Mania', cursive; 
-  font-size: clamp(2rem, 5vw, 3rem); 
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: clamp(2.1rem, 5.4vw, 3.4rem); 
   color: var(--text); 
   line-height: 1;
 } 
 
 .section-divider { 
-  width: 80px; 
-  height: 2px; 
-  background: linear-gradient(90deg, transparent, var(--red), transparent); 
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cp-yellow) 0 64px, rgba(252,238,10,0.18) 64px);
   margin: 1.5rem auto 0;
 }
  
 
-/* Shared Buttons*/ 
-.btn-primary, .btn-secondary { 
-  font-family: 'Cinzel', serif; 
-  font-size: 0.78rem; 
-  letter-spacing: 0.2rem; 
-  text-transform: uppercase; 
-  padding: 0.85rem 2.2rem; 
-  text-decoration: none; 
-  cursor: pointer; 
-  clip-path: polygon(8px 8%, 100% 0, calc(100% - 8px) 100%, 0% 100%);
-  transition: all 0.3s; 
-  display: inline-block; 
-  border: none;
-} 
+/* ── Shared Buttons ──────────────────────────────────────────────
+   The game's two button states: a solid acid-yellow slab for the
+   primary action and a cyan hairline for everything else. Both carry
+   the chamfered corner and a shear-wipe on hover. */
 
-.btn-primary { 
-  background: transparent; 
-  border: 1px solid var(--red); 
-  color: #fff;
-} 
+.btn-primary, .btn-secondary {
+  position: relative;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.95rem 2.4rem;
+  text-decoration: none;
+  cursor: pointer;
+  clip-path: var(--chamfer-br);
+  transition: background 0.18s steps(3), color 0.18s steps(3),
+              box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  display: inline-block;
+  border: none;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--cp-yellow);
+  color: #050507;
+}
 
 .btn-primary:hover {
-  background: var(--red-bright); 
-  box-shadow: 0 0 20px var(--red);
+  background: #fff84a;
+  color: #050507;
+  box-shadow: 0 0 28px rgba(252, 238, 10, 0.45);
   transform: translateY(-2px);
-} 
+}
 
-.btn-secondary { 
-  background: transparent; 
-  border: 1px solid var(--red); 
-  color: var(--red-bright);
-}  
+.btn-secondary {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--cp-cyan);
+  color: var(--cp-cyan);
+}
 
 .btn-secondary:hover {
-  background: rgba(139, 0, 0, 0.2); 
-  box-shadow: 0 0 16px var(--red-glow);
-} 
+  background: var(--cp-cyan);
+  color: #050507;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.4);
+  transform: translateY(-2px);
+}
 
+/* Corner tick, the small filled triangle the game puts in the notch. */
+.btn-primary::after, .btn-secondary::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--notch);
+  height: var(--notch);
+  background: currentColor;
+  opacity: 0.55;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
 
 /* glith effect */ 
 .glitch { position: relative; display: inline-block;} 
@@ -160,16 +211,16 @@ body {
 } 
 
 .glitch::before { 
-  color: var(--red-bright); 
-  animation: glitch1 4s infinite; 
-  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+  color: var(--cp-cyan);
+  animation: glitch1 3.2s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 44%, 0 44%);
 } 
 
 .glitch::after { 
-  color: #0ff; 
-  animation: glitch2 4s infinite; 
-  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%); 
-  opacity: 0.25;
+  color: #ff00c1;
+  animation: glitch2 3.2s infinite;
+  clip-path: polygon(0 56%, 100% 56%, 100% 100%, 0 100%);
+  opacity: 0.5;
 } 
 
 @keyframes glitch1 { 
@@ -242,3 +293,174 @@ footer {
     transition: none;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Night City surface kit
+   The chamfer, the hairline and the corner tick are what make a
+   box read as this game's UI rather than a generic dark card, so
+   every panel on the site shares them.
+   ══════════════════════════════════════════════════════════════ */
+
+.project-card,
+.cert-card,
+.band-card,
+.skill-category,
+.stat-block,
+.timeline-entry,
+.contact-form,
+.contact-detail-item {
+  position: relative;
+  background: linear-gradient(160deg, rgba(17, 19, 26, 0.92), rgba(5, 5, 7, 0.92));
+  border: none;
+  border-radius: 0;
+  clip-path: var(--chamfer-br);
+  box-shadow: inset 0 0 0 1px rgba(252, 238, 10, 0.16);
+  transition: box-shadow 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover,
+.cert-card:hover,
+.band-card:hover,
+.skill-category:hover {
+  box-shadow: inset 0 0 0 1px var(--cp-yellow), 0 0 32px rgba(252, 238, 10, 0.14);
+  transform: translateY(-4px);
+}
+
+/* The scan bar that runs the top edge of a focused panel. */
+.project-card::before,
+.cert-card::before,
+.band-card::before,
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--cp-yellow), var(--cp-cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover::before,
+.cert-card:hover::before,
+.band-card:hover::before,
+.skill-category:hover::before {
+  transform: scaleX(1);
+}
+
+/* Tags read as system chips: mono, boxed, cyan. */
+.project-tag,
+.skill-pill,
+.band-genre,
+.project-status {
+  font-family: var(--hud);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 0;
+  clip-path: none;
+  background: rgba(0, 240, 255, 0.07);
+  color: var(--cp-cyan);
+  box-shadow: none;
+}
+
+.stat-value {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  color: var(--cp-yellow);
+}
+
+.stat-label,
+.timeline-period,
+.cert-issuer,
+.cert-year,
+.contact-detail-label {
+  font-family: var(--hud);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.timeline-dot {
+  background: var(--cp-yellow);
+  border-color: var(--cp-yellow);
+  box-shadow: 0 0 12px rgba(252, 238, 10, 0.7);
+}
+
+.project-name,
+.band-name,
+.skill-cat-title,
+.timeline-role,
+.cert-course {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.nav-logo {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cp-yellow);
+}
+
+.nav-links a {
+  font-family: var(--hud);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding-bottom: 3px;
+  border-bottom: 1px dashed transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--cp-yellow);
+  border-bottom-color: var(--cp-yellow);
+}
+
+.navbar {
+  background: rgba(5, 5, 7, 0.82);
+  border-bottom: 1px solid rgba(252, 238, 10, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+input, textarea {
+  font-family: var(--mono);
+  background: rgba(10, 11, 15, 0.9);
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  border-radius: 0;
+  color: var(--text);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--cp-yellow);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(252, 238, 10, 0.16);
+}
+
+.tab-btn {
+  font-family: var(--hud);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 0;
+  clip-path: none;
+}
+
+footer {
+  background: #050507 !important;
+  border-top: 1px solid rgba(252, 238, 10, 0.18) !important;
+  font-family: var(--hud) !important;
+  letter-spacing: 0.22em !important;
+}
+
+::-webkit-scrollbar-track { background: #050507; }
+::-webkit-scrollbar-thumb { background: var(--cp-yellow); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--cp-cyan); }

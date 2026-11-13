@@ -36,7 +36,9 @@
 }
 
 .stat-value {
-    font-family: 'Metal Mania', cursive;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
     font-size: 2.2rem;
     color: var(--red-bright);
     line-height: 1;
@@ -92,7 +94,7 @@
 }
 
 .timeline-role {
-    font-family: 'Cinzel', serif;
+    font-family: var(--hud);
     font-size: 0.85rem;
     font-weight: 700;
     color: var(--text);

@@ -25,16 +25,20 @@ export default function EyeBackground() {
 
     return (
         <div className="evil-eye-layer visible" aria-hidden="true">
+            {/* Dialled well back from the Sauron build. At full strength an
+                acid-yellow eye blows out the whole right half and reads as a
+                rendering fault rather than a design; here it is an ambient
+                scanner glow sitting behind the portrait. */}
             <EvilEye
-                eyeColor="#FF6F37"
-                intensity={1.5}
-                pupilSize={0.6}
-                irisWidth={0.25}
-                glowIntensity={0.35}
-                scale={0.62}
-                noiseScale={1.0}
+                eyeColor="#FCEE0A"
+                intensity={0.85}
+                pupilSize={0.72}
+                irisWidth={0.2}
+                glowIntensity={0.22}
+                scale={0.42}
+                noiseScale={1.15}
                 pupilFollow={1.0}
-                flameSpeed={1.0}
+                flameSpeed={0.55}
                 backgroundColor="#000000"
             />
         </div>

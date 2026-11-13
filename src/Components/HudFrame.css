@@ -1,0 +1,152 @@
+/* ══════════════════════════════════════════════════════════════
+   HUD frame — the acid-yellow border, corner brackets and edge
+   telemetry that bracket every Cyberpunk 2077 screen. Fixed to the
+   viewport, never interactive, and sits under the floating controls
+   but over the page content so it reads as an overlay HUD.
+   ══════════════════════════════════════════════════════════════ */
+
+.hud-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 9995;
+  pointer-events: none;
+  font-family: var(--hud);
+}
+
+/* ── Edges ─────────────────────────────────────────────────────
+   Each edge stops short of the corners so the brackets read as
+   separate marks rather than a continuous box. */
+
+.hud-edge {
+  position: absolute;
+  background: var(--cp-yellow);
+  opacity: 0.85;
+}
+
+.hud-edge-top,
+.hud-edge-bottom {
+  left: 58px;
+  right: 58px;
+  height: 2px;
+}
+
+.hud-edge-top { top: 10px; }
+.hud-edge-bottom { bottom: 10px; }
+
+.hud-edge-left,
+.hud-edge-right {
+  top: 58px;
+  bottom: 58px;
+  width: 2px;
+}
+
+.hud-edge-left { left: 10px; }
+.hud-edge-right { right: 10px; }
+
+/* ── Corner brackets ───────────────────────────────────────────
+   An L cut on the diagonal, which is what gives the frame its
+   chamfered silhouette. */
+
+.hud-corner {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border: 2px solid var(--cp-yellow);
+  opacity: 0.9;
+}
+
+.hud-corner-tl {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+  clip-path: polygon(16px 0, 100% 0, 100% 2px, 16px 2px, 2px 16px, 2px 100%, 0 100%, 0 14px);
+}
+
+.hud-corner-tr {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, calc(100% - 2px) 100%, calc(100% - 2px) 2px, 0 2px);
+}
+
+.hud-corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+  clip-path: polygon(0 0, 2px 0, 2px calc(100% - 2px), 100% calc(100% - 2px), 100% 100%, 0 100%);
+}
+
+.hud-corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+  clip-path: polygon(calc(100% - 2px) 0, 100% 0, 100% calc(100% - 16px),
+                     calc(100% - 16px) 100%, 0 100%, 0 calc(100% - 2px),
+                     calc(100% - 18px) calc(100% - 2px), calc(100% - 2px) calc(100% - 18px));
+}
+
+/* ── Telemetry text ────────────────────────────────────────────── */
+
+.hud-bits,
+.hud-label {
+  position: absolute;
+  font-size: 0.56rem;
+  letter-spacing: 0.26em;
+  color: var(--cp-yellow);
+  opacity: 0.5;
+  white-space: nowrap;
+}
+
+.hud-bits-top {
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 10px;
+}
+
+.hud-bits-bottom {
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 10px;
+}
+
+.hud-label-left {
+  left: 16px;
+  top: 50%;
+  transform: rotate(-90deg) translateX(-50%);
+  transform-origin: left center;
+  color: var(--cp-cyan);
+}
+
+.hud-label-right {
+  right: 16px;
+  top: 50%;
+  transform: rotate(90deg) translateX(50%);
+  transform-origin: right center;
+  color: var(--cp-cyan);
+}
+
+/* The frame steals real estate, so it thins out and sheds its
+   telemetry where there is none to spare. */
+@media (max-width: 900px) {
+  .hud-bits,
+  .hud-label { display: none; }
+
+  .hud-corner {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hud-edge-top,
+  .hud-edge-bottom { left: 34px; right: 34px; }
+
+  .hud-edge-left,
+  .hud-edge-right { top: 34px; bottom: 34px; }
+}

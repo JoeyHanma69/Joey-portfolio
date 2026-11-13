@@ -32,7 +32,7 @@
 
 .cert-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(139, 0, 0, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 240, 255, 0.25);
 }
 
 .cert-card:hover::before { transform: scaleX(1); }
@@ -91,7 +91,7 @@
 }
 
 .cert-course {
-    font-family: 'Cinzel', serif;
+    font-family: var(--hud);
     font-size: 1rem;
     font-weight: 700;
     color: var(--text);
@@ -121,7 +121,7 @@
 }
 
 .cert-verify {
-    font-family: 'Cinzel', serif;
+    font-family: var(--hud);
     font-size: 0.68rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -155,7 +155,7 @@
     max-height: 90vh;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 60px rgba(139, 0, 0, 0.4);
+    box-shadow: 0 0 60px rgba(0, 240, 255, 0.4);
 }
 
 .cert-modal-header {

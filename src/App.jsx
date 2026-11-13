@@ -10,6 +10,7 @@ import Music from './Components/Music';
 import Contact from './Components/Contact';
 import Musicbutton from './Components/MusicButton';
 import Particles from './Components/Particles';
+import HudFrame from './Components/HudFrame';
 import CursorTrail from './Components/CursorTrail';
 import ClickShockwave from './Components/ClickShockwave';
 import useScrollReveal from './useScrollReveal';
@@ -28,6 +29,7 @@ export default function App() {
         opacity: splashDone ? 1 : 0, 
         transition: 'opacity 0.8s ease',
       }}>  
+      <HudFrame />
       <Particles />
       <CursorTrail />
       <ClickShockwave />
@@ -44,7 +46,7 @@ export default function App() {
         borderTop: '1px solid var(--red)',
         padding: '2rem',
         textAlign: 'center',
-        fontFamily: 'Cinzel, serif',
+        fontFamily: "'Share Tech Mono', monospace",
         fontSize: '0.7rem',
         letterSpacing: '0.3em',
         color: 'var(--text-dim)',

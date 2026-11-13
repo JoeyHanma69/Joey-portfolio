@@ -17,7 +17,7 @@ center; }
 }
 .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
 .form-group label {
-    font-family: 'Cinzel', serif;
+    font-family: var(--hud);
     font-size: 0.7rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -39,7 +39,7 @@ center; }
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--red-bright);
-    box-shadow: 0 2px 12px rgba(139,0,0,0.2);
+    box-shadow: 0 2px 12px rgba(0, 240, 255, 0.2);
 }
 .form-group textarea { min-height: 140px; }
 .btn-primary.sent { background: #1a4a00 !important; border-color: #2a6a00 !
@@ -66,7 +66,7 @@ important; }
 }
 
 .contact-detail-value {
-    font-family: 'Cinzel', serif;
+    font-family: var(--hud);
     font-size: 0.9rem;
     color: var(--text);
     text-decoration: none;
@@ -86,7 +86,7 @@ important; }
     margin-top: 3rem;
 }
 .social-link {
-    font-family: 'Cinzel', serif;
+    font-family: var(--hud);
     font-size: 0.75rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;

@@ -110,7 +110,9 @@
 
 /* ── Hero Name ── */
 .hero-name {
-    font-family: 'Metal Mania', cursive;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
     font-size: clamp(3.5rem, 9vw, 7.5rem);
     line-height: 0.92;
     margin-bottom: 1.5rem;
@@ -136,7 +138,7 @@
 
 /* ── Role subtitle ── */
 .hero-role {
-    font-family: 'Cinzel', serif;
+    font-family: var(--hud);
     font-size: clamp(0.85rem, 1.8vw, 1.2rem);
     color: var(--red-bright);
     letter-spacing: 0.2em;
@@ -194,7 +196,7 @@
 }
 
 .hero-avatar.berserker-mode {
-    box-shadow: 0 0 60px rgba(139,0,0,0.7), 0 0 120px rgba(139,0,0,0.3);
+    box-shadow: 0 0 60px rgba(0, 240, 255, 0.7), 0 0 120px rgba(0, 240, 255, 0.3);
     border-color: var(--red-bright);
 }
 
@@ -204,7 +206,7 @@
     content: '';
     position: absolute;
     inset: 8px;
-    border: 1px solid rgba(139,0,0,0.3);
+    border: 1px solid rgba(0, 240, 255, 0.3);
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
     pointer-events: none;
     z-index: 1;
@@ -277,5 +279,103 @@
     }
     .hero-scroll-hint {
         display: none;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Night City hero treatment
+   ══════════════════════════════════════════════════════════════ */
+
+.hero-name {
+    letter-spacing: 0.01em;
+    text-shadow: 0 0 44px rgba(252, 238, 10, 0.18);
+}
+
+.hero-tag {
+    font-family: var(--hud);
+    letter-spacing: 0.3em;
+    color: var(--cp-cyan);
+}
+
+/* Role reads as a system readout, kept on one line so it does not
+   orphan the last job title onto a row of its own. */
+.hero-role {
+    font-size: clamp(0.7rem, 1.25vw, 0.9rem);
+    letter-spacing: 0.22em;
+    color: var(--cp-yellow);
+    white-space: nowrap;
+}
+
+.hero-role::after {
+    width: 100%;
+    max-width: 420px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--cp-yellow) 0 56px, rgba(252, 238, 10, 0.16) 56px);
+}
+
+.hero-bio { font-weight: 400; }
+.hero-bio strong { color: var(--cp-yellow); font-weight: 600; }
+
+/* ── Portrait: a HUD plate rather than a bare photo ── */
+
+.hero-image-wrap { position: relative; }
+
+.hero-avatar {
+    border: none;
+    box-shadow: none;
+    clip-path: var(--chamfer-both);
+    filter: contrast(1.06) saturate(0.92);
+}
+
+/* Hairline plate behind the photo, offset like a targeting frame. */
+.hero-image-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -12px -12px -12px 12px;
+    border: 1px solid rgba(0, 240, 255, 0.45);
+    clip-path: var(--chamfer-both);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Corner ticks on the plate. */
+.hero-image-wrap::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 26px;
+    height: 26px;
+    border-top: 2px solid var(--cp-yellow);
+    border-right: 2px solid var(--cp-yellow);
+    pointer-events: none;
+}
+
+.avatar-hint {
+    font-family: var(--hud);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--text-dim);
+}
+
+.hero-image-wrap:hover .avatar-hint { color: var(--cp-cyan); }
+
+.hero-scroll-line {
+    background: linear-gradient(to bottom, transparent, var(--cp-yellow));
+}
+
+.hero-scroll-label {
+    font-family: var(--hud);
+    letter-spacing: 0.3em;
+}
+
+/* nowrap keeps the role on one line where there is room for it; below
+   that it has to wrap or it runs off the side of the screen. */
+@media (max-width: 900px) {
+    .hero-role {
+        white-space: normal;
+        letter-spacing: 0.16em;
     }
 }

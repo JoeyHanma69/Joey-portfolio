@@ -13,7 +13,9 @@
 }
 
 .nav-logo { 
-    font-family: "Metal Mania", cursive; 
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase; 
     font-size: 1.5rem; 
     color: var(--red-bright); 
     text-decoration: none; 
@@ -27,7 +29,7 @@
 } 
 
 .nav-links a { 
-    font-family: 'Cinzel', serif; 
+    font-family: var(--hud); 
     font-size: 0.72rem; 
     letter-spacing: 0.2rem;  
     color: var(--text-dim);  

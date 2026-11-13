@@ -11,14 +11,16 @@
 
 
 .splash-title { 
-    font-family: 'Metal Mania', cursive; 
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase; 
     font-size: clamp(2rem, 8vw, 5rem); 
     color: #fff; 
     animation: splashGlitch 0.25s infinite alternate;
 } 
 
 .splash-subtitle { 
-    font-family: 'Cinzel', serif; 
+    font-family: var(--hud); 
     font-size: clamp(0.8rem, 4vw, 1.2rem); 
     color: var(--red-bright); 
     letter-spacing: 0.5rem; 
