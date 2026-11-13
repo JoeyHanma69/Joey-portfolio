@@ -10,7 +10,8 @@ const skillCategories = [
  { icon: '∑', title: 'Mathematics', skills: ['Linear Algebra', 'Calculus', 'Statistics', 'Probability', 'Discrete Math'] },
  { icon: '▣', title: 'Data Analysis', skills: ['NumPy', 'Matplotlib', 'Seaborn', 'SQL', 'Excel',] },
  { icon: '⬡', title: 'LLMs', skills: ['OpenAI API', 'LangChain', 'Prompt Engineering', 'Fine-tuning', 'Claude API'] },  
- { icon: '⊘', title: 'Cybersecurity', skills: ['CIA Triad', 'Authentication, Authorisation & Accounting', 'The McCumber Cube', 'Linux', 'OSI Layers', 'NIST Cybersecurity Framework', 'Risk Management', 'Web Application Security']}, 
+ { icon: '⊘', title: 'Cybersecurity', skills: ['CIA Triad', 'Authentication, Authorisation & Accounting', 'The McCumber Cube', 'Linux', 'OSI Layers', 'NIST Cybersecurity Framework',  
+    'Risk Management', 'Web Application Security', 'Cryptography']}, 
 ]
 export default function Skills() {
  return (
