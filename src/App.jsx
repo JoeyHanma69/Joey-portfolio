@@ -11,6 +11,8 @@ import Contact from './Components/Contact';
 import Musicbutton from './Components/MusicButton';
 import Particles from './Components/Particles';
 import HudFrame from './Components/HudFrame';
+import HudWidgets from './Components/HudWidgets';
+import CircuitBackground from './Components/CircuitBackground';
 import CursorTrail from './Components/CursorTrail';
 import ClickShockwave from './Components/ClickShockwave';
 import useScrollReveal from './useScrollReveal';
@@ -29,7 +31,9 @@ export default function App() {
         opacity: splashDone ? 1 : 0, 
         transition: 'opacity 0.8s ease',
       }}>  
+      <CircuitBackground />
       <HudFrame />
+      <HudWidgets />
       <Particles />
       <CursorTrail />
       <ClickShockwave />
