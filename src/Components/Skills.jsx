@@ -9,7 +9,7 @@ const skillCategories = [
  { icon: '◧', title: 'Backend', skills: ['Node.js', 'Express', 'Python Flask', 'FastAPI', 'REST APIs', 'PostgreSQL', 'MongoDB'] },
  { icon: '∑', title: 'Mathematics', skills: ['Linear Algebra', 'Calculus', 'Statistics', 'Probability', 'Discrete Math'] },
  { icon: '▣', title: 'Data Analysis', skills: ['NumPy', 'Matplotlib', 'Seaborn', 'SQL', 'Excel',] },
- { icon: '⬡', title: 'LLMs', skills: ['OpenAI API', 'LangChain', 'Prompt Engineering', 'Fine-tuning', 'Claude API'] },  
+ { icon: '⬡', title: 'LLMs', skills: ['OpenAI API', 'LangChain', 'Prompt Engineering', 'Fine-tuning', 'Claude API', 'RAG', 'Agentic AI'] },  
  { icon: '⊘', title: 'Cybersecurity', skills: ['CIA Triad', 'Authentication, Authorisation & Accounting', 'The McCumber Cube', 'Linux', 'OSI Layers', 'NIST Cybersecurity Framework',  
     'Risk Management', 'Web Application Security', 'Cryptography']}, 
 ]
