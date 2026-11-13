@@ -19,7 +19,7 @@
 
 .hud-edge {
   position: absolute;
-  background: var(--cp-blue);
+  background: var(--cp-red);
   opacity: 0.85;
 }
 
@@ -51,7 +51,7 @@
   position: absolute;
   width: 54px;
   height: 54px;
-  border: 2px solid var(--cp-blue);
+  border: 2px solid var(--cp-red);
   opacity: 0.9;
 }
 
@@ -96,8 +96,8 @@
   position: absolute;
   font-size: 0.56rem;
   letter-spacing: 0.26em;
-  color: var(--cp-blue);
-  opacity: 0.5;
+  color: var(--cp-red);
+  opacity: 0.55;
   white-space: nowrap;
 }
 
@@ -122,7 +122,7 @@
   top: 50%;
   transform: rotate(-90deg) translateX(-50%);
   transform-origin: left center;
-  color: var(--cp-cyan);
+  color: var(--cp-blue);
 }
 
 .hud-label-right {
@@ -130,7 +130,7 @@
   top: 50%;
   transform: rotate(90deg) translateX(50%);
   transform-origin: right center;
-  color: var(--cp-cyan);
+  color: var(--cp-blue);
 }
 
 /* The frame steals real estate, so it thins out and sheds its

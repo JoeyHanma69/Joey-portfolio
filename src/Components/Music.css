@@ -24,7 +24,7 @@
 } 
 
 .band-card:hover { transform: translateY(-5px); box-shadow: 0 8px 32px
-rgba(0, 240, 255, 0.28); } 
+rgba(90, 216, 230, 0.28); } 
 
 .band-cover {
     height: 180px;

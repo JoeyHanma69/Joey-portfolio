@@ -32,7 +32,7 @@
 
 .cert-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 240, 255, 0.25);
+    box-shadow: 0 8px 30px rgba(90, 216, 230, 0.25);
 }
 
 .cert-card:hover::before { transform: scaleX(1); }
@@ -155,7 +155,7 @@
     max-height: 90vh;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 60px rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 60px rgba(90, 216, 230, 0.4);
 }
 
 .cert-modal-header {

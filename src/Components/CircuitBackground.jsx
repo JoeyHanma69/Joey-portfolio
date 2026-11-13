@@ -7,10 +7,10 @@ const TRACE_COUNT = 22;      // circuit paths drawn across the field
 const TRACE_MIN_SEGS = 3;
 const TRACE_MAX_SEGS = 7;
 const PULSE_SPEED = 46;      // px per second a pulse travels
-const ALERT_CHANCE = 0.3;    // share of pulses that run red instead of blue
+const ALERT_CHANCE = 0.55;   // share of pulses that run red instead of blue
 
-const BLUE = '77, 219, 255';
-const RED  = '255, 42, 81';
+const BLUE = '90, 216, 230';   // data pulses
+const RED  = '255, 45, 74';    // board structure
 
 const rand = (a, b) => a + Math.random() * (b - a);
 const pick = arr => arr[(Math.random() * arr.length) | 0];
@@ -89,7 +89,7 @@ export default function CircuitBackground() {
 
         const drawGrid = () => {
             ctx.lineWidth = 1;
-            ctx.strokeStyle = `rgba(${BLUE}, 0.045)`;
+            ctx.strokeStyle = `rgba(${RED}, 0.05)`;
             ctx.beginPath();
             for (let x = 0; x <= w; x += GRID) {
                 ctx.moveTo(x + 0.5, 0);

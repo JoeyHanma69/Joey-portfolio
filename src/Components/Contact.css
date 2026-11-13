@@ -39,7 +39,7 @@ center; }
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--red-bright);
-    box-shadow: 0 2px 12px rgba(0, 240, 255, 0.2);
+    box-shadow: 0 2px 12px rgba(90, 216, 230, 0.2);
 }
 .form-group textarea { min-height: 140px; }
 .btn-primary.sent { background: #1a4a00 !important; border-color: #2a6a00 !

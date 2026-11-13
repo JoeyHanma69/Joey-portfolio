@@ -23,12 +23,12 @@
     background:
         /* Depth wash: the circuit field shows through, dimmed toward the
            copy column and deepened into blue at the corners. */
-        radial-gradient(ellipse 58% 70% at 26% 50%, rgba(4, 6, 11, 0.92) 0%,
-                        rgba(4, 6, 11, 0.6) 46%, transparent 76%),
-        radial-gradient(ellipse at 100% 0%, rgba(0, 179, 196, 0.12), transparent 52%),
-        radial-gradient(ellipse at 0% 100%, rgba(255, 42, 81, 0.09), transparent 48%),
-        linear-gradient(to bottom, rgba(4, 6, 11, 0.7) 0%, transparent 24%),
-        linear-gradient(to top, var(--bg) 0%, rgba(4, 6, 11, 0.8) 10%, transparent 36%);
+        radial-gradient(ellipse 58% 70% at 26% 50%, rgba(18, 7, 9, 0.92) 0%,
+                        rgba(18, 7, 9, 0.6) 46%, transparent 76%),
+        radial-gradient(ellipse at 100% 0%, rgba(255, 45, 74, 0.14), transparent 52%),
+        radial-gradient(ellipse at 0% 100%, rgba(90, 216, 230, 0.08), transparent 48%),
+        linear-gradient(to bottom, rgba(18, 7, 9, 0.7) 0%, transparent 24%),
+        linear-gradient(to top, var(--bg) 0%, rgba(18, 7, 9, 0.8) 10%, transparent 36%);
 }
 
 /* ── Content Layer ── */
@@ -157,7 +157,7 @@
 }
 
 .hero-avatar.berserker-mode {
-    box-shadow: 0 0 60px rgba(0, 240, 255, 0.7), 0 0 120px rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 60px rgba(90, 216, 230, 0.7), 0 0 120px rgba(90, 216, 230, 0.3);
     border-color: var(--red-bright);
 }
 
@@ -167,7 +167,7 @@
     content: '';
     position: absolute;
     inset: 8px;
-    border: 1px solid rgba(0, 240, 255, 0.3);
+    border: 1px solid rgba(90, 216, 230, 0.3);
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
     pointer-events: none;
     z-index: 1;
@@ -249,7 +249,7 @@
 
 .hero-name {
     letter-spacing: 0.01em;
-    text-shadow: 0 0 44px rgba(77, 219, 255, 0.18);
+    text-shadow: 0 0 46px rgba(255, 45, 74, 0.22);
 }
 
 .hero-tag {
@@ -271,7 +271,7 @@
     width: 100%;
     max-width: 420px;
     height: 1px;
-    background: linear-gradient(90deg, var(--cp-blue) 0 56px, rgba(77, 219, 255, 0.16) 56px);
+    background: linear-gradient(90deg, var(--cp-red) 0 56px, rgba(255, 45, 74, 0.18) 56px);
 }
 
 .hero-bio { font-weight: 400; }
@@ -293,7 +293,7 @@
     content: '';
     position: absolute;
     inset: -12px -12px -12px 12px;
-    border: 1px solid rgba(0, 240, 255, 0.45);
+    border: 1px solid rgba(90, 216, 230, 0.5);
     clip-path: var(--chamfer-both);
     pointer-events: none;
     z-index: -1;
@@ -307,8 +307,8 @@
     right: -12px;
     width: 26px;
     height: 26px;
-    border-top: 2px solid var(--cp-blue);
-    border-right: 2px solid var(--cp-blue);
+    border-top: 2px solid var(--cp-red);
+    border-right: 2px solid var(--cp-red);
     pointer-events: none;
 }
 
@@ -368,16 +368,16 @@
     height: 160px;
     background: linear-gradient(to bottom,
                 transparent,
-                rgba(77, 219, 255, 0.07) 48%,
-                rgba(77, 219, 255, 0.16) 50%,
-                rgba(77, 219, 255, 0.07) 52%,
+                rgba(90, 216, 230, 0.08) 48%,
+                rgba(90, 216, 230, 0.2) 50%,
+                rgba(90, 216, 230, 0.08) 52%,
                 transparent);
     animation: hero-scan-pass 6.5s linear infinite;
 }
 
 .hero-scan::after {
     height: 3px;
-    background: linear-gradient(to bottom, transparent, rgba(255, 42, 81, 0.5), transparent);
+    background: linear-gradient(to bottom, transparent, rgba(255, 45, 74, 0.55), transparent);
     animation: hero-scan-pass 11s linear infinite 2.4s;
 }
 
@@ -398,5 +398,5 @@
 .hero-role,
 .hero-bio,
 .hero-tag {
-    text-shadow: 0 2px 12px rgba(4, 6, 11, 0.9);
+    text-shadow: 0 2px 12px rgba(18, 7, 9, 0.9);
 }
