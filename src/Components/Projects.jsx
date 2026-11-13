@@ -23,6 +23,15 @@ const projectData = {
             name: 'Job Application Tracker',
             desc: 'A full-stack CRUD app to track job applications through a status pipeline — with Google OAuth, automated email reminders via Resend, and a stats dashboard.',
             links:  [{ label: 'GitHub', url: 'https://github.com/JoeyHanma69/job-tracker' }],
+        },
+        {
+            tag: 'Web · JavaScript · Vercel Functions · Web Speech API · SEO',
+            name: 'Quick & Easy Mandarin',
+            desc: 'A live site for a Melbourne Mandarin tutoring business, built with no framework and no build step. Click-to-hear Mandarin phrases through the Web Speech API, a five-question quiz with scoring, an FAQ accordion, and a serverless contact form protected by a honeypot field and a submission-timing check. Every animation switches off for visitors who ask for reduced motion.',
+            links: [
+                { label: 'Live Site', url: 'https://qe-mandarin-website.vercel.app' },
+                { label: 'GitHub', url: 'https://github.com/JoeyHanma69/qe-mandarin-website' },
+            ],
         }
         // Add more objects here...
     ],
@@ -41,6 +50,12 @@ const projectData = {
             }, 
     ],
     ai: [
+        {
+        tag: 'AI · Computer Vision · Qwen3.5-9B · Prompt Engineering · Evaluation',
+        name: 'AI Guitar Chord Instructor (Research Prototype)',
+        desc: 'A vision-model pipeline that checks a learner’s fretting hand against a reference fingering: pick a target chord, photograph the hand, and a guarded tutor prompt returns the exact string and fret to correct. Adding a single rule — never invent a mistake, say so when the chord is right — took tutor precision from 0.50 to 1.00 across the test set. Hand reading stayed the weak link at under half of finger positions, which is the result the project reports rather than hides.',
+        links: [],
+        },
         {
         tag: 'AI · Full-Stack · Tour Management',
         name: 'Tourdesk Application',
@@ -78,9 +93,17 @@ const projectData = {
         links: [{ label: 'GitHub', url: 'https://github.com/JoeyHanma69/Artificial-Intelligence-Side-Projects/tree/main/Detection-Spam-Emails' }]
         }
     ],
+    security: [
+        {
+        tag: 'Cybersecurity · Risk Assessment · ISO/IEC 27005 · NIST SP 800-30',
+        name: 'AI Agent Threat Assessment (ClawdBot / OpenClaw)',
+        desc: 'A formal risk assessment of piloting a self-hosted AI agent platform at La Trobe University, run through ISO/IEC 27005:2022 and NIST SP 800-30. Valued the exposed assets — integration credentials and API tokens, the host execution environment, staff SSO, institutional documents — then rated five scenarios covering indirect prompt injection, malicious community skills, excessive tool permissions and unauthorised disclosure. Credential theft rated Critical and three further scenarios High; centralised skill vetting, least-privilege tool scoping, data minimisation and audit logging bring four of the five down to Medium or Low.',
+        links: [],
+        },
+    ],
 }
-const tabs = ['software', 'games', 'ai']
-const tabLabels = { software: '> software/', games: '> games/', ai: '> ai/' }
+const tabs = ['software', 'games', 'ai', 'security']
+const tabLabels = { software: '> software/', games: '> games/', ai: '> ai/', security: '> security/' }
 
 const linkIcon = (label) => {
     const l = label.toLowerCase();
