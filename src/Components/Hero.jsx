@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import EyeBackground from './EyeBackground';
 import './Hero.css';
 
 const BIO_PLAIN = "I design and build software systems that solve real problems — from full-stack web applications and AI-powered tools to game engines. I bring structured thinking, technical depth, and a drive to ship products that make an impact.";
@@ -64,6 +65,9 @@ export default function Hero() {
             >
                 <source src="https://res.cloudinary.com/dfonotyfb/video/upload/v1775585556/dds3_1_rqhg7x.mp4" type="video/mp4" />
             </video>
+
+            {/* The eye, parked right of the copy column */}
+            <EyeBackground />
 
             {/* Multi-layer cinematic overlay — parallaxes on scroll */}
             <div className="hero-overlay" ref={bgRef} />

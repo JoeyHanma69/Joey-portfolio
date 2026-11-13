@@ -3,23 +3,33 @@
   height: 100%;
 }
 
-/* ── Site background layer ──────────────────────────────────────
-   The eye sits behind every section, so it is fixed, never takes
-   pointer events, and leaves its own stacking level at 0. Sections
-   are lifted to z-index 1 in index.css so their copy stays on top.
+/* ── Hero backdrop ──────────────────────────────────────────────
+   The eye used to be fixed behind the whole document, which put every
+   paragraph on the page on top of moving fire. Piling on scrims only
+   made the eye muddy without making the text clean.
+
+   So it is scoped to the hero and parked off to the right instead:
+   the copy column keeps a near-black background and full contrast,
+   the eye burns at full strength because nothing has to be darkened
+   over it, and it scrolls away with the hero rather than following
+   the reader down the page.
    ─────────────────────────────────────────────────────────────── */
 
 .evil-eye-layer {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: -12%;
+  bottom: -12%;
+  /* Starts past the copy column and runs off the right edge. The copy
+     is capped below so the two never share horizontal space. */
+  left: 52%;
+  right: -12%;
   z-index: 0;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 1.2s ease;
+  transition: opacity 1.4s ease;
 }
 
-/* Pulled back from full strength: at 1.0 the burn eats the hero copy. */
-.evil-eye-layer.visible { opacity: 0.78; }
+.evil-eye-layer.visible { opacity: 1; }
 
 .evil-eye-layer canvas {
   display: block;
@@ -27,8 +37,21 @@
   height: 100%;
 }
 
-/* With the eye on, it becomes the hero's backdrop in place of the
-   video, and the hero overlay thins out so the burn reads through. */
+/* A short fade on the inner edge so the eye dissolves into the page
+   instead of ending on a hard rectangle beside the text. */
+.evil-eye-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to right,
+                              var(--bg) 0%,
+                              rgba(8, 6, 6, 0.5) 8%,
+                              transparent 20%);
+}
+
+/* The eye stands in for the video, so the overlay only has to do the
+   top and bottom letterboxing that blends the hero into the page. */
 body.eye-on .hero-video { display: none; }
 
 body.eye-on .hero {
@@ -36,45 +59,40 @@ body.eye-on .hero {
   z-index: 1;
 }
 
+/* Hard stop for the copy short of where the eye begins, so no line ever
+   has to be read against the fire. */
+body.eye-on .hero-text { max-width: 510px; }
+
 body.eye-on .hero .hero-overlay {
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.74) 0%, rgba(0, 0, 0, 0.24) 24%, transparent 48%),
-    linear-gradient(to top, var(--bg) 0%, rgba(0, 0, 0, 0.84) 12%, transparent 44%),
-    /* Heavier left wall: the copy column has to stay readable with the
-       eye burning directly behind it. */
-    linear-gradient(to right, rgba(0, 0, 0, 0.93) 0%, rgba(0, 0, 0, 0.86) 30%,
-                    rgba(0, 0, 0, 0.64) 52%, rgba(0, 0, 0, 0.26) 70%, transparent 86%);
+    linear-gradient(to bottom, rgba(8, 6, 6, 0.55) 0%, transparent 26%),
+    linear-gradient(to top, var(--bg) 0%, rgba(8, 6, 6, 0.75) 10%, transparent 34%);
 }
 
-/* A soft scrim that travels with the copy itself, so the body text keeps
-   its contrast wherever the layout puts it. */
-body.eye-on .hero-text {
-  position: relative;
-}
-
-body.eye-on .hero-text::before {
-  content: '';
-  position: absolute;
-  inset: -2rem -4rem -2rem -3rem;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(ellipse 72% 62% at 32% 50%,
-                              rgba(0, 0, 0, 0.72) 0%,
-                              rgba(0, 0, 0, 0.42) 48%,
-                              transparent 78%);
-}
-
-/* The hero copy sits directly over the burn, so it carries its own
-   shadow in every theme while the eye is lit. */
+/* Nothing sits over the burn now, so the copy needs only a light shadow
+   for the few places the glow spills left. */
 body.eye-on .hero-name,
 body.eye-on .hero-role,
 body.eye-on .hero-bio,
 body.eye-on .hero-tag {
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 42px rgba(0, 0, 0, 0.75);
+  text-shadow: 0 2px 10px rgba(8, 6, 6, 0.85);
+}
+
+@media (max-width: 1200px) {
+  /* Less room to divide, so the eye slides further out and dims a little
+     where the portrait starts crowding it. */
+  .evil-eye-layer {
+    left: 58%;
+    right: -22%;
+  }
+
+  .evil-eye-layer.visible { opacity: 0.85; }
+
+  body.eye-on .hero-text { max-width: 430px; }
 }
 
 @media (max-width: 767px) {
   /* One fullscreen fragment shader per frame is not worth it on a
-     phone; the themes all read fine without it. */
+     phone, and there is no spare column here at all. */
   .evil-eye-layer { display: none; }
 }
