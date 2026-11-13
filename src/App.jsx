@@ -17,6 +17,7 @@ import CursorTrail from './Components/CursorTrail';
 import ClickShockwave from './Components/ClickShockwave';
 import useScrollReveal from './useScrollReveal';
 import useMagnetic from './useMagnetic';
+import useScramble from './useScramble';
 import './index.css';
 
 
@@ -24,6 +25,7 @@ export default function App() {
   const [splashDone, setSplashDone] = useState(false); 
   useScrollReveal();
   useMagnetic();
+  useScramble();
   return ( 
     <> 
     {!splashDone && <Splash onDone={() => setSplashDone(true)} /> }  

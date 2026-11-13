@@ -19,7 +19,7 @@
 
 .hud-edge {
   position: absolute;
-  background: var(--cp-yellow);
+  background: var(--cp-blue);
   opacity: 0.85;
 }
 
@@ -51,7 +51,7 @@
   position: absolute;
   width: 54px;
   height: 54px;
-  border: 2px solid var(--cp-yellow);
+  border: 2px solid var(--cp-blue);
   opacity: 0.9;
 }
 
@@ -96,7 +96,7 @@
   position: absolute;
   font-size: 0.56rem;
   letter-spacing: 0.26em;
-  color: var(--cp-yellow);
+  color: var(--cp-blue);
   opacity: 0.5;
   white-space: nowrap;
 }

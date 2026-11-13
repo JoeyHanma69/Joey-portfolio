@@ -7,10 +7,10 @@ const TRACE_COUNT = 22;      // circuit paths drawn across the field
 const TRACE_MIN_SEGS = 3;
 const TRACE_MAX_SEGS = 7;
 const PULSE_SPEED = 46;      // px per second a pulse travels
-const ALERT_CHANCE = 0.16;   // share of pulses that run red instead of teal
+const ALERT_CHANCE = 0.3;    // share of pulses that run red instead of blue
 
-const TEAL = '0, 229, 221';
-const RED = '255, 42, 81';
+const BLUE = '77, 219, 255';
+const RED  = '255, 42, 81';
 
 const rand = (a, b) => a + Math.random() * (b - a);
 const pick = arr => arr[(Math.random() * arr.length) | 0];
@@ -89,7 +89,7 @@ export default function CircuitBackground() {
 
         const drawGrid = () => {
             ctx.lineWidth = 1;
-            ctx.strokeStyle = `rgba(${TEAL}, 0.045)`;
+            ctx.strokeStyle = `rgba(${BLUE}, 0.045)`;
             ctx.beginPath();
             for (let x = 0; x <= w; x += GRID) {
                 ctx.moveTo(x + 0.5, 0);
@@ -104,14 +104,14 @@ export default function CircuitBackground() {
 
         const drawTrace = t => {
             ctx.lineWidth = 1;
-            ctx.strokeStyle = `rgba(${t.alert ? RED : TEAL}, 0.17)`;
+            ctx.strokeStyle = `rgba(${t.alert ? RED : BLUE}, 0.17)`;
             ctx.beginPath();
             ctx.moveTo(t.pts[0].x, t.pts[0].y);
             for (let i = 1; i < t.pts.length; i++) ctx.lineTo(t.pts[i].x, t.pts[i].y);
             ctx.stroke();
 
             // Solder pads at every turn.
-            ctx.fillStyle = `rgba(${t.alert ? RED : TEAL}, 0.3)`;
+            ctx.fillStyle = `rgba(${t.alert ? RED : BLUE}, 0.3)`;
             for (const p of t.pts) ctx.fillRect(p.x - 1.5, p.y - 1.5, 3, 3);
         };
 
@@ -119,7 +119,7 @@ export default function CircuitBackground() {
             const dist = ((time * t.speed) / 1000 + t.offset * t.total) % t.total;
             const head = pointAt(t, dist);
             const tail = pointAt(t, Math.max(0, dist - 26));
-            const rgb = t.alert ? RED : TEAL;
+            const rgb = t.alert ? RED : BLUE;
 
             const grad = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y);
             grad.addColorStop(0, `rgba(${rgb}, 0)`);

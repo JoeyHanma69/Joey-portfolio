@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import EyeBackground from './EyeBackground';
 import './Hero.css';
 
 const BIO_PLAIN = "I design and build software systems that solve real problems — from full-stack web applications and AI-powered tools to game engines. I bring structured thinking, technical depth, and a drive to ship products that make an impact.";
@@ -55,21 +54,10 @@ export default function Hero() {
 
     return (
         <section id="about" className="hero">
-            {/* Cinematic background video */}
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="hero-video"
-            >
-                <source src="https://res.cloudinary.com/dfonotyfb/video/upload/v1775585556/dds3_1_rqhg7x.mp4" type="video/mp4" />
-            </video>
+            {/* Scanning bands that sweep the hero, over the circuit field */}
+            <div className="hero-scan" />
 
-            {/* The eye, parked right of the copy column */}
-            <EyeBackground />
-
-            {/* Multi-layer cinematic overlay — parallaxes on scroll */}
+            {/* Depth wash — parallaxes on scroll */}
             <div className="hero-overlay" ref={bgRef} />
 
             <div className="hero-content">
@@ -88,8 +76,8 @@ export default function Hero() {
                         }
                     </p>
                     <div className="hero-cta" data-reveal style={{ '--reveal-delay': '340ms' }}>
-                        <a href="#projects" className="btn-primary" data-magnetic>See My Work</a>
-                        <a href="#contact" className="btn-secondary" data-magnetic>Get In Touch</a>
+                        <a href="#projects" className="btn-primary" data-magnetic data-scramble>See My Work</a>
+                        <a href="#contact" className="btn-secondary" data-magnetic data-scramble>Get In Touch</a>
                     </div>
                 </div>
                 <div className="hero-image-wrap" data-reveal style={{ '--reveal-delay': '420ms' }} onClick={() => setBerserker(b => !b)}>

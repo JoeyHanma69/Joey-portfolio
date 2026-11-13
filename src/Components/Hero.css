@@ -11,18 +11,7 @@
     padding: 8rem 2rem 6rem;
 }
 
-/* ── Background Video ── */
-.hero-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    pointer-events: none;
-    /* Slight darkening so overlay does the heavy lifting */
-    filter: brightness(0.75) saturate(0.85);
-}
+
 
 /* ── Cinematic Overlay (parallaxes on scroll) ── */
 .hero-overlay {
@@ -32,42 +21,14 @@
     will-change: transform;
     pointer-events: none;
     background:
-        /* Top letterbox fade */
-        linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.80) 0%,
-            rgba(0, 0, 0, 0.30) 18%,
-            transparent 35%
-        ),
-        /* Bottom strong fade — blends seamlessly into site bg */
-        linear-gradient(to top,
-            var(--bg) 0%,
-            rgba(8, 0, 0, 0.92) 8%,
-            rgba(4, 0, 0, 0.70) 18%,
-            transparent 38%
-        ),
-        /* Left-side frame — pushes eye to text column */
-        linear-gradient(to right,
-            rgba(0, 0, 0, 0.55) 0%,
-            rgba(0, 0, 0, 0.20) 28%,
-            transparent 50%
-        ),
-        /* Right-side gentle vignette */
-        linear-gradient(to left,
-            rgba(0, 0, 0, 0.30) 0%,
-            transparent 40%
-        ),
-        /* Red brand vignette — bottom-left corner */
-        radial-gradient(ellipse at 0% 100%,
-            rgba(100, 0, 0, 0.28) 0%,
-            transparent 50%
-        ),
-        /* Red brand vignette — top-right accent */
-        radial-gradient(ellipse at 100% 0%,
-            rgba(80, 0, 0, 0.18) 0%,
-            transparent 45%
-        ),
-        /* Overall dark tint for guaranteed readability */
-        rgba(0, 0, 0, 0.22);
+        /* Depth wash: the circuit field shows through, dimmed toward the
+           copy column and deepened into blue at the corners. */
+        radial-gradient(ellipse 58% 70% at 26% 50%, rgba(4, 6, 11, 0.92) 0%,
+                        rgba(4, 6, 11, 0.6) 46%, transparent 76%),
+        radial-gradient(ellipse at 100% 0%, rgba(0, 179, 196, 0.12), transparent 52%),
+        radial-gradient(ellipse at 0% 100%, rgba(255, 42, 81, 0.09), transparent 48%),
+        linear-gradient(to bottom, rgba(4, 6, 11, 0.7) 0%, transparent 24%),
+        linear-gradient(to top, var(--bg) 0%, rgba(4, 6, 11, 0.8) 10%, transparent 36%);
 }
 
 /* ── Content Layer ── */
@@ -288,7 +249,7 @@
 
 .hero-name {
     letter-spacing: 0.01em;
-    text-shadow: 0 0 44px rgba(252, 238, 10, 0.18);
+    text-shadow: 0 0 44px rgba(77, 219, 255, 0.18);
 }
 
 .hero-tag {
@@ -302,7 +263,7 @@
 .hero-role {
     font-size: clamp(0.7rem, 1.25vw, 0.9rem);
     letter-spacing: 0.22em;
-    color: var(--cp-yellow);
+    color: var(--cp-blue);
     white-space: nowrap;
 }
 
@@ -310,11 +271,11 @@
     width: 100%;
     max-width: 420px;
     height: 1px;
-    background: linear-gradient(90deg, var(--cp-yellow) 0 56px, rgba(252, 238, 10, 0.16) 56px);
+    background: linear-gradient(90deg, var(--cp-blue) 0 56px, rgba(77, 219, 255, 0.16) 56px);
 }
 
 .hero-bio { font-weight: 400; }
-.hero-bio strong { color: var(--cp-yellow); font-weight: 600; }
+.hero-bio strong { color: var(--cp-blue); font-weight: 600; }
 
 /* ── Portrait: a HUD plate rather than a bare photo ── */
 
@@ -346,8 +307,8 @@
     right: -12px;
     width: 26px;
     height: 26px;
-    border-top: 2px solid var(--cp-yellow);
-    border-right: 2px solid var(--cp-yellow);
+    border-top: 2px solid var(--cp-blue);
+    border-right: 2px solid var(--cp-blue);
     pointer-events: none;
 }
 
@@ -363,7 +324,7 @@
 .hero-image-wrap:hover .avatar-hint { color: var(--cp-cyan); }
 
 .hero-scroll-line {
-    background: linear-gradient(to bottom, transparent, var(--cp-yellow));
+    background: linear-gradient(to bottom, transparent, var(--cp-blue));
 }
 
 .hero-scroll-label {
@@ -378,4 +339,64 @@
         white-space: normal;
         letter-spacing: 0.16em;
     }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Hero scan bands — the horizontal sweep that runs down a
+   breach-protocol screen. Sits over the circuit field, under the
+   copy, and carries one blue pass and one slower red one.
+   ══════════════════════════════════════════════════════════════ */
+
+.hero-scan {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hero-scan::before,
+.hero-scan::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.hero-scan::before {
+    height: 160px;
+    background: linear-gradient(to bottom,
+                transparent,
+                rgba(77, 219, 255, 0.07) 48%,
+                rgba(77, 219, 255, 0.16) 50%,
+                rgba(77, 219, 255, 0.07) 52%,
+                transparent);
+    animation: hero-scan-pass 6.5s linear infinite;
+}
+
+.hero-scan::after {
+    height: 3px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 42, 81, 0.5), transparent);
+    animation: hero-scan-pass 11s linear infinite 2.4s;
+}
+
+@keyframes hero-scan-pass {
+    0%   { top: -170px; opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-scan { display: none; }
+}
+
+/* The hero no longer has a video behind it, so the copy carries only a
+   light shadow against the circuit field. */
+.hero-name,
+.hero-role,
+.hero-bio,
+.hero-tag {
+    text-shadow: 0 2px 12px rgba(4, 6, 11, 0.9);
 }

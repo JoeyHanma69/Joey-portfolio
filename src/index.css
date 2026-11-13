@@ -7,30 +7,32 @@
  
  
 :root {
-  /* Night City palette. Acid yellow carries every primary action, cyan
-     every secondary one, and the red is reserved for alerts so it stays
-     meaningful. The --red-* names are kept because fourteen component
-     stylesheets already reach for them; only the values moved. */
-  --cp-yellow: #fcee0a;
-  --cp-cyan:   #00f0ff;
-  --cp-alert:  #ff2a51;
+  /* Night City, blue-and-red cut. Light blue carries structure and every
+     primary action; red is the alert channel and the one warm accent.
+     The --red-* names stay because fourteen component stylesheets still
+     reach for them; only the values moved. */
+  --cp-blue:  #4ddbff;   /* light blue, primary */
+  --cp-cyan:  #00e5ff;   /* saturated edge, hairlines and chips */
+  --cp-teal:  #00b3c4;   /* recessed structure */
+  --cp-red:   #ff2a51;   /* alert, and the only warm note */
+  --cp-alert: #ff2a51;
 
-  --bg:  #050507;
-  --bg2: #0a0b0f;
-  --bg3: #11131a;
+  --bg:  #04060b;
+  --bg2: #070b13;
+  --bg3: #0d131d;
 
-  --red:        rgba(252, 238, 10, 0.45);
-  --red-bright: #fcee0a;
-  --red-glow:   rgba(252, 238, 10, 0.3);
-  --text:       #e6f1f5;
-  --text-dim:   #76858f;
-  --border:     rgba(252, 238, 10, 0.22);
+  --red:        rgba(77, 219, 255, 0.4);
+  --red-bright: #4ddbff;
+  --red-glow:   rgba(77, 219, 255, 0.3);
+  --text:       #dceef7;
+  --text-dim:   #6b8291;
+  --border:     rgba(77, 219, 255, 0.22);
 
   --mono: 'JetBrains Mono', monospace;
   --hud:  'Share Tech Mono', monospace;
 
-  /* The chamfered corner is the single most recognisable shape in the
-     game's UI, so it lives here and every surface reuses it. */
+  /* The chamfered corner is the most recognisable shape in the game's
+     UI, so it lives here and every surface reuses it. */
   --notch: 10px;
   --chamfer-br: polygon(
     0 0, 100% 0,
@@ -133,7 +135,7 @@ body {
 .section-divider { 
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, var(--cp-yellow) 0 64px, rgba(252,238,10,0.18) 64px);
+  background: linear-gradient(90deg, var(--cp-blue) 0 64px, rgba(77, 219, 255, 0.18) 64px);
   margin: 1.5rem auto 0;
 }
  
@@ -162,14 +164,14 @@ body {
 }
 
 .btn-primary {
-  background: var(--cp-yellow);
+  background: var(--cp-blue);
   color: #050507;
 }
 
 .btn-primary:hover {
-  background: #fff84a;
+  background: #8ae8ff;
   color: #050507;
-  box-shadow: 0 0 28px rgba(252, 238, 10, 0.45);
+  box-shadow: 0 0 28px rgba(77, 219, 255, 0.45);
   transform: translateY(-2px);
 }
 
@@ -244,7 +246,7 @@ body {
 }
 
 
-/* Sections sit above the fixed EvilEye background layer (z-index 0).
+/* Sections sit above the fixed circuit field (z-index 0).
    The floating controls and the cert modal already live far higher. */
 .about-section,
 .projects-section,
@@ -314,7 +316,7 @@ footer {
   border: none;
   border-radius: 0;
   clip-path: var(--chamfer-br);
-  box-shadow: inset 0 0 0 1px rgba(252, 238, 10, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(77, 219, 255, 0.16);
   transition: box-shadow 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -322,7 +324,7 @@ footer {
 .cert-card:hover,
 .band-card:hover,
 .skill-category:hover {
-  box-shadow: inset 0 0 0 1px var(--cp-yellow), 0 0 32px rgba(252, 238, 10, 0.14);
+  box-shadow: inset 0 0 0 1px var(--cp-blue), 0 0 32px rgba(77, 219, 255, 0.14);
   transform: translateY(-4px);
 }
 
@@ -337,7 +339,7 @@ footer {
   left: 0;
   height: 2px;
   width: 100%;
-  background: linear-gradient(90deg, var(--cp-yellow), var(--cp-cyan));
+  background: linear-gradient(90deg, var(--cp-blue), var(--cp-cyan));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -370,7 +372,7 @@ footer {
 .stat-value {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
-  color: var(--cp-yellow);
+  color: var(--cp-blue);
 }
 
 .stat-label,
@@ -386,9 +388,9 @@ footer {
 }
 
 .timeline-dot {
-  background: var(--cp-yellow);
-  border-color: var(--cp-yellow);
-  box-shadow: 0 0 12px rgba(252, 238, 10, 0.7);
+  background: var(--cp-blue);
+  border-color: var(--cp-blue);
+  box-shadow: 0 0 12px rgba(77, 219, 255, 0.7);
 }
 
 .project-name,
@@ -406,7 +408,7 @@ footer {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--cp-yellow);
+  color: var(--cp-blue);
 }
 
 .nav-links a {
@@ -421,13 +423,13 @@ footer {
 }
 
 .nav-links a:hover {
-  color: var(--cp-yellow);
-  border-bottom-color: var(--cp-yellow);
+  color: var(--cp-blue);
+  border-bottom-color: var(--cp-blue);
 }
 
 .navbar {
   background: rgba(5, 5, 7, 0.82);
-  border-bottom: 1px solid rgba(252, 238, 10, 0.18);
+  border-bottom: 1px solid rgba(77, 219, 255, 0.18);
   backdrop-filter: blur(12px);
 }
 
@@ -440,9 +442,9 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-  border-color: var(--cp-yellow);
+  border-color: var(--cp-blue);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(252, 238, 10, 0.16);
+  box-shadow: 0 0 0 2px rgba(77, 219, 255, 0.16);
 }
 
 .tab-btn {
@@ -456,11 +458,11 @@ input:focus, textarea:focus {
 
 footer {
   background: #050507 !important;
-  border-top: 1px solid rgba(252, 238, 10, 0.18) !important;
+  border-top: 1px solid rgba(77, 219, 255, 0.18) !important;
   font-family: var(--hud) !important;
   letter-spacing: 0.22em !important;
 }
 
 ::-webkit-scrollbar-track { background: #050507; }
-::-webkit-scrollbar-thumb { background: var(--cp-yellow); border-radius: 0; }
+::-webkit-scrollbar-thumb { background: var(--cp-blue); border-radius: 0; }
 ::-webkit-scrollbar-thumb:hover { background: var(--cp-cyan); }
