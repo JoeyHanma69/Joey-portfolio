@@ -101,3 +101,23 @@ important; }
     border-color: var(--red);
     box-shadow: 0 0 12px var(--red-glow);
 }
+
+/* Sits under the compose button and explains where the message goes.
+   The form hands off to the visitor's mail client rather than sending,
+   so saying nothing would be its own small deception. */
+.contact-note {
+    margin-top: 0.9rem;
+    font-family: var(--hud);
+    font-size: 0.62rem;
+    line-height: 1.7;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+}
+
+.contact-note a {
+    color: var(--cp-blue);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(90, 216, 230, 0.5);
+}
+
+.contact-note a:hover { color: var(--cp-cyan); }
