@@ -70,8 +70,9 @@ export default function About() {
                             relentless iteration. Also speaks Chinese.
                         </p>
                         <p className="about-bio">
-                            Currently pursuing a Graduate Program in IT at Swinburne — aligning technical depth
-                            with <strong>service desk, IT support, and systems engineering</strong> roles.
+                            Currently pursuing a Masters of Artificial Intelligence in La Trobe University — aligning technical depth
+                            with Artificial Intelligence work, <strong>LLMs</strong>, <strong>Machine Learning & Deep Learning</strong>.  
+                            And upcoming subjects.
                         </p>
 
                         <div className="about-stats">
