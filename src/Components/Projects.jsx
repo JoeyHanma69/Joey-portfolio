@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './Projects.css'
+import './stylesheet/Projects.css'
 import SlashReveal from './SlashReveal';
 import { FaGithub, FaPlay, FaExternalLinkAlt } from 'react-icons/fa';
 

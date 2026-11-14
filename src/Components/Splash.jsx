@@ -1,5 +1,5 @@
 import {useEffect } from 'react'; 
-import './Splash.css'; 
+import './stylesheet/Splash.css'; 
 
 export default function Splash( {onDone}) { 
     useEffect(() => 

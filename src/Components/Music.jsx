@@ -1,4 +1,4 @@
-import './Music.css';
+import './stylesheet/Music.css';
 import SlashReveal from './SlashReveal';
 
 const bands = [

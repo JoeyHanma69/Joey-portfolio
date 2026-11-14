@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './HudWidgets.css';
+import './stylesheet/HudWidgets.css';
 
 /* Decorative breach-protocol readouts, lifted from the reference HUD:
    a segmented loading bar, an alert plate, a barcode and a data log.

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './HudFrame.css';
+import './stylesheet/HudFrame.css';
 
 /* The binary strings the game scatters along its UI edges. Generated once
    per mount rather than hardcoded so the frame never reads as a fixed

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './Contact.css'
+import './stylesheet/Contact.css'
 import SlashReveal from './SlashReveal';
 export default function Contact() {
     const [submitted, setSubmitted] = useState(false)

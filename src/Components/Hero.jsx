@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './Hero.css';
+import './stylesheet/Hero.css';
 
 const BIO_PLAIN = "I design and build software systems that solve real problems — from full-stack web applications and AI-powered tools to game engines. I bring structured thinking, technical depth, and a drive to ship products that make an impact.";
 

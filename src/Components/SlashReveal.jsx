@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './SlashReveal.css';
+import './stylesheet/SlashReveal.css';
 
 export default function SlashReveal() {
     const ref = useRef(null);

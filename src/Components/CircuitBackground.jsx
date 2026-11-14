@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './CircuitBackground.css';
+import './stylesheet/CircuitBackground.css';
 
 /* ── Tunables ──────────────────────────────────────────────────── */
 const GRID = 38;             // px between grid lines

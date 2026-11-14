@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './ClickShockwave.css';
+import './stylesheet/ClickShockwave.css';
 
 export default function ClickShockwave() {
     const [waves, setWaves] = useState([]);

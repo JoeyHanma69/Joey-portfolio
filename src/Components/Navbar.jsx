@@ -1,4 +1,4 @@
-import './Navbar.css'
+import './stylesheet/Navbar.css'
 
 const links = [
     { label: 'About',    href: '#background' },

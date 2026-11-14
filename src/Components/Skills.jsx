@@ -1,4 +1,4 @@
-import './Skills.css';
+import './stylesheet/Skills.css';
 import SlashReveal from './SlashReveal';
  
 const skillCategories = [
