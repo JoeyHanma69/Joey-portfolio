@@ -121,3 +121,16 @@ important; }
 }
 
 .contact-note a:hover { color: var(--cp-cyan); }
+
+/* Two routes out, because one of them will be blocked for someone:
+   Gmail needs a popup to open, the clipboard needs a secure context. */
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.contact-note strong {
+    color: var(--cp-blue);
+    font-weight: 400;
+}
