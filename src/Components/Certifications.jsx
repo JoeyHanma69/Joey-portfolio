@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Certifications.css';
+import './stylesheet/Certifications.css';
 import SlashReveal from './SlashReveal';
 
 const certs = [

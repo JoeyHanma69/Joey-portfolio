@@ -1,4 +1,4 @@
-import './About.css';
+import './stylesheet/About.css';
 import SlashReveal from './SlashReveal';
 
 const timeline = [ 
