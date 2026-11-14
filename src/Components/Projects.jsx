@@ -135,6 +135,7 @@ export default function Projects() {
         <div className="projects-grid" key={activeTab}>  
         {projectData[activeTab].map((project, i) => (
         <div className="project-card" key={i} data-reveal style={{ '--reveal-delay': `${i * 70}ms` }}>
+            <span className="card-scan">SCAN // {project.tag.split('·').length} MOD</span>
             <p className="project-tag">{project.tag}</p>
             <h3 className="project-name">{project.name}</h3>
             <p className="project-desc">{project.desc}</p>

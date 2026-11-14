@@ -44,6 +44,7 @@ export default function Certifications() {
                 <div className="certs-grid">
                     {certs.map((cert, i) => (
                         <div className="cert-card" key={i} data-reveal style={{ '--reveal-delay': `${i * 70}ms` }} onClick={() => setActive(cert)}>
+                            <span className="card-scan">SCAN // VERIFIED</span>
                             <div className="cert-preview">
                                 <iframe
                                     src={`${cert.pdf}#toolbar=0&navpanes=0&scrollbar=0`}

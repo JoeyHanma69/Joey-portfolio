@@ -13,8 +13,6 @@ import Particles from './Components/Particles';
 import HudFrame from './Components/HudFrame';
 import HudWidgets from './Components/HudWidgets';
 import CircuitBackground from './Components/CircuitBackground';
-import CursorTrail from './Components/CursorTrail';
-import ClickShockwave from './Components/ClickShockwave';
 import useScrollReveal from './useScrollReveal';
 import useMagnetic from './useMagnetic';
 import useScramble from './useScramble';
@@ -37,8 +35,6 @@ export default function App() {
       <HudFrame />
       <HudWidgets />
       <Particles />
-      <CursorTrail />
-      <ClickShockwave />
       <Navbar />
       <Hero />
       <About />
