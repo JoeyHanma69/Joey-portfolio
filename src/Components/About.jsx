@@ -1,7 +1,14 @@
 import './stylesheet/About.css';
 import SlashReveal from './SlashReveal';
 
-const timeline = [ 
+const timeline = [  
+    {
+        type: 'edu',
+        role: 'Master Of Artificial Intelligence',
+        place: 'La Trobe University',
+        period: '2023',
+        desc: 'spealised in AI - currently making plans for any robotics/quantum computing units',
+    },
       {
         type: 'work',
         role: 'Intern',
@@ -28,7 +35,7 @@ const timeline = [
         role: 'Bachelor of Computer Science',
         place: 'Swinburne University of Technology',
         period: '2024 – 2025',
-        desc: 'Year 3 — specialising in AI, machine learning, systems engineering, and application development.',
+        desc: 'Year 3 — specialising in AI, machine learning, systems engineering, application development, and game development.',
     },
     {
         type: 'edu',
