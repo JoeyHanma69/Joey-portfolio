@@ -13,6 +13,7 @@ import Particles from './Components/Particles';
 import HudFrame from './Components/HudFrame';
 import HudWidgets from './Components/HudWidgets';
 import CircuitBackground from './Components/CircuitBackground';
+import ScanMode from './Components/ScanMode';
 import useScrollReveal from './useScrollReveal';
 import useMagnetic from './useMagnetic';
 import useScramble from './useScramble';
@@ -58,6 +59,7 @@ export default function App() {
       </footer> 
 
       <Musicbutton />
+      <ScanMode />
       </div> 
       </>
   )

@@ -26,10 +26,21 @@ export default function Skills() {
     <div className="skills-grid">
         {skillCategories.map((cat, i) => (
             <div className="skill-category" key={cat.title} data-reveal style={{ '--reveal-delay': `${i * 70}ms` }}>
-                <p className="skill-cat-title"><span className="cat-icon">{cat.icon}</span> {cat.title}</p>
-                <div className="skill-items">
-                {cat.skills.map(skill => (
-                <span className="skill-pill" key={skill}>{skill}</span>
+                <p className="skill-cat-title">
+                    <span className="perk-root" aria-hidden="true" />
+                    <span className="cat-icon">{cat.icon}</span> {cat.title}
+                </p>
+                <div className="perk-tree">
+                {cat.skills.map((skill, s) => (
+                    <span
+                        className="perk-row"
+                        key={skill}
+                        data-reveal
+                        style={{ '--reveal-delay': `${i * 70 + 140 + s * 55}ms` }}
+                    >
+                        <span className="perk-node" aria-hidden="true" />
+                        <span className="perk-label">{skill}</span>
+                    </span>
                 ))}
             </div>
         </div>

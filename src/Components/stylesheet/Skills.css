@@ -55,3 +55,114 @@
 }
 
 
+
+/* ══════════════════════════════════════════════════════════════
+   Perk tree
+   Each category becomes a spine with branches: a filled root hex on
+   the title, then one hex per skill lighting in sequence as the
+   section scrolls in. The lighting reuses [data-reveal] rather than
+   adding a second scroll observer — the stagger is just an
+   increasing --reveal-delay, and the node colour transition carries
+   the same delay so the light travels outward from the root.
+   ══════════════════════════════════════════════════════════════ */
+
+.skill-cat-title {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.perk-root {
+    width: 15px;
+    height: 15px;
+    flex: none;
+    background: var(--cp-blue);
+    box-shadow: 0 0 10px rgba(90, 216, 230, 0.6);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.perk-tree {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 15px;
+}
+
+/* The spine the branches hang off. */
+.perk-tree::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: -10px;
+    bottom: 11px;
+    width: 1px;
+    background: rgba(255, 45, 74, 0.32);
+}
+
+.perk-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* The stub joining a node back to the spine. */
+.perk-row::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 50%;
+    width: 9px;
+    height: 1px;
+    background: rgba(255, 45, 74, 0.32);
+}
+
+.perk-node {
+    width: 11px;
+    height: 11px;
+    flex: none;
+    background: var(--cp-red-dim);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: background 0.34s ease, box-shadow 0.34s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.perk-row.revealed .perk-node {
+    background: var(--cp-blue);
+    box-shadow: 0 0 9px rgba(90, 216, 230, 0.65);
+}
+
+.perk-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.84rem;
+    line-height: 1.25;
+    color: var(--text);
+}
+
+.perk-row:hover .perk-label { color: var(--cp-cyan); }
+
+/* Eight categories and about fifty skills will not read as a tree on a
+   phone, so below this it collapses back to wrapped chips. Same DOM,
+   different presentation — no duplicate markup to keep in step. */
+@media (max-width: 900px) {
+    .perk-tree {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding-left: 0;
+    }
+
+    .perk-tree::before,
+    .perk-row::before,
+    .perk-node { display: none; }
+
+    .perk-label {
+        display: inline-block;
+        padding: 0.3rem 0.85rem;
+        font-size: 0.8rem;
+        background: rgba(90, 216, 230, 0.1);
+        border: 1px solid rgba(90, 216, 230, 0.35);
+    }
+}
