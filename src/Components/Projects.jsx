@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './stylesheet/Projects.css'
 import SlashReveal from './SlashReveal';
-import { FaGithub, FaPlay, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaPlay, FaLinkedin, FaExternalLinkAlt } from 'react-icons/fa';
 
 // Edit this data to add your real projects
 const projectData = {
@@ -40,7 +40,7 @@ const projectData = {
             tag: 'Game · Claude Fable 5 · AI-Generated',
             name: 'Guitar Claude',
             desc: 'A guitar game built to test the capabilities of Claude Fable 5 — exploring what AI can generate end-to-end in a game development context.',
-            links: [{ label: 'Play', url: 'https://joeyhanma69.github.io/guitar-claude/' }, { label: 'GitHub', url: 'https://github.com/JoeyHanma69/guitar-claude' }],
+            links: [{ label: 'Play', url: 'https://joeyhanma69.github.io/guitar-claude/' }, { label: 'GitHub', url: 'https://github.com/JoeyHanma69/guitar-claude' }, { label: 'LinkedIn', url: 'https://lnkd.in/p/gUuX7ddC' }],
             },
             {
             tag: 'Game · Unity · C#',
@@ -107,8 +107,9 @@ const tabLabels = { software: '> software/', games: '> games/', ai: '> ai/', sec
 
 const linkIcon = (label) => {
     const l = label.toLowerCase();
-    if (l === 'github') return <FaGithub />;
-    if (l === 'play')   return <FaPlay />;
+    if (l === 'github')   return <FaGithub />;
+    if (l === 'play')     return <FaPlay />;
+    if (l === 'linkedin') return <FaLinkedin />;
     return <FaExternalLinkAlt />;
 }
 
