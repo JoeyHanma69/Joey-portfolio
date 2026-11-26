@@ -67,6 +67,10 @@ export default function Hero() {
                         <span className="glitch" data-text="Joseph Linao">Joseph Linao</span>
                     </h1>
                     <p className="hero-role" data-reveal style={{ '--reveal-delay': '180ms' }}>Software Developer &nbsp;·&nbsp; Game Creator &nbsp;·&nbsp; AI Engineer</p>
+                    <div className="hero-badges" data-reveal style={{ '--reveal-delay': '220ms' }}>
+                        <span className="badge-available">● Open to freelance</span>
+                        <a href="https://defineedge.com.au" className="badge-business" target="_blank" rel="noreferrer">// defineedge.com.au ↗</a>
+                    </div>
                     <p className="hero-bio" data-reveal style={{ '--reveal-delay': '260ms' }}>
                         {typeDone
                             ? <BioFull />
