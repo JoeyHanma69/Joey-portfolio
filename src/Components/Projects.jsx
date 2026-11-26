@@ -54,7 +54,7 @@ const projectData = {
         tag: 'AI · Computer Vision · Qwen3.5-9B · Prompt Engineering · Evaluation',
         name: 'AI Guitar Chord Instructor (Research Prototype)',
         desc: 'A vision-model pipeline that checks a learner’s fretting hand against a reference fingering: pick a target chord, photograph the hand, and a guarded tutor prompt returns the exact string and fret to correct. Adding a single rule — never invent a mistake, say so when the chord is right — took tutor precision from 0.50 to 1.00 across the test set. Hand reading stayed the weak link at under half of finger positions, which is the result the project reports rather than hides.',
-        links: [],
+        links: [{ label: 'LinkedIn', url: 'https://lnkd.in/p/gUuX7ddC' }],
         },
         {
         tag: 'AI · Full-Stack · Tour Management',
@@ -98,7 +98,7 @@ const projectData = {
         tag: 'Cybersecurity · Risk Assessment · ISO/IEC 27005 · NIST SP 800-30',
         name: 'AI Agent Threat Assessment (ClawdBot / OpenClaw)',
         desc: 'A formal risk assessment of piloting a self-hosted AI agent platform at La Trobe University, run through ISO/IEC 27005:2022 and NIST SP 800-30. Valued the exposed assets — integration credentials and API tokens, the host execution environment, staff SSO, institutional documents — then rated five scenarios covering indirect prompt injection, malicious community skills, excessive tool permissions and unauthorised disclosure. Credential theft rated Critical and three further scenarios High; centralised skill vetting, least-privilege tool scoping, data minimisation and audit logging bring four of the five down to Medium or Low.',
-        links: [],
+        links: [{ label: 'LinkedIn', url: 'https://lnkd.in/p/gUuX7ddC' }],
         },
     ],
 }
